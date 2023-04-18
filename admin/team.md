@@ -1,5 +1,7 @@
 # We are **The CSS Crusaders**
 
+![CSS Crusaders mascot](/admin/branding/mascot.jpeg)
+
 We're on a quest to break the internet, one stylesheet at a time!
 
 ## Our team
@@ -14,4 +16,3 @@ We're on a quest to break the internet, one stylesheet at a time!
 - [Steven](https://github.com/Steven-Hsu1)
 - [Kevin](https://github.com/thekangster)
 - Jeannie
-
