@@ -6,13 +6,13 @@ We're on a quest to break the internet, one stylesheet at a time!
 
 ## Our team
 
-- [Ben](https://github.com/bent101)
-- [Henry](https://github.com/henrybliu)
-- [Jenny](https://github.com/hoatuyet423)
-- [James](https://github.com/Jameszzyyyyy)
-- [Kristine](https://github.com/KristinEbu)
-- [Maryam](https://github.com/Maryamkusman)
-- [Mick](https://github.com/mickjeon)
-- [Steven](https://github.com/Steven-Hsu1)
-- [Kevin](https://github.com/thekangster)
-- Jeannie
+- [Ben](https://github.com/bent101) (2nd year Math-CS major)
+- [Henry](https://github.com/henrybliu) (3rd year Computer Engineering Major)
+- [Jenny](https://github.com/hoatuyet423) (2nd year Math-CS major)
+- [James](https://github.com/Jameszzyyyyy) (3rd year Math-CS major)
+- [Kristin](https://github.com/KristinEbu) (2nd year Computer Science major)
+- [Maryam](https://github.com/Maryamkusman) (3rd year Computer Science major)
+- [Mick](https://github.com/mickjeon) (3rd year Computer Engineering major)
+- [Steven](https://github.com/Steven-Hsu1) (2nd year Math-CS Major)
+- [Kevin](https://github.com/thekangster) (3rd year Computer Engineering major)
+- Jeannie (2nd year Computer Science major)
