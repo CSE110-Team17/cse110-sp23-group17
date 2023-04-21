@@ -1,13 +1,9 @@
 # We are **The CSS Crusaders**
 
-![CSS Crusaders mascot](/admin/branding/mascot.jpeg)
 
 We're on a quest to break the internet, one stylesheet at a time!
+![CSS Crusaders mascot](/admin/branding/mascot.jpeg)
 
-## Values
-- Reespet each other and put it your contribution
-- Honor works, maintaining integrity 
-- Following the team contract 
 
 ## Our team
 
@@ -21,3 +17,8 @@ We're on a quest to break the internet, one stylesheet at a time!
 - [Steven](https://github.com/Steven-Hsu1) (2nd year Math-CS Major)
 - [Kevin](https://github.com/thekangster) (3rd year Computer Engineering major)
 - [Jeannie](https://github.com/jeannkim) (2nd year Computer Science major)
+
+## Values
+- Reespet each other and put it your contribution
+- Honor works, maintaining integrity 
+- Following the team contract 
