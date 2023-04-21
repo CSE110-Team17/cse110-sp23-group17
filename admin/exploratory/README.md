@@ -1,4 +1,13 @@
-# How to run the exploratory prototype
+# Documentation
+
+## Features
+1. ChatGPT generated code for HTML, CSS, Javascript
+2. AI generated fortune cookie image 
+3. AI generated voice recordings of results
+4. Auto play of the voice recordings
+5. Shaking of the fortune cookie image
+
+## How to run the exploratory prototype
 
 1. Download all the files in this directory(exploratory/)
     1. static/
