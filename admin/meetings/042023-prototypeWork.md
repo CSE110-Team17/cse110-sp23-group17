@@ -3,7 +3,7 @@
 ## Opening 
 **Team** : 17 (CSS Crusaders) <br>
 **Type** : Work  <br>
-**Location** : Zoom <br>
+**Location** : In person, right after class <br>
 **Time** : Wednesday, April 19th 2023, 7-9pm <br>
 **Attendance**: 
 - [ ] Mick
@@ -16,10 +16,9 @@
 ## Agenda
 
 ### From Last Meeting: 
-  -  None
+- [ ] Design the prototype 
 
 ### For Today Meeting:
-- [ ] Design the prototype 
 - [ ] Use ChatGPT to implement the magic 8 ball with fortune cookies theme
 - [ ] Use image generator to design
 - [ ] Testing
@@ -38,6 +37,9 @@
   - API: [link](https://www.eightballapi.com/#demo)
   - Scalable for mobile phone
   - Add Sentiment (sarcasm, funny,...)
+- Different user inputting the same questoin in ChatGPT -> different result -> it might work or not 
+
+
 
   
 ---
