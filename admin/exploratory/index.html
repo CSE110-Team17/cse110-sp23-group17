@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Magic 8 Ball</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Magic 8 Ball</h1>
+      <img class="magic-ball" src="https://img.craiyon.com/2023-04-21/5a1e38c05b2b4d66af50d4da37f65982.webp" alt="Magic 8 Ball">
+      <div class="answer"></div>
+      <label for="question">Ask a question:</label>
+      <input type="text" id="question">
+      <button class="shake-btn">Shake</button>
+      <audio controls id="audio" src="./static/1.wav" style="display: none;"></audio>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
