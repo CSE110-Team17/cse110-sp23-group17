@@ -4,7 +4,7 @@
 **Team** : 17 (CSS Crusaders) <br>
 **Type** : Team Meeting / Kick Off  <br>
 **Location** : Price Center <br>
-**Time** : Monday, April 17th 2023, 3-5pm
+**Time** : Monday, April 17th 2023, 3-5pm <br>
 **Attendance**: 
 - [x] Mick
 - [x] Jenny

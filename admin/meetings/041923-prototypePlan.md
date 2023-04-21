@@ -2,9 +2,9 @@
 
 ## Opening 
 **Team** : 17 (CSS Crusaders) <br>
-**Type** : Check in with TA   <br>
+**Type** : Planning  <br>
 **Location** : Zoom <br>
-**Time** : Wednesday, April 19th 2023, 9-9:30pm
+**Time** : Wednesday, April 19th 2023, 9-9:30pm <br>
 **Attendance**: 
 - [x] Mick
 - [x] Jenny

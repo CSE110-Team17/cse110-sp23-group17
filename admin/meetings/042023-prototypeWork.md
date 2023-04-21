@@ -1,0 +1,62 @@
+# Team Meeting and Check In With Akshay 
+
+## Opening 
+**Team** : 17 (CSS Crusaders) <br>
+**Type** : Work  <br>
+**Location** : Zoom <br>
+**Time** : Wednesday, April 19th 2023, 7-9pm <br>
+**Attendance**: 
+- [ ] Mick
+- [ ] Jenny
+- [ ] Henry
+- [ ] Steven
+- [ ] Ziyou (James)
+
+---
+## Agenda
+
+### From Last Meeting: 
+  -  None
+
+### For Today Meeting:
+- [ ] Design the prototype 
+- [ ] Use ChatGPT to implement the magic 8 ball with fortune cookies theme
+- [ ] Use image generator to design
+- [ ] Testing
+- [ ] Documentation and Slides (less than 12 slides)
+
+---
+
+## Details
+
+### 1. Information from class and previous meeting
+- ChatGPT: Jenny
+- Image generation: Steven, Mick (Dalle worst case, MidJourney)
+- Speech (optional)
+- Prototype 
+  - Grpahics: Fortune Cookies
+  - API: [link](https://www.eightballapi.com/#demo)
+  - Scalable for mobile phone
+  - Add Sentiment (sarcasm, funny,...)
+
+  
+---
+## Questions
+
+---
+## Conclusion 
+
+### To do before next meeting
+
+
+### What to do in next meeting 
+
+
+   
+
+
+
+
+
+
+
