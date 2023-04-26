@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Magic 8 Ball</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <div class="container">
-      <h1>Magic 8 Ball</h1>
-      <img class="magic-ball" src="https://img.craiyon.com/2023-04-21/5a1e38c05b2b4d66af50d4da37f65982.webp" alt="Magic 8 Ball">
-      <div class="answer"></div>
-      <label for="question">Ask a question:</label>
-      <input type="text" id="question">
-      <button class="shake-btn">Shake</button>
-      <audio controls id="audio" src="./static/1.wav" style="display: none;"></audio>
-    </div>
-    <script src="script.js"></script>
-  </body>
+
+<head>
+  <title>Fortune Cookie</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <h1>Fortune Cookie</h1>
+  <h3>by CSS Crusaders</h3>
+  <div style="padding: 3%"></div>
+  <div>
+    <h4>How to Play</h4>
+    <ol>
+      <li><h4>1. Click to prepare the fortune cookie</h4></li>
+      <li><h4>2. Click to reveal your fortune!</h4></li>
+    </ol>
+  </div>
+  <div style="padding: 3%"></div>
+    <button class="fc-spawned" type="button">
+      <div class="fc-part left"></div>
+      <div class="fc-part right"></div>
+      <div class="fc-crumbs">
+        <div class="fc-crumb"></div>
+        <div class="fc-crumb"></div>
+        <div class="fc-crumb"></div>
+        <div class="fc-crumb"></div>
+        <div class="fc-crumb"></div>
+        <div class="fc-crumb"></div>
+        <div class="fc-crumb"></div>
+        <div class="fc-crumb"></div>
+      </div>
+      <div class="fc-fortune">
+        <p class="fc-fortune-text">No fortune</p>
+      </div>
+      <audio controls id="audio" src="./static/1.wav" preload="none" style="display: none"></audio>
+    </button>
+  
+  <script src="script.js"></script>
+</body>
 </html>
