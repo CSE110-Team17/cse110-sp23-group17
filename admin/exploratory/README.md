@@ -3,7 +3,7 @@
 Video Demonstration: 
 https://youtu.be/lCl1xWMRJa4 
 
-Presentation on AI
+Presentation on AI:
 https://docs.google.com/presentation/d/1vuBBs1mlLeU0Bzm6ubc-O32pri33z8rgMYgwY1wobr0/edit?usp=sharing
 
 ## Features
