@@ -1,7 +1,8 @@
 # We are **The CSS Crusaders**
 
 
-We're on a quest to break the internet, one stylesheet at a time!
+We're on a quest to break the internet, one stylesheet at a time!\
+
 ![CSS Crusaders mascot](/admin/branding/mascot.jpeg)
 
 
