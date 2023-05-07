@@ -7,24 +7,41 @@ After using numerous online Tarot apps, we noticed that they are all too similar
 
 CSS Crusader’s solution is to create a tarot fortune telling web application that engages user through a game-like experience.
 
-	Our goal is to develop a Tarot web application that makes the process of receiving a fortune more fun and interesting. By doing so, we believe that we can target a larger audience and introduce people to Tarot cards!
+>Our goal is to develop a Tarot web application that makes the process of receiving a fortune more fun and interesting. By doing so, we believe that we can target a larger audience and introduce people to Tarot cards!
 
 ---
 
 ### **Functionalities / Features**
 Functionalities:
 - Generate random tarot card readings for users, providing insights into their past, present, and future
+  - LT's World Famous Universal 6 Card Spread:
+  Reading to understand how things are generally going with you, at this moment in time
+    - 6 cards from the Major Arcana
+    - Card Positions Represent:
+      1. How you feel about yourself now
+      2. What you most want at this moment
+      3. Your fears
+      4. What is going for you
+      5. What is going against you
+      6. The outcome according to your current situation or the question you asked 
 - The app can be used offline, without an internet connection
 
 Features:
 - Use of animations to enhance the tarot card reading experience, making it more engaging and exciting for users
 Allowing users to upload a photo of their face, which can be used to personalize their tarot card readings
+- Adding different colors of the default theme
+- Adding different languages
+- Speech option for the results
+  - Adding different voices for this feature
 - Gamifying the tarot card reading experience, making it more interactive and fun for users
+  - Attack an enemy and depending on how many turns it takes to defeat your opponent, you will get a different number of cards (1-6).
 
 ---
 
 ### **Risks and Rabbit Holes**
 - One risk to watch out for is getting too caught up in trying to make a game too complex, which could lead to not finishing a usable app in time
+  - having the different turns correspond to the different number of cards might be too complex
+  - the visuals/layout of the game may be too complex
 - Another rabbit hole to avoid is adding AI features (or other features) without considering their practicality and feasibility, which could waste a lot of time and resources
 - Last but not least, another potential risk is focusing too much visual effects and animations and spending too much time on them
 
