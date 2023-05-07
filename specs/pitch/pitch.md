@@ -47,6 +47,12 @@ Allowing users to upload a photo of their face, which can be used to personalize
 
 ---
 
+### **Visualization Links**
+- Web and mobile wire frames [Figma Link](https://www.figma.com/file/8BkmKSpFt7THYtXniMDgxq/Untitled?type=design&t=pFrA0UwQlCTZHGMC-1)
+- Diagram(Also found at ./tarot.drawio.png) [Figma Link](https://www.figma.com/file/R9LvN0QLSp0DQR7Wt9zqtP/Tarot-Diagram?type=design&t=CmgaCYVV8GWqeiXc-1)
+- Brainstorming(partial) [Miro Link](https://miro.com/app/board/uXjVMLJ59WI=/?share_link_id=391296579600)
+---
+
 ### **User Personas**
 #### **James - Bored College Student**
 *Background:*
