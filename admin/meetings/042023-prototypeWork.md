@@ -6,23 +6,23 @@
 **Location** : In person, right after class <br>
 **Time** : Wednesday, April 19th 2023, 7-9pm <br>
 **Attendance**: 
-- [ ] Mick
-- [ ] Jenny
-- [ ] Henry
-- [ ] Steven
-- [ ] Ziyou (James)
+- [X] Mick
+- [X] Jenny
+- [X] Henry
+- [X] Steven
+- [X] Ziyou (James)
 
 ---
 ## Agenda
 
 ### From Last Meeting: 
-- [ ] Design the prototype 
+- [X] Design the prototype 
 
 ### For Today Meeting:
-- [ ] Use ChatGPT to implement the magic 8 ball with fortune cookies theme
-- [ ] Use image generator to design
-- [ ] Testing
-- [ ] Documentation and Slides (less than 12 slides)
+- [X] Use ChatGPT to implement the magic 8 ball with fortune cookies theme
+- [X] Use image generator to design
+- [X] Testing
+- [X] Documentation and Slides (less than 12 slides)
 
 ---
 

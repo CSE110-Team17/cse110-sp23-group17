@@ -6,15 +6,19 @@
 **Location** : In person, right after class <br>
 **Time** : Tuesday, April 25th 2023, 6:30-8:30pm <br>
 **Attendance**: 
-- [ ] Mick
-- [ ] Jenny
-- [ ] Kevin
-- [ ] Maryam
-- [ ] Ben
-- [ ] Jeannie
+- [X] Mick
+- [X] Jenny
+- [X] Kevin
+- [X] Maryam
+- [X] Ben
+- [X] Jeannie
 
 ---
 ## Agenda
+
+### From Last Meeting: 
+
+### For Today Meeting:
 1. Refine direction of the project
 2. Individual research on **forutne telling**
   - https://en.wikipedia.org/wiki/Fortune-telling 
@@ -26,10 +30,6 @@
   - Ben: Palmistry
   - Jeannie: Four Pillars
 3. Share and discuss
-
-### From Last Meeting: 
-
-### For Today Meeting:
 
 ---
 
@@ -61,6 +61,7 @@
 
 ### To do before next meeting
 - Think about potential implementation of some ideas
+- each person must have at least 2 ideas 
 
 ### What to do in next meeting 
 - Narrow down ideas
