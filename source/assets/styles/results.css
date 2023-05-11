@@ -1,0 +1,17 @@
+/* Entire Page Positions */
+#results-page {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Individual Card Positions */
+.card {
+    margin: 20px;
+    max-width: 30%;
+}
+
+/* Card Description Positions */
+p {
+    text-align: justify;
+}
