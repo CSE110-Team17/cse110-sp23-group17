@@ -1,0 +1,93 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #bbb;
+}
+
+.centered {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 14rem;
+  font-family: cursive;
+  color: #333;
+}
+
+h2 {
+  font-size: 4rem;
+  text-align: right;
+  position: relative;
+  top: -6rem;
+  color: #555;
+  animation: 500ms ease-out 0s slideLeft, 500ms ease-out 0s fade;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  animation: 1s ease-out 0s delayedFade;
+}
+
+.buttons > * {
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  background-color: #333;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border: none;
+  position: relative;
+}
+
+.buttons > *::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: 5px solid #333;
+}
+
+/* animations */
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(-2rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes delayedFade {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
