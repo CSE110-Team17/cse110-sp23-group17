@@ -1,3 +1,4 @@
+/*
 /* Entire Page Positions */
 #results-page {
     display: flex;
@@ -15,3 +16,36 @@
 p {
     text-align: justify;
 }
+*/
+<!-- Mobile style adjustments in css -->
+    <stlye>
+        /*DEFAULT the width and height are in percentages to adjust to mobile screen*/
+        .card img {
+            max-width: 100%;
+            height: auto;
+        }
+        /*DEFAULT adjust fonts to mobile, using rem*/
+        .card p, .card h1, .card h2 {
+        font-size: 1.2rem
+        }
+        /*if the screen is less than or equal to 600px*/
+        @media only screen and (max-width: 600px) {
+            .card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+            }
+            .card h1 {
+                font-size: 1.4rem;
+                margin-top: 10px;
+                margin-bottom: 5px;
+            }
+            .card p {
+                font-size: 1.2rem;
+                margin-top: 5px;
+                margin-bottom: 10px;
+            }
+        }
+        </style>
