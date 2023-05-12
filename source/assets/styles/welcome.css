@@ -1,16 +1,29 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: #bbb;
+  height: 100vh;
+  padding: 4rem;
 }
 
-.centered {
-  display: grid;
-  place-items: center;
-  height: 100vh;
+.card {
+  background-color: #bbb;
+  overflow: scroll;
+  width: max-content;
+  margin: 0 auto;
+  height: 100%;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 4rem;
+  transform: rotate(3deg);
+  transform-origin: center;
+  animation: dealCard 2000ms ease-out;
+  box-shadow: 5px 3px 15px #1119;
 }
 
 h1 {
@@ -25,14 +38,12 @@ h2 {
   position: relative;
   top: -6rem;
   color: #555;
-  animation: 500ms ease-out 0s slideLeft, 500ms ease-out 0s fade;
 }
 
 .buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  animation: 1s ease-out 0s delayedFade;
 }
 
 .buttons > * {
@@ -54,40 +65,14 @@ h2 {
   border: 5px solid #333;
 }
 
-/* animations */
-
-@keyframes slideLeft {
+@keyframes dealCard {
   0% {
-    transform: translateX(-2rem);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.2;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes delayedFade {
-  0% {
-    opacity: 0;
+    transform: translate(-50vh, 120vh) rotate(-60deg);
   }
   80% {
-    opacity: 0;
-  }
-  90% {
-    opacity: 0.2;
+    transform: translate(-50vh, 120vh) rotate(-60deg);
   }
   100% {
-    opacity: 1;
+    transform: rotate(3deg);
   }
 }
