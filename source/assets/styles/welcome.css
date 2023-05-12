@@ -8,6 +8,12 @@ body {
   height: 100vh;
   padding-top: 8rem;
   background: radial-gradient(circle, #280044, #0b004a);
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 h1 {
@@ -48,7 +54,6 @@ h2 {
   flex: 1;
   text-align: center;
   font-size: 2rem;
-  background-clip: text;
   color: #fff9;
   background-color: #fff0;
   text-decoration: none;
@@ -68,6 +73,21 @@ h2 {
 }
 .buttons > *:active {
   scale: 0.98;
+}
+
+footer {
+  padding: 2rem;
+}
+
+select {
+  font-size: 1.25rem;
+  color: #fff9;
+  background-color: #fff0;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 900;
+  border: none;
 }
 
 @keyframes fadeInLetters {
