@@ -16,7 +16,7 @@ h1 {
   font-family: cursive;
   color: white;
 
-  animation: fadeInLetters 1s ease-out;
+  animation: fadeInLetters 2s ease-out;
 }
 
 h2 {
@@ -60,20 +60,23 @@ h2 {
   transition: all 200ms;
 }
 
-.buttons > *:hover,
-.buttons > *:focus {
+.buttons > *:hover {
   background-color: #fff1;
   color: #fff;
   border-color: #fff;
+  scale: 1.05;
+}
+.buttons > *:active {
+  scale: 0.98;
 }
 
 @keyframes fadeInLetters {
   0% {
-    letter-spacing: 0.3em;
+    letter-spacing: 0.2em;
     opacity: 0;
   }
-  50% {
-    letter-spacing: 0.3em;
+  20% {
+    letter-spacing: 0.2em;
     opacity: 0;
   }
   100% {
