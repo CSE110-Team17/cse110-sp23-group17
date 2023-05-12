@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/* outermost div in body, id=grid */
+.grid {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 1fr 3fr 1fr;
+}
+
+/****** Opponent related CSS ******/
+.grid > .opponent {
+    background-color: rgb(42, 190, 183);
+    padding: 3vh;
+    position: center;
+    width: 50vw;
+    height: 12vh;
+    border-radius: 0 0 15vh 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.opponent {
+    margin: auto;
+}
+
+.opponent h2 {
+    font-size: 16px;
+    text-align: center;
+}
+
+.opponent img {
+    width: 10vh;
+    height: auto;
+    border-radius: 50%;
+}
+
+.opponent p {
+    text-align: center;
+    font-size: 10px;
+}
+
+/* progress bar settings */
+progress {
+    width: 300px;
+    height : 25px;
+    border: 2px solid gray;
+}
+progress::-webkit-progress-bar {
+    background-color: white;
+}
+progress::-webkit-progress-value {
+    background-color: red;
+}
+
+/****** Board related CSS ******/
+/* board is a flex container */
+.grid > .board {
+    background-color: beige;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    row-gap: 4vh;
+}
+
+/* each card has width 10% of the window width */
+.board > .card {
+    width: 10vw;
+    height: auto;
+}
+/* card width is 100% of the card width */
+.card-img {
+    width: 100%
+}
+
+
+/****** Player related CSS ******/
+.grid > .player {
+    background-color: rgb(42, 190, 183);
+    padding: 3vh;
+    position: center;
+    width: 50vw;
+    height: 12vh;
+    border-radius: 15vh 15vh 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.player {
+    margin: auto;
+}
+
+.player h2 {
+    font-size: 16px;
+    text-align: center;
+}
+
+.player img {
+    width: 10vh;
+    height: auto;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.player p {
+    text-align: center;
+    font-size: 10px;
+}
