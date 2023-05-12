@@ -15,6 +15,8 @@ h1 {
   font-size: 11rem;
   font-family: cursive;
   color: white;
+
+  animation: fadeInLetters 1s ease-out;
 }
 
 h2 {
@@ -63,4 +65,19 @@ h2 {
   background-color: #fff1;
   color: #fff;
   border-color: #fff;
+}
+
+@keyframes fadeInLetters {
+  0% {
+    letter-spacing: 0.3em;
+    opacity: 0;
+  }
+  50% {
+    letter-spacing: 0.3em;
+    opacity: 0;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
 }
