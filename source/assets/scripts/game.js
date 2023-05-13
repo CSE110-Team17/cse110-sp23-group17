@@ -73,6 +73,9 @@ function play(event){
         setTimeout(() => { 
             if (hpBar.value <= 0){
                 alert("You defeat the oponent");
+                setTimeout(() => {
+                    window.location.href = "http://127.0.0.1:5500/source/results.html";
+                }, 500);
             }
         }, 300);
     }, 500);
