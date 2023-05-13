@@ -17,3 +17,5 @@ for (let i = 0; i < chosenCards.length; i++) {
   cardName.textContent = card.name;
   cardDesc.textContent = card.description;
 }
+
+//change functionality for mobile screens
