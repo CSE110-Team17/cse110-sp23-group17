@@ -1,23 +1,10 @@
-import tarotConfig from '/source/assets/tarot.json' assert { type: 'json' };
+// Pull from an array containing all the cards that were chosen
+const chosenCards = [];
 
-// Transform tarotConfig to a hashmap indexed by card name
-const tarotMap = {};
-tarotConfig['tarot'].forEach((card) => {
-  tarotMap[card.name] = {
-    suite: card.suite,
-    image: card.image,
-    description: card.description,
-    interpretation: card.interpretation,
-  };
-});
-
-// Pull selected cards from game.js
-let chosenCards = JSON.parse(localStorage.getItem('chosenCards'));
-chosenCards = Object.values(chosenCards).map(String);
-
+// Get the container elements for each card
 const cardContainers = document.getElementsByClassName('card');
 
-// Update results
+// Loop through the chosenCards array to update each card
 for (let i = 0; i < chosenCards.length; i++) {
   const card = chosenCards[i];
   const cardContainer = cardContainers[i];
@@ -25,9 +12,10 @@ for (let i = 0; i < chosenCards.length; i++) {
   const cardName = cardContainer.querySelector('h1');
   const cardDesc = cardContainer.querySelector('p');
 
-  cardImg.src = tarotMap[card].image;
-  cardName.textContent = tarotMap[card].name;
-  cardDesc.textContent = tarotMap[card].description;
+  // Display card, image, name, and description
+  cardImg.src = card.image;
+  cardName.textContent = card.name;
+  cardDesc.textContent = card.description;
 }
 
-// Need to add functionality for mobile screens still
+//change functionality for mobile screens
