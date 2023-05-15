@@ -15,7 +15,6 @@
 p {
     text-align: justify;
 }
-/*so button doesnt show in larger screens*/
 #button-2 {
     display: none;
   }
