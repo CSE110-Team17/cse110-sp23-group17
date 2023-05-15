@@ -15,6 +15,15 @@
 p {
     text-align: justify;
 }
+/*so button doesnt show in larger screens*/
+#button-2 {
+    display: none;
+  }
+ 
+  #button-1 {
+    display: none;
+  }
+
 
 
 /* Mobile style adjustments in css */
@@ -66,7 +75,8 @@ p {
                 align-items: center;
             }
             /*button features for mobile*/
-            .button {
+            #button-2 {
+                display: flex;
                 background-color: #a0e347;
                 color: white;
                 width: auto;
@@ -85,7 +95,24 @@ p {
               .button:hover {
                 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
                 color: white;
-              } 
+              }
+              #button-1 {
+                display: flex;
+                background-color: #ce3366;
+                color: white;
+                width: auto;
+                padding: auto;
+                text-align: center;
+                font-size: auto;
+                margin: auto;
+                cursor: pointer;
+                border-radius: 10px;
+                border: 2px solid #000000;
+                position: absolute;
+                bottom: auto;
+                right: auto;
+                margin-bottom: absolute;
+              }
             .card p {
                 font-size: 1.2rem;
                 margin-top: 5px;
