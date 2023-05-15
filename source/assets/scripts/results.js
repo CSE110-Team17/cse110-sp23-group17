@@ -1,23 +1,23 @@
 import tarotConfig from '/source/assets/tarot.json' assert { type: 'json' };
 
-// Transform tarotConfig to a hashmap indexed by card name
-const tarotMap = {};
-tarotConfig['tarot'].forEach((card) => {
-  tarotMap[card.name] = {
+//create a hashmap for all tarot cards and that can be indexed by card name
+const tarotMap = tarotConfig.tarot.reduce((map, card) => {
+  map[card.name] = {
     suite: card.suite,
     image: card.image,
     description: card.description,
     interpretation: card.interpretation,
   };
-});
+  return map;
+}, {});
 
-// Pull selected cards from game.js
-let chosenCards = JSON.parse(localStorage.getItem('chosenCards'));
-chosenCards = Object.values(chosenCards).map(String);
-
+//pull selected cards from gameplay
+let chosenCards = Object.values(
+  JSON.parse(localStorage.getItem('chosenCards'))
+).map(String);
 const cardContainers = document.getElementsByClassName('card');
 
-// Update results
+//update cards for desktop
 for (let i = 0; i < chosenCards.length; i++) {
   const card = chosenCards[i];
   const cardContainer = cardContainers[i];
@@ -30,4 +30,45 @@ for (let i = 0; i < chosenCards.length; i++) {
   cardDesc.textContent = tarotMap[card].description;
 }
 
-// Need to add functionality for mobile screens still
+//update card for mobile
+let idx = 0;
+const mobileCard = cardContainers[3];
+const nextButton = document.getElementById('button-1');
+const prevButton = document.getElementById('button-2');
+prevButton.style.display = 'none';
+
+updateMobileCard();
+
+//go back to previous card
+prevButton.addEventListener('click', () => {
+  idx--;
+  updateMobileCard();
+  updateButtonVisibility();
+  console.log(idx);
+});
+
+//go to next card
+nextButton.addEventListener('click', () => {
+  idx++;
+  updateMobileCard();
+  updateButtonVisibility();
+  console.log(idx);
+});
+
+//display the current card
+function updateMobileCard() {
+  const card = chosenCards[idx];
+  const cardImg = mobileCard.querySelector('img');
+  const cardName = mobileCard.querySelector('h1');
+  const cardDesc = mobileCard.querySelector('p');
+
+  cardImg.src = tarotMap[card].image;
+  cardName.textContent = tarotMap[card].name;
+  cardDesc.textContent = tarotMap[card].description;
+}
+
+//update button visiblity -- should not show previous button when on 1st card and not show next button on last card
+function updateButtonVisibility() {
+  prevButton.style.display = idx === 0 ? 'none' : 'block';
+  nextButton.style.display = idx === chosenCards.length - 1 ? 'none' : 'block';
+}
