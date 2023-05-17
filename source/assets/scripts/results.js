@@ -15,9 +15,12 @@ const tarotMap = tarotConfig.tarot.reduce((map, card) => {
 let chosenCards = Object.values(
   JSON.parse(localStorage.getItem('chosenCards'))
 ).map(String);
-const cardContainers = document.getElementsByClassName('card');
+
+//keep track of current screen width
+let screenWidth = window.innerWidth;
 
 //update cards for desktop
+const cardContainers = document.getElementsByClassName('card');
 for (let i = 0; i < chosenCards.length; i++) {
   const card = chosenCards[i];
   const cardContainer = cardContainers[i];
@@ -44,7 +47,6 @@ prevButton.addEventListener('click', () => {
   idx--;
   updateMobileCard();
   updateButtonVisibility();
-  console.log(idx);
 });
 
 //go to next card
@@ -52,7 +54,6 @@ nextButton.addEventListener('click', () => {
   idx++;
   updateMobileCard();
   updateButtonVisibility();
-  console.log(idx);
 });
 
 //display the current card
@@ -69,6 +70,20 @@ function updateMobileCard() {
 
 //update button visiblity -- should not show previous button when on 1st card and not show next button on last card
 function updateButtonVisibility() {
-  prevButton.style.display = idx === 0 ? 'none' : 'block';
-  nextButton.style.display = idx === chosenCards.length - 1 ? 'none' : 'block';
+  if (screenWidth > 600) {
+    prevButton.style.display = 'none';
+    nextButton.style.display = 'none';
+  } else {
+    prevButton.style.display = idx === 0 ? 'none' : 'block';
+    nextButton.style.display =
+      idx === chosenCards.length - 1 ? 'none' : 'block';
+  }
+}
+
+//update button visibility when switching screen sizes
+window.addEventListener('resize', handleWindowSizeChange);
+
+function handleWindowSizeChange() {
+  screenWidth = window.innerWidth;
+  updateButtonVisibility();
 }
