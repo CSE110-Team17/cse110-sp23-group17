@@ -3,7 +3,11 @@ function app() {
   class Fortune {
     constructor(fortuneList) {
       let randomIndex;
-      this.text = !fortuneList ? "No fortune" : fortuneList[randomIndex = Math.floor(Math.random() * fortuneList.length)];
+      this.text = !fortuneList
+        ? "No fortune"
+        : fortuneList[
+            (randomIndex = Math.floor(Math.random() * fortuneList.length))
+          ];
       audio.src = "./static/" + (randomIndex + 1) + ".wav";
     }
   }
@@ -29,10 +33,10 @@ function app() {
       "Don't count on it.",
       "Outlook not so good.",
       "My sources say no.",
-      "Very doubtful."
+      "Very doubtful.",
     ],
     fortune = new Fortune(),
-
+    
     getFortune = function () {
       fortune = new Fortune(fortuneList);
       fortuneText.innerHTML = fortune.text;
@@ -48,12 +52,7 @@ function app() {
         elClass.add(opened);
         var playPromise = audio.play();
         if (playPromise !== undefined) {
-          playPromise.then(_ => {
-
-          })
-            .catch(error => {
-
-            });
+          playPromise.then((_) => {}).catch((error) => {});
         }
 
         // new cookie
