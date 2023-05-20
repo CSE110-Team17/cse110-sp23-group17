@@ -1,116 +1,68 @@
-#results-page {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
 /* Individual Card Positions */
 .card {
+  display: flex;
+  flex-direction: row;
   margin: 20px;
-  max-width: 30%;
 }
 
-/* Card Description Positions */
-p {
-  text-align: justify;
-}
-#button-2 {
-  display: none;
-}
-
-#button-1 {
-  display: none;
-}
-
-/* Mobile style adjustments in css */
-/*DEFAULT the width and height are in percentages to adjust to mobile screen*/
-.card img {
+/* Card Images */
+img {
   max-width: 100%;
   height: auto;
 }
 
+/* Text of the cards Positions */
+.text-portion {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  font-size: 1.2rem;
+}
+
+/* buttons and mobile card shouldn't be displayed in web version */
 #card-4 {
   display: none;
 }
-/*DEFAULT adjust fonts to mobile, using rem*/
-.card p,
-.card h1,
-.card h2 {
-  font-size: 1.2rem;
+button{
+  display: none;
 }
+
+/* Mobile Display */
 /*if the screen is less than or equal to 600px*/
 @media only screen and (max-width: 600px) {
+
+  /* only one card should show */
   .card {
     display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
   }
 
+  /* card shown in mobile version */
   #card-4 {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 20px 0px; 
   }
-  .card h1 {
-    display: inline;
-    font-size: 1.4rem;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    align-items: center;
+
+  /*button features for mobile*/
+  button {
+    display: flex;
+    justify-content: center;
+    background-color: purple;
+    color: white;
   }
-  /*button features for mobile, PRev card*/
+
+  /* Previous Button */
   #button-2 {
-    display: flex;
-    background-color: #a0e347;
-    color: white;
-    width: auto;
-    padding: auto;
-    text-align: center;
-    font-size: auto;
-    margin: auto;
-    cursor: pointer;
-    border-radius: 10px;
-    border: 2px solid #000000;
     position: fixed;
-    bottom: 0;
-    left: auto;
-    margin-bottom: absolute;
-    
+    bottom: 5px;
   }
-  .button:hover {
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
-      0 17px 50px 0 rgba(0, 0, 0, 0.19);
-    color: white;
-  }
-  /*next card*/
+  
+  /* Next Button */
   #button-1 {
-    display: flex;
-    background-color: #a0e347;
-    color: white;
-    width: auto;
-    padding: auto;
-    text-align: center;
-    font-size: auto;
-    margin: auto;
-    cursor: pointer;
-    border-radius: 10px;
-    border: 2px solid #000000;
     position: fixed;
-    bottom: auto;
-    right: auto;
-    margin-bottom: absolute;
+    top: 5px;
   }
-  .card p {
-    font-size: 1.2em;
-    padding: 0;
-    margin: 0;
-    align-items: center;
-  }
-  p {
-    padding: 0;
-  }
+  
 }
