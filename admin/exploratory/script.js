@@ -36,7 +36,6 @@ function app() {
       "Very doubtful.",
     ],
     fortune = new Fortune(),
-    
     getFortune = function () {
       fortune = new Fortune(fortuneList);
       fortuneText.innerHTML = fortune.text;
