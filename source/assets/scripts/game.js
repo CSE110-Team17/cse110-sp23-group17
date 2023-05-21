@@ -86,6 +86,9 @@ function play(event) {
           window.location.href = "http://127.0.0.1:5500/source/results.html"; //change url for port as needed
         }, 500);
       }
+
     }, 300);
+
   }, 500);
+  
 }
