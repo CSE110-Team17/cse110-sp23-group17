@@ -1,4 +1,5 @@
-import tarotConfig from "/source/assets/tarot.json" assert { type: "json" };
+// import tarotConfig from "/source/assets/tarot.json" assert { type: "json" };
+import tarotConfig from "../tarot.json" assert { type: "json" };
 
 /*
 Create an array of 22 and parse all the card name from json file
