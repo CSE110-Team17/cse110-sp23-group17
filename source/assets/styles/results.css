@@ -85,7 +85,7 @@ p {
   
   /* Previous Button */
   #button-2 {
-    position: fixed;
+    position: fixed; 
     bottom: 5px;
   }
 
