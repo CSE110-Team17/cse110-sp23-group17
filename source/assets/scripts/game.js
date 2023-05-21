@@ -88,4 +88,5 @@ function play(event) {
       }
     }, 300);
   }, 500);
+  
 }
