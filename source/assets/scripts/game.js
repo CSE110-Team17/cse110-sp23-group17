@@ -41,6 +41,11 @@ Game play when a card is click:
 - Generate random damage points -> change hp bar accordingly
 */
 function play(event) {
+  console.log(event.target.dataset);
+  if (event.target.dataset.status === "clicked") {
+    return;
+  }
+
   /*
     Random generate a card. If card is already chosen then generate another card
     */
@@ -59,6 +64,7 @@ function play(event) {
   tarotConfig["tarot"].forEach((element) => {
     if (element["name"] === cardName) {
       event.target.src = element["image"];
+      event.target.dataset.status = "clicked";
     }
   });
 
