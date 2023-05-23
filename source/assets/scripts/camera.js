@@ -32,9 +32,8 @@ submitFile.addEventListener("change", () => {
     console.log(url);
     window.localStorage.setItem("userImage", url);
   });
-  
 });
 
 submitBtn.onclick = function () {
-  window.location.href = "/source/game.html";
+  window.location.href = "./game.html";
 };
