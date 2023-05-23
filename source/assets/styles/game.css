@@ -1,3 +1,8 @@
+:root {
+  --background-color: #280044;
+  --lighter-background-color:#22003a62;
+  --stage-color: #484848;
+}
 * {
   margin: 0;
   padding: 0;
@@ -7,11 +12,12 @@
   display: grid;
   height: 100vh;
   grid-template-rows: 1fr 3fr 1fr;
+  background-color: var(--background-color);
 }
 
 /****** Opponent related CSS ******/
 .grid > .opponent {
-  background-color: rgb(42, 190, 183);
+  background-color: var(--stage-color);
   padding: 3vh;
   position: center;
   width: 50vw;
@@ -30,6 +36,7 @@
 .opponent h2 {
   font-size: 16px;
   text-align: center;
+  color: white;
 }
 
 .opponent img {
@@ -40,7 +47,8 @@
 
 .opponent p {
   text-align: center;
-  font-size: 10px;
+  font-size: 14px;
+  color: white;
 }
 
 /* progress bar settings */
@@ -59,8 +67,9 @@ progress::-webkit-progress-value {
 /****** Board related CSS ******/
 /* board is a flex container */
 .grid > .board {
-  background-color: beige;
+  background-color: var(--lighter-background-color);
   display: flex;
+  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
@@ -69,17 +78,19 @@ progress::-webkit-progress-value {
 
 /* each card has width 10% of the window width */
 .board > .card {
-  width: 10vw;
+  width: 9%;
   height: auto;
+  text-align: center;
 }
 /* card width is 100% of the card width */
 .card-img {
-  width: 100%;
+  width: 65%;
+  height: 95%;
 }
 
 /* player related */
 .grid > .player {
-  background-color: rgb(42, 190, 183);
+  background-color: var(--stage-color);
   padding: 3vh;
   position: center;
   width: 50vw;
@@ -98,6 +109,7 @@ progress::-webkit-progress-value {
 .player h2 {
   font-size: 16px;
   text-align: center;
+  color: white;
 }
 
 .player img {
@@ -109,5 +121,14 @@ progress::-webkit-progress-value {
 
 .player p {
   text-align: center;
-  font-size: 10px;
+  font-size: 14px;
+  color: white;
+}
+
+/* Mobile Display */
+@media only screen and (max-width: 600px) {
+  .board > .card {
+    width: 15%;
+    height: auto;
+  }
 }
