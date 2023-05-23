@@ -6,7 +6,9 @@ function init() {
   const player = document.querySelector(".player");
   const playerImage = player.querySelector("img");
   // const dataImage = window.localStorage.getItem('userImage');
-  playerImage.src = window.localStorage.getItem("userImage");
+  if (window.localStorage.getItem("userImage") !== null){
+    playerImage.src = window.localStorage.getItem("userImage");
+  }
 }
 /*
 Create an array of 22 and parse all the card name from json file
