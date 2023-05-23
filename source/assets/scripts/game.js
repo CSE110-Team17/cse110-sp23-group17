@@ -1,19 +1,19 @@
-import tarotConfig from '/source/assets/tarot.json' assert { type: 'json' };
+import tarotConfig from "/source/assets/tarot.json" assert { type: "json" };
 
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener("DOMContentLoaded", init);
 
 function init() {
-  const player = document.querySelector('.player');
-  const playerImage = player.querySelector('img');
+  const player = document.querySelector(".player");
+  const playerImage = player.querySelector("img");
   // const dataImage = window.localStorage.getItem('userImage');
-  playerImage.src = window.localStorage.getItem('userImage');
+  playerImage.src = window.localStorage.getItem("userImage");
 }
 /*
 Create an array of 22 and parse all the card name from json file
 */
 const tarotCardNames = [];
-tarotConfig['tarot'].forEach((element) => {
-  tarotCardNames.push(element['name']);
+tarotConfig["tarot"].forEach((element) => {
+  tarotCardNames.push(element["name"]);
 });
 console.log(tarotCardNames);
 
@@ -23,9 +23,9 @@ const chosenCards = [];
 /*
 listen whenever a card is click 
 */
-var card = document.getElementsByClassName('card');
+var card = document.getElementsByClassName("card");
 for (let i = 0; i < card.length; i++) {
-  card[i].addEventListener('click', play);
+  card[i].addEventListener("click", play);
 }
 
 /*
@@ -63,9 +63,9 @@ function play(event) {
   /*
     Change the image according to the card got chosen 
     */
-  tarotConfig['tarot'].forEach((element) => {
-    if (element['name'] === cardName) {
-      event.target.src = element['image'];
+  tarotConfig["tarot"].forEach((element) => {
+    if (element["name"] === cardName) {
+      event.target.src = element["image"];
     }
   });
 
@@ -75,16 +75,15 @@ function play(event) {
     */
   var randDmg = Math.floor(Math.random() * 10) + 34;
   setTimeout(() => {
-    alert('You dealt ' + randDmg + ' damage to the opponent');
-    var hpBar = document.getElementById('opponent_hp');
+    alert("You dealt " + randDmg + " damage to the opponent");
+    var hpBar = document.getElementById("opponent_hp");
     hpBar.value = hpBar.value - randDmg;
     setTimeout(() => {
       if (hpBar.value <= 0) {
-        alert('You defeated the oponent');
+        alert("You defeated the oponent");
         setTimeout(() => {
-          localStorage.setItem('chosenCards', JSON.stringify(chosenCards));
-          window.location.href = 'results.html';
-          window.location.href = 'http://127.0.0.1:5500/source/results.html'; //change url for port as needed
+          localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
+          window.location.href = "/source/results.html";
         }, 500);
       }
     }, 300);
