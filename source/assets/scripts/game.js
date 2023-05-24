@@ -42,7 +42,7 @@ Game play when a card is click:
 */
 function play(event) {
   console.log(event.target.dataset);
-  if (event.target.dataset.status === "clicked") {
+  if (event.target.dataset.status === "clicked" || chosenCards.length === 3) {
     return;
   }
 
