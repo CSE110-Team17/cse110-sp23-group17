@@ -1,6 +1,16 @@
 // import tarotConfig from "/source/assets/tarot.json" assert { type: "json" };
 import tarotConfig from "../tarot.json" assert { type: "json" };
 
+window.addEventListener("DOMContentLoaded", init);
+
+function init() {
+  const player = document.querySelector(".player");
+  const playerImage = player.querySelector("img");
+  // const dataImage = window.localStorage.getItem('userImage');
+  if (window.localStorage.getItem("userImage") !== null) {
+    playerImage.src = window.localStorage.getItem("userImage");
+  }
+}
 /*
 Create an array of 22 and parse all the card name from json file
 */
@@ -82,8 +92,7 @@ function play(event) {
         alert("You defeated the oponent");
         setTimeout(() => {
           localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
-          window.location.href = "results.html";
-          window.location.href = "http://127.0.0.1:5500/source/results.html"; //change url for port as needed
+          window.location.href = "./results.html";
         }, 500);
       }
     }, 300);

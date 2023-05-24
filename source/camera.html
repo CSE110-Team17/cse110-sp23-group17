@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camera</title>
+    <link rel="stylesheet" href="./assets/styles/camera.css" />
+    <script src="./assets/scripts/camera.js" type="module"></script>
+  </head>
+
+  <body>
+    <div class="cameraContainer">
+      <div class="videoContainer">
+        <video id="videoDisplay" width="320" height="240" autoplay></video>
+        <div id="startCamera">Start Camera</div>
+      </div>
+      <div class="photoContainer">
+        <canvas id="photoDisplay" width="320" height="240"></canvas>
+        <!-- takePhotoBtn should be updated to Retake Photo after a picture has been taken -->
+        <div class="btnContainer">
+          <input type="file" id="submitFile" />
+          <button id="takePhotoBtn">Take Photo</button>
+          <!-- <button id="submitFromGalleryBtn"> From Gallery</button> -->
+          <button id="submitBtn">Next</button>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
