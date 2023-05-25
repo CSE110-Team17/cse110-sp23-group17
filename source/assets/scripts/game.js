@@ -1,5 +1,5 @@
 import tarotConfig from "../tarot.json";
-// assert { type: "json" };
+//  assert { type: "json" };
 
 // window.addEventListener("DOMContentLoaded", init);
 
@@ -12,13 +12,14 @@ function init() {
 /*
 Create an array of 22 and parse all the card name from json file
 */
-module.exports.getTarotCardName = function getTarotCardName(tarotConfig) {
+function getTarotCardName(tarotConfig) {
   const tarotCardNames = [];
   tarotConfig["tarot"].forEach((element) => {
     tarotCardNames.push(element["name"]);
   });
   return tarotCardNames;
-};
+}
+module.exports.getTarotCardName = getTarotCardName;
 
 //FOR RESULT PAGE: array of all the selected cards during game play
 const chosenCards = [];
