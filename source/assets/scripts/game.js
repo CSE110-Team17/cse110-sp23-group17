@@ -1,5 +1,6 @@
 // import tarotConfig from "/source/assets/tarot.json" assert { type: "json" };
-import tarotConfig from "../tarot.json" assert { type: "json" };
+import tarotConfig from "../tarot.json";
+// assert { type: "json" };
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -14,11 +15,12 @@ function init() {
 /*
 Create an array of 22 and parse all the card name from json file
 */
-const tarotCardNames = [];
-tarotConfig["tarot"].forEach((element) => {
-  tarotCardNames.push(element["name"]);
-});
-console.log(tarotCardNames);
+module.exports.getTarotCardName = function getTarotCardName(tarotConfig) {
+  const tarotCardNames = [];
+  tarotConfig["tarot"].forEach((element) => {
+    tarotCardNames.push(element["name"]);
+  });
+};
 
 //FOR RESULT PAGE: array of all the selected cards during game play
 const chosenCards = [];
@@ -60,10 +62,10 @@ function play(event) {
     Random generate a card. If card is already chosen then generate another card
     */
   var randNameIdx = Math.floor(Math.random() * 21);
-  var cardName = tarotCardNames[randNameIdx];
+  var cardName = getTarotCardName(tarotConfig)[randNameIdx];
   while (isInArray(chosenCards, cardName)) {
     randNameIdx = Math.floor(Math.random() * 21);
-    cardName = tarotCardNames[randNameIdx];
+    cardName = getTarotCardName(tarotConfig)[randNameIdx];
   }
   chosenCards.push(cardName);
   console.log(chosenCards);
