@@ -3,13 +3,14 @@ name: Lint
 on: [push]
 
 jobs:
-  eslint:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: stefanoeb/eslint-action@1.0.2
-        with:
-          files: source/
+    - uses: actions/checkout@v2
+    - name: Install modules
+      run: yarn
+    - name: Lint
+      run: eslint .
 
   prettier:
     runs-on: ubuntu-latest
