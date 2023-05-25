@@ -1,5 +1,4 @@
-import tarotConfig from "../tarot.json";
-//  assert { type: "json" };
+import tarotConfig from "../tarot.json" assert { type: "json" };
 
 // window.addEventListener("DOMContentLoaded", init);
 
