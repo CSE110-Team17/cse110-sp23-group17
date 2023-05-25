@@ -10,7 +10,7 @@ jobs:
     - name: Install modules
       run: yarn
     - name: Lint
-      run: yarn run eslint .
+      run: npx eslint .
 
   prettier:
     runs-on: ubuntu-latest
