@@ -1,6 +1,7 @@
-import tarotConfig from "/source/assets/tarot.json" assert { type: "json" };
+// import tarotConfig from '/source/assets/tarot.json' assert { type: 'json' };
+import tarotConfig from '../tarot.json' assert { type: 'json' };
 
-//create a hashmap for all tarot cards and that can be indexed by card name
+// Create a hashmap for all tarot cards that can be indexed by card name
 const tarotMap = tarotConfig.tarot.reduce((map, card) => {
   map[card.name] = {
     suite: card.suite,
@@ -11,79 +12,90 @@ const tarotMap = tarotConfig.tarot.reduce((map, card) => {
   return map;
 }, {});
 
-//pull selected cards from gameplay
-let chosenCards = Object.values(
-  JSON.parse(localStorage.getItem("chosenCards"))
-).map(String);
+// Pull selected cards from gameplay
+let chosenCards = [];
+const storedCards = localStorage.getItem('chosenCards');
+if (storedCards !== null) {
+  chosenCards = Object.values(JSON.parse(storedCards)).map(String);
+}
 
-//keep track of current screen width
+// Keep track of current screen width
 let screenWidth = window.innerWidth;
 
-//update cards for desktop
-const cardContainers = document.getElementsByClassName("card");
+// Update cards for desktop
+const cardContainers = document.getElementsByClassName('card');
 for (let i = 0; i < chosenCards.length; i++) {
   const card = chosenCards[i];
   const cardContainer = cardContainers[i];
-  const cardImg = cardContainer.querySelector("img");
-  const cardName = cardContainer.querySelector("h1");
-  const cardDesc = cardContainer.querySelector("p");
+  const cardImg = cardContainer.querySelector('img');
+  const cardName = cardContainer.querySelector('h1');
+  const cardDesc = cardContainer.querySelector('p');
 
   cardImg.src = tarotMap[card].image;
   cardName.textContent = tarotMap[card].name;
   cardDesc.textContent = tarotMap[card].description;
 }
 
-//update card for mobile
+// Update card for mobile
 let idx = 0;
 const mobileCard = cardContainers[3];
-const nextButton = document.getElementById("button-1");
-const prevButton = document.getElementById("button-2");
-prevButton.style.display = "none";
+const nextButton = document.getElementById('button-1');
+const prevButton = document.getElementById('button-2');
+if (prevButton !== null) {
+  prevButton.style.display = 'none';
+}
 
-updateMobileCard();
-
-//go back to previous card
-prevButton.addEventListener("click", () => {
-  idx--;
+// Check that mobileCard is defined before updateMobileCard()
+if (mobileCard !== undefined) {
   updateMobileCard();
-  updateButtonVisibility();
-});
 
-//go to next card
-nextButton.addEventListener("click", () => {
-  idx++;
-  updateMobileCard();
-  updateButtonVisibility();
-});
+  // Go back to the previous card
+  prevButton.addEventListener('click', () => {
+    idx--;
+    updateMobileCard();
+    updateButtonVisibility(idx);
+  });
 
-//display the current card
-function updateMobileCard() {
+  // Go to the next card
+  nextButton.addEventListener('click', () => {
+    idx++;
+    updateMobileCard();
+    updateButtonVisibility(idx);
+  });
+}
+
+// Display the current card
+export function updateMobileCard() {
   const card = chosenCards[idx];
-  const cardImg = mobileCard.querySelector("img");
-  const cardName = mobileCard.querySelector("h1");
-  const cardDesc = mobileCard.querySelector("p");
+  const cardImg = mobileCard.querySelector('img');
+  const cardName = mobileCard.querySelector('h1');
+  const cardDesc = mobileCard.querySelector('p');
 
   cardImg.src = tarotMap[card].image;
   cardName.textContent = tarotMap[card].name;
   cardDesc.textContent = tarotMap[card].description;
 }
 
-//update button visiblity -- should not show previous button when on 1st card and not show next button on last card
-function updateButtonVisibility() {
+// Update button visibility - should not show the previous button when on the first card and should not show the next button on the last card
+export function updateButtonVisibility(idx) {
+  const prevButton = document.getElementById('button-2');
+  const nextButton = document.getElementById('button-1');
+  const screenWidth = window.innerWidth;
+  const chosenCards = ['card1', 'card2', 'card3'];
+
   if (screenWidth > 600) {
-    prevButton.style.display = "none";
-    nextButton.style.display = "none";
+    prevButton.style.display = 'none';
+    nextButton.style.display = 'none';
   } else {
-    prevButton.style.display = idx === 0 ? "none" : "block";
-    nextButton.style.display =
-      idx === chosenCards.length - 1 ? "none" : "block";
+    prevButton.style.display = idx >= 1 ? 'block' : 'none';
+    nextButton.style.display = idx < chosenCards.length - 1 ? 'block' : 'none';
   }
 }
 
-//update button visibility when switching screen sizes
-window.addEventListener("resize", handleWindowSizeChange);
+// Update button visibility when switching screen sizes
+window.addEventListener('resize', handleWindowSizeChange);
 
 function handleWindowSizeChange() {
   screenWidth = window.innerWidth;
-  updateButtonVisibility();
+  updateButtonVisibility(idx);
 }
