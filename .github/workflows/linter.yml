@@ -19,7 +19,7 @@ jobs:
         run: npm ci
 
       - name: Code Linting
-        run: npx lint
+        run: npm run lint
 
   prettier:
     runs-on: ubuntu-latest
