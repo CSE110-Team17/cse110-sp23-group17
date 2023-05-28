@@ -1,17 +1,10 @@
-name: Lint
+name: Prettier Linter
 
-on: [push]
+on:
+  push:
+    branches: [main,front-dev,back-dev]
 
 jobs:
-  eslint:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install modules
-      run: yarn
-    - name: Run ESLint
-      run: yarn run eslint . --ext .js,.jsx,.ts,.tsx
-
   prettier:
     runs-on: ubuntu-latest
 
