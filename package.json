@@ -4,7 +4,8 @@
   "description": "[Our team page](/admin/team.md)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint:js": "eslint source/**/*.js",
+    "lint": "npm run lint:js"
   },
   "repository": {
     "type": "git",

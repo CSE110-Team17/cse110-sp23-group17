@@ -3,14 +3,23 @@ name: Lint
 on: [push]
 
 jobs:
-  eslint:
+  linting:
+    name: Linting
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Install modules
-      run: yarn
-    - name: Run ESLint
-      run: yarn run eslint . --ext .js,.jsx,.ts,.tsx
+      - name: Install NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Code Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Code Linting
+        run: npm run lint
 
   prettier:
     runs-on: ubuntu-latest
