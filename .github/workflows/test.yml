@@ -20,5 +20,5 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Code Linting
+      - name: Run Unit Testing
         run: npm run test
