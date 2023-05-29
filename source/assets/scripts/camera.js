@@ -1,7 +1,8 @@
 let startCamera = document.querySelector("#startCamera");
 let cameraBtn = document.querySelector("#takePhotoBtn");
 let video = document.querySelector("#videoDisplay");
-let canvas = document.querySelector(".cameraContainer");
+// let canvas = document.querySelector(".cameraContainer");
+let photoDisplay = document.querySelector("#photoDisplay");
 
 window.localStorage.removeItem("userImage");
 
@@ -34,6 +35,7 @@ submitFile.addEventListener("change", () => {
   });
 });
 
+let submitBtn = document.querySelector("#submitBtn")
 submitBtn.onclick = function () {
   window.location.href = "./game.html";
 };
