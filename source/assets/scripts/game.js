@@ -1,24 +1,23 @@
-// import tarotConfig from "/source/assets/tarot.json" assert { type: "json" };
 import tarotConfig from "../tarot.json" assert { type: "json" };
 
-window.addEventListener("DOMContentLoaded", init);
+// window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   const player = document.querySelector(".player");
   const playerImage = player.querySelector("img");
   // const dataImage = window.localStorage.getItem('userImage');
-  if (window.localStorage.getItem("userImage") !== null) {
-    playerImage.src = window.localStorage.getItem("userImage");
-  }
+  playerImage.src = window.localStorage.getItem("userImage");
 }
 /*
 Create an array of 22 and parse all the card name from json file
 */
-const tarotCardNames = [];
-tarotConfig["tarot"].forEach((element) => {
-  tarotCardNames.push(element["name"]);
-});
-console.log(tarotCardNames);
+export function getTarotCardName(tarotConfig) {
+  const tarotCardNames = [];
+  tarotConfig["tarot"].forEach((element) => {
+    tarotCardNames.push(element["name"]);
+  });
+  return tarotCardNames;
+}
 
 //FOR RESULT PAGE: array of all the selected cards during game play
 const chosenCards = [];
@@ -51,19 +50,14 @@ Game play when a card is click:
 - Generate random damage points -> change hp bar accordingly
 */
 function play(event) {
-  console.log(event.target.dataset);
-  if (event.target.dataset.status === "clicked" || chosenCards.length === 3) {
-    return;
-  }
-
   /*
     Random generate a card. If card is already chosen then generate another card
     */
   var randNameIdx = Math.floor(Math.random() * 21);
-  var cardName = tarotCardNames[randNameIdx];
-  while (isInArray(chosenCards, cardName)) {
+  var cardName = getTarotCardName(tarotConfig)[randNameIdx];
+  while (chosenCards.includes(cardName)) {
     randNameIdx = Math.floor(Math.random() * 21);
-    cardName = tarotCardNames[randNameIdx];
+    cardName = getTarotCardName(tarotConfig)[randNameIdx];
   }
   chosenCards.push(cardName);
   console.log(chosenCards);
@@ -74,7 +68,6 @@ function play(event) {
   tarotConfig["tarot"].forEach((element) => {
     if (element["name"] === cardName) {
       event.target.src = element["image"];
-      event.target.dataset.status = "clicked";
     }
   });
 
@@ -92,7 +85,8 @@ function play(event) {
         alert("You defeated the oponent");
         setTimeout(() => {
           localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
-          window.location.href = "./results.html";
+          window.location.href = "results.html";
+          window.location.href = "http://127.0.0.1:5500/source/results.html"; //change url for port as needed
         }, 500);
       }
     }, 300);
