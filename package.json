@@ -4,7 +4,8 @@
     "description": "[Our team page](/admin/team.md)",
     "main": "index.js",
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "jsdoc": "./node_modules/.bin/jsdoc -r ./source/assets/scripts/"
     },
     "keywords": [],
     "author": "",
@@ -12,7 +13,8 @@
     "devDependencies": {
         "@babel/plugin-syntax-import-assertions": "^7.20.0",
         "jest": "^29.5.0",
-        "jest-environment-jsdom": "^29.5.0"
+        "jest-environment-jsdom": "^29.5.0",
+        "jsdoc": "^4.0.2"
     },
     "dependencies": {
         "@babel/preset-env": "^7.21.5",
