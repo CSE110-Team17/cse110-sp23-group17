@@ -2,7 +2,7 @@ name: JSDocs Automation
 
 on:
   push:
-    branches: [main,dev,jsdoc]
+    branches: [main,dev]
 jobs:
   jsdocs:
     name: Generate JSDocs
