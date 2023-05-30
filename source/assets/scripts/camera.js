@@ -3,10 +3,12 @@ let cameraBtn = document.querySelector("#takePhotoBtn");
 let video = document.querySelector("#videoDisplay");
 let canvas = document.querySelector(".cameraContainer");
 
+//clear localStorage everytime come back or refresh
 window.localStorage.removeItem("userImage");
 
 /**
  * Handler for user camera initialization
+ * Will ask if user allow to turn on camera or not
  */
 cameraBtn.style.cursor = "pointer";
 startCamera.onclick = async () => {
@@ -18,7 +20,7 @@ startCamera.onclick = async () => {
 };
 
 /**
- * Handler for photo taking
+ * Handler for photo taking and display image
  */
 cameraBtn.onclick = function () {
   photoDisplay
@@ -31,7 +33,7 @@ cameraBtn.onclick = function () {
 const submitFile = document.querySelector("#submitFile");
 
 /**
- * Handler for user file sumit
+ * Handler for user file submission
  */
 submitFile.addEventListener("change", () => {
   const reader = new FileReader();

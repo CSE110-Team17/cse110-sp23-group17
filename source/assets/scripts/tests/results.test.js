@@ -1,5 +1,8 @@
 const results = require("../results");
 
+/**
+ * Test if next and prev buttons show up in correct version
+ */
 describe("updateButtonVisibility", function () {
   let prevButton;
   let nextButton;

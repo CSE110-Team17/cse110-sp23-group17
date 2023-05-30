@@ -3,7 +3,7 @@ import tarotConfig from "../tarot.json" assert { type: "json" };
 // window.addEventListener("DOMContentLoaded", init);
 
 /**
- * Initialize the game play and set player image
+ * Initialize the game play and set player image from localStorage
  */
 function init() {
   const player = document.querySelector(".player");
@@ -11,9 +11,12 @@ function init() {
   // const dataImage = window.localStorage.getItem('userImage');
   playerImage.src = window.localStorage.getItem("userImage");
 }
+
 /**
-Create an array of 22 and parse all the card name from json file
-*/
+ * Create an array of 22 and parse all the card name from json file
+ * @param {Array<*>} tarotConfig - an array of the tarot cards from json
+ * @return {Array[string]} array contains 22 tarot cards' name
+ */
 export function getTarotCardName(tarotConfig) {
   const tarotCardNames = [];
   tarotConfig["tarot"].forEach((element) => {
@@ -25,37 +28,36 @@ export function getTarotCardName(tarotConfig) {
 //FOR RESULT PAGE: array of all the selected cards during game play
 const chosenCards = [];
 
-/*
-listen whenever a card is click 
-*/
+//listen whenever a card is click 
 var card = document.getElementsByClassName("card");
 for (let i = 0; i < card.length; i++) {
   card[i].addEventListener("click", play);
 }
 
-/**
-Check if an element is in the array
-@param: arr: array, el: element
-@return: true if element is in array and false otherwise
-*/
-function isInArray(arr, el) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === el) {
-      return true;
-    }
-  }
-  return false;
-}
+// /**
+// Check if an element is in the array
+// @param: arr: array, el: element
+// @return: true if element is in array and false otherwise
+// */
+// function isInArray(arr, el) {
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] === el) {
+//       return true;
+//     }
+//   }
+//   return false;
+// }
 
 /**
-Game play when a card is click:
-- Generate random card name -> change image accoridngly
-- Generate random damage points -> change hp bar accordingly
-*/
+ * Play the game when a card is click:
+ * Generate random card name -> change image accoridngly
+ * Generate random damage points -> change hp bar accordingly
+ * @param {*} event - the value return by the event 
+ * 
+ */
 function play(event) {
-  /*
-    Random generate a card. If card is already chosen then generate another card
-    */
+
+  // Random generate a card. If card is already chosen then generate another card
   var randNameIdx = Math.floor(Math.random() * 21);
   var cardName = getTarotCardName(tarotConfig)[randNameIdx];
   while (chosenCards.includes(cardName)) {
@@ -65,19 +67,15 @@ function play(event) {
   chosenCards.push(cardName);
   console.log(chosenCards);
 
-  /*
-    Change the image according to the card got chosen 
-    */
+  // Change the image according to the card got chosen 
   tarotConfig["tarot"].forEach((element) => {
     if (element["name"] === cardName) {
       event.target.src = element["image"];
     }
   });
 
-  /*
-    Random generate a damage point and attack the oponent with that point.
-    Change the hp bar of oponent accordingly.
-    */
+  // Random generate a damage point and attack the oponent with that point.
+  // Change the hp bar of oponent accordingly.
   var randDmg = Math.floor(Math.random() * 10) + 34;
   setTimeout(() => {
     alert("You dealt " + randDmg + " damage to the opponent");
@@ -89,7 +87,6 @@ function play(event) {
         setTimeout(() => {
           localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
           window.location.href = "./results.html";
-          // window.location.href = "http://127.0.0.1:5500/source/results.html"; //change url for port as needed
         }, 500);
       }
     }, 300);

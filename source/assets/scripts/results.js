@@ -1,7 +1,10 @@
 // import tarotConfig from '/source/assets/tarot.json' assert { type: 'json' };
 import tarotConfig from "../tarot.json" assert { type: "json" };
 
-// Create a hashmap for all tarot cards that can be indexed by card name
+/**
+ * Create a hashmap for all tarot cards that can be indexed by card name
+ * @return {Map} a hashmap of all the cards and their information paresed from json
+ */
 const tarotMap = tarotConfig.tarot.reduce((map, card) => {
   map[card.name] = {
     suite: card.suite,
@@ -63,6 +66,7 @@ if (mobileCard !== undefined) {
     updateButtonVisibility(idx);
   });
 }
+
 /**
  * Display the current card
  */
@@ -76,9 +80,10 @@ export function updateMobileCard() {
   cardName.textContent = tarotMap[card].name;
   cardDesc.textContent = tarotMap[card].description;
 }
+
 /**
  * Update button visibility - should not show the previous button when on the first card and should not show the next button on the last card
- * @param {*} idx 
+ * @param {*} idx index of current card when in mobile mode
  */
 export function updateButtonVisibility(idx) {
   const prevButton = document.getElementById("button-2");
