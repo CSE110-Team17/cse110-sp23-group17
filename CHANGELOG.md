@@ -44,12 +44,6 @@ and this project adheres to [Tarot but Game](https://github.com/CSE110-Team17/cs
 - changed the layout of Results Page (#28) 
 - changed theme of Results Page (#28)
 
-### Removed
-
-- Unused normalize.css file
-- Identical links assigned in each translation file
-- Duplicate index file for the english version
-
 ## [0.1] - 2023-05-16
 
 ### Added
