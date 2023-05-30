@@ -1,11 +1,9 @@
 <!--
    Results Screen Page Web Outline
-​
-​
-   - exactly 3 cards are chosen
+
+   - 2-4 cards can be chosen (2 is default)
    - each element has a separate ID for convienence of changing its content based on the card (for backend)
    - mobile version outline shows one card at a time with next button on top and previous button on the button
-   - card name element has not been removed yet as it breaks the JS code
 -->
 ​
 <!DOCTYPE html>
@@ -24,9 +22,9 @@
   ​
   <body>
     <!--Star Background Animation-->
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>
+    <div id="stars-1"></div>
+    <div id="stars-2"></div>
+    <div id="stars-3"></div>
 
     <main id="results-page">
       <!--Results Page Title-->
@@ -42,7 +40,6 @@
         />
         <div id="text-1" class="text-portion">
           <h2 id="position-1">Card Position Representation</h2>
-          <h1 id="name-1">Card Name</h1>
           <p id="description-1">Card Description</p>
         </div>
       </div>
@@ -57,7 +54,6 @@
         />
         <div id="text-2" class="text-portion">
           <h2 id="position-2">Card Position Representation</h2>
-          <h1 id="name-2">Card Name</h1>
           <p id="description-2">Card Description</p>
         </div>
       </div>
@@ -72,11 +68,10 @@
         />
         <div id="text-3" class="text-portion">
           <h2 id="position-3">Card Position Representation</h2>
-          <h1 id="name-3">Card Name</h1>
           <p id="description-3">Card Description</p>
         </div>
       </div>
-      <!-- Card for Mobile -->
+      <!--Card 4-->
       <div id="card-4" class="card">
         <img
           id="image-4"
@@ -85,12 +80,26 @@
           height="269"
           width="220"
         />
-        <h2 id="position-4">Card Position Representation</h2>
-        <h1 id="name-4">Card Name</h1>
-        <p id="description-4">Card Description</p>
+        <div id="text-4" class="text-portion">
+          <h2 id="position-4">Card Position Representation</h2>
+          <p id="description-4">Card Description</p>
+        </div>
+      </div>
+      <!-- Card for Mobile -->
+      <div id="card-5" class="card">
+        <img
+          id="image-5"
+          src="assets/images/blank-card.png"
+          alt="Blank Card"
+          height="269"
+          width="220"
+        />
+        <h2 id="position-5">Card Position Representation</h2>
+        <h1 id="name-5">Card Name</h1>
+        <p id="description-5">Card Description</p>
         <!-- Button for Mobile -->
-        <button id="button-2" class="button">Prev Card</button>
-        <button id="button-1" class="button">Next Card</button>
+        <button id="prev-button" class="button">Prev Card</button>
+        <button id="next-button" class="button">Next Card</button>
       </div>
     </main>
   </body>
