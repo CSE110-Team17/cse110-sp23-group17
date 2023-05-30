@@ -16,12 +16,20 @@ img {
 .text-portion {
   display: flex;
   flex-direction: column;
-  margin: 20px;
+  margin: 50px;
   font-size: 1.2rem;
 }
 
-/* buttons and mobile card shouldn't be displayed in web version */
+/* cards 3 and 4 are hidden by default */
+#card-3 {
+  display: none;
+}
 #card-4 {
+  display: none;
+}
+
+/* buttons and mobile card shouldn't be displayed in web version */
+#card-5 {
   display: none;
 }
 button {
@@ -37,12 +45,16 @@ button {
   }
 
   /* card shown in mobile version */
-  #card-4 {
+  #card-5 {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px 0px;
+  }
+
+  /* card description margin for mobile display */
+  p {
+    margin: 10px;
   }
 
   /*button features for mobile*/
@@ -90,9 +102,9 @@ h1 {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: textclip 4s linear infinite;
+  animation: text-clip 4s linear infinite;
 }
-@keyframes textclip {
+@keyframes text-clip {
   to {
     background-position: 200% center;
   }
@@ -100,19 +112,19 @@ h1 {
 
 /* Card Animations */
 img {
-  animation: animlineUp 2s ease-out;
+  animation: anim-lineup 2s ease-out;
 }
 h2 {
   color: rgba(255, 255, 255, 0.901);
   font-family: cursive;
-  animation: animlineUp 2s ease-out;
+  animation: anim-lineup 2s ease-out;
 }
 p {
   color: rgba(255, 255, 255, 0.815);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  animation: animlineUp 2s ease-out;
+  animation: anim-lineup 2s ease-out;
 }
-@keyframes animlineUp {
+@keyframes anim-lineup {
   0% {
     opacity: 0;
     transform: translateY(80%);
@@ -131,7 +143,7 @@ p {
 }
 
 /* Moving Stars in the Background */
-#stars {
+#stars-1 {
   width: 1px;
   height: 1px;
   background: transparent;
@@ -313,9 +325,9 @@ p {
     1545px 229px #fff, 1249px 1369px #fff, 1454px 1867px #fff, 894px 1315px #fff,
     1199px 285px #fff, 1152px 217px #fff, 1645px 1220px #fff, 207px 596px #fff,
     1193px 1048px #fff;
-  animation: animStar 50s linear infinite;
+  animation: anim-star 50s linear infinite;
 }
-#stars:after {
+#stars-1:after {
   content: " ";
   position: absolute;
   top: 2000px;
@@ -501,7 +513,7 @@ p {
     1199px 285px #fff, 1152px 217px #fff, 1645px 1220px #fff, 207px 596px #fff,
     1193px 1048px #fff;
 }
-#stars2 {
+#stars-2 {
   width: 2px;
   height: 2px;
   background: transparent;
@@ -556,9 +568,9 @@ p {
     1067px 1522px #fff, 630px 557px #fff, 1138px 1918px #fff, 1140px 975px #fff,
     813px 651px #fff, 314px 1433px #fff, 244px 1194px #fff, 1550px 1283px #fff,
     261px 1426px #fff;
-  animation: animStar 100s linear infinite;
+  animation: anim-star 100s linear infinite;
 }
-#stars2:after {
+#stars-2:after {
   content: " ";
   position: absolute;
   top: 2000px;
@@ -617,7 +629,7 @@ p {
     813px 651px #fff, 314px 1433px #fff, 244px 1194px #fff, 1550px 1283px #fff,
     261px 1426px #fff;
 }
-#stars3 {
+#stars-3 {
   width: 3px;
   height: 3px;
   background: transparent;
@@ -647,9 +659,9 @@ p {
     318px 1073px #fff, 1100px 1303px #fff, 48px 846px #fff, 1263px 152px #fff,
     492px 1252px #fff, 1262px 1291px #fff, 1252px 694px #fff, 117px 219px #fff,
     1323px 122px #fff;
-  animation: animStar 150s linear infinite;
+  animation: anim-star 150s linear infinite;
 }
-#stars3:after {
+#stars-3:after {
   content: " ";
   position: absolute;
   top: 2000px;
@@ -683,7 +695,7 @@ p {
     492px 1252px #fff, 1262px 1291px #fff, 1252px 694px #fff, 117px 219px #fff,
     1323px 122px #fff;
 }
-@keyframes animStar {
+@keyframes anim-star {
   from {
     transform: translateY(0px);
   }
