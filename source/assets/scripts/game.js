@@ -1,5 +1,4 @@
-import tarotConfig from "../tarot.json";
-//  assert { type: "json" };
+import tarotConfig from "../tarot.json" assert { type: "json" };
 
 // window.addEventListener("DOMContentLoaded", init);
 
@@ -12,14 +11,13 @@ function init() {
 /*
 Create an array of 22 and parse all the card name from json file
 */
-function getTarotCardName(tarotConfig) {
+export function getTarotCardName(tarotConfig) {
   const tarotCardNames = [];
   tarotConfig["tarot"].forEach((element) => {
     tarotCardNames.push(element["name"]);
   });
   return tarotCardNames;
 }
-module.exports.getTarotCardName = getTarotCardName;
 
 //FOR RESULT PAGE: array of all the selected cards during game play
 const chosenCards = [];
@@ -87,8 +85,8 @@ function play(event) {
         alert("You defeated the oponent");
         setTimeout(() => {
           localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
-          window.location.href = "results.html";
-          window.location.href = "http://127.0.0.1:5500/source/results.html"; //change url for port as needed
+          window.location.href = "./results.html";
+          // window.location.href = "http://127.0.0.1:5500/source/results.html"; //change url for port as needed
         }, 500);
       }
     }, 300);
