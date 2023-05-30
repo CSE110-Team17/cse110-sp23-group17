@@ -1,4 +1,4 @@
-name: Lint
+name: Prettier Linter
 
 on:
   push:
