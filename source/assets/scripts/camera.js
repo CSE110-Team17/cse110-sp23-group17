@@ -2,6 +2,7 @@ let startCamera = document.querySelector("#startCamera");
 let cameraBtn = document.querySelector("#takePhotoBtn");
 let video = document.querySelector("#videoDisplay");
 let canvas = document.querySelector(".cameraContainer");
+//let canvasFile = document.querySelector("#photoDisplay")
 
 //clear localStorage everytime come back or refresh
 window.localStorage.removeItem("userImage");
@@ -39,9 +40,19 @@ submitFile.addEventListener("change", () => {
   const reader = new FileReader();
   reader.readAsDataURL(submitFile.files[0]);
   reader.addEventListener("load", () => {
+    // const image = new Image();
+    // const ctx = canvasFile.getContext('2d');
+    // image.addEventListener("load", () => {
+    //   console.log("hello");
+    //   console.log('Image loaded:', image);
+    //   ctx.drawImage(image, 0, 0, image.width, image.height);
+    //   console.log("image width" + image.width);
+    // });
     const url = reader.result;
-    console.log(url);
+    //console.log(url);
     window.localStorage.setItem("userImage", url);
+
+
   });
 });
 

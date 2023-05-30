@@ -15,11 +15,48 @@
   background-color: var(--background-color);
 }
 
+/*** Modal (for alerts) ***/
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* Modal close button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 /****** Opponent related CSS ******/
 .grid > .opponent {
   background-color: var(--stage-color);
   padding: 3vh;
-  position: center;
   width: 50vw;
   height: 12vh;
   border-radius: 0 0 15vh 15vh;
@@ -51,18 +88,48 @@
   color: white;
 }
 
-/* progress bar settings */
-progress {
+.health-bar {
   width: 300px;
-  height: 25px;
-  border: 2px solid gray;
+  height: 24px;
+  background-color: #0d05;
 }
-progress::-webkit-progress-bar {
-  background-color: white;
+
+.health-bar .fill {
+  background-color: #0d0;
+  height: 100%;
+  width: 100%;
+  transition: width 0.3s;
 }
-progress::-webkit-progress-value {
-  background-color: red;
+
+
+/**** Oscillating bar ****/
+#oscillating-bar {
+  display: block;
+  width: 300px;
+  margin: 12px auto;
+  height: 32px;
+  background-color: #d555;
+  text-align: center;
+  position: relative;
 }
+
+#oscillating-bar .fill {
+  background-color: #d55;
+  height: 100%;
+  width: 100%;
+  animation: 0.7s linear 0s infinite alternate oscillate;
+}
+
+@keyframes oscillate {
+  0% {
+    width: 15%;
+  }
+
+  100% {
+    width: 85%;
+  }
+}
+
 
 /****** Board related CSS ******/
 /* board is a flex container */
