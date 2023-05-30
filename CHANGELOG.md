@@ -22,6 +22,7 @@ and this project adheres to [Tarot but Game](https://github.com/CSE110-Team17/cs
 - Prettier formatting
 - CI/CD Pipeline
 - Eslint to CI/CD Pipeline
+- added Sprint Retrospective
 - Camera Page Outline (#31)
 - JS for Camera Page (#31)
   - can take a picture with device camera or use an exisiting photo to change the user picture
