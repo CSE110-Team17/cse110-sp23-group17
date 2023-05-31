@@ -2,7 +2,7 @@ name: Lint
 
 on:
   push:
-    branches: [main,dev]
+    branches: [main, dev, eslint-action]
 
 jobs:
   linting:
