@@ -1,6 +1,6 @@
 :root {
   --background-color: #280044;
-  --lighter-background-color:#22003a62;
+  --lighter-background-color: #22003a62;
   --stage-color: #484848;
 }
 * {
@@ -26,8 +26,8 @@
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal content */
@@ -58,7 +58,7 @@
   background-color: var(--stage-color);
   padding: 3vh;
   width: 50vw;
-  height: 12vh;
+  /* height: 12vh; */
   border-radius: 0 0 15vh 15vh;
   display: flex;
   flex-direction: column;
@@ -101,13 +101,11 @@
   transition: width 0.3s;
 }
 
-
 /**** Oscillating bar ****/
 #oscillating-bar {
   display: block;
   width: 300px;
-  margin: 12px auto;
-  height: 32px;
+  height: 24px;
   background-color: #d555;
   text-align: center;
   position: relative;
@@ -120,6 +118,15 @@
   animation: 0.7s linear 0s infinite alternate oscillate;
 }
 
+.label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
 @keyframes oscillate {
   0% {
     width: 15%;
@@ -129,7 +136,6 @@
     width: 85%;
   }
 }
-
 
 /****** Board related CSS ******/
 /* board is a flex container */
@@ -161,7 +167,7 @@
   padding: 3vh;
   position: center;
   width: 50vw;
-  height: 12vh;
+  /* height: 12vh; */
   border-radius: 15vh 15vh 0 0;
   display: flex;
   flex-direction: column;

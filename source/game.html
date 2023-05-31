@@ -20,7 +20,6 @@ Please let Mick or James know if you have questions or suggestions
  -->
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -33,7 +32,7 @@ Please let Mick or James know if you have questions or suggestions
 
   <body>
     <!-- modal -->
-    <div id="myModal" class="modal">
+    <div class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
         <p class="modal-text">Some text in the Modal..</p>
@@ -45,6 +44,10 @@ Please let Mick or James know if you have questions or suggestions
         <p id="health-label"></p>
         <div class="health-bar">
           <div class="fill"></div>
+        </div>
+        <div id="oscillating-bar">
+          <div class="fill"></div>
+          <div class="label">Flip a card to damage the opponent!</div>
         </div>
         <img src="./assets/images/green.jpeg" alt="Opponent Image" />
         <h2>Opponent</h2>
@@ -383,21 +386,17 @@ Please let Mick or James know if you have questions or suggestions
         </div>
       </div>
       <!-- end of board div -->
-      <div id="oscillating-bar">
-        <div class="fill"></div>
-        <div class="label">Use your power to flip the cards!</div>
-      </div>
+
       <div class="player">
         <p class="health-label"></p>
         <div class="health-bar">
           <div class="fill"></div>
         </div>
-        <img src="./assets/images/green.jpeg" alt="Opponent Image" />
+        <img src="./assets/images/green.jpeg" alt="Player image" />
         <h2>Player</h2>
       </div>
       <!-- <div>4</div>
      <div>5</div> -->
     </div>
   </body>
-  
 </html>
