@@ -35,7 +35,7 @@ submitFile.addEventListener("change", () => {
   });
 });
 
-let submitBtn = document.querySelector("#submitBtn")
+let submitBtn = document.querySelector("#submitBtn");
 submitBtn.onclick = function () {
   window.location.href = "./game.html";
 };
