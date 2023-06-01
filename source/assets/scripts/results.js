@@ -1,10 +1,6 @@
-// import tarotConfig from '/source/assets/tarot.json' assert { type: 'json' };
 import tarotConfig from "../tarot.json" assert { type: "json" };
 
-/**
- * Create a hashmap for all tarot cards that can be indexed by card name
- * @return {Map} a hashmap of all the cards and their information paresed from json
- */
+// Create a hashmap for all tarot cards that can be indexed by card name
 const tarotMap = tarotConfig.tarot.reduce((map, card) => {
   map[card.name] = {
     suite: card.suite,
@@ -30,20 +26,19 @@ const cardContainers = document.getElementsByClassName("card");
 for (let i = 0; i < chosenCards.length; i++) {
   const card = chosenCards[i];
   const cardContainer = cardContainers[i];
+  cardContainer.style.display = "flex";
   const cardImg = cardContainer.querySelector("img");
-  const cardName = cardContainer.querySelector("h1");
   const cardDesc = cardContainer.querySelector("p");
 
   cardImg.src = tarotMap[card].image;
-  cardName.textContent = tarotMap[card].name;
   cardDesc.textContent = tarotMap[card].description;
 }
 
 // Update card for mobile
 let idx = 0;
-const mobileCard = cardContainers[3];
-const nextButton = document.getElementById("button-1");
-const prevButton = document.getElementById("button-2");
+const mobileCard = cardContainers[4];
+const nextButton = document.getElementById("next-button");
+const prevButton = document.getElementById("prev-button");
 if (prevButton !== null) {
   prevButton.style.display = "none";
 }
@@ -53,14 +48,14 @@ if (mobileCard !== undefined) {
   updateMobileCard();
 
   // Go back to the previous card
-  prevButton.addEventListener("click", () => {
+  prevButton.addEventListener("click", function () {
     idx--;
     updateMobileCard();
     updateButtonVisibility(idx);
   });
 
   // Go to the next card
-  nextButton.addEventListener("click", () => {
+  nextButton.addEventListener("click", function () {
     idx++;
     updateMobileCard();
     updateButtonVisibility(idx);
@@ -73,11 +68,9 @@ if (mobileCard !== undefined) {
 export function updateMobileCard() {
   const card = chosenCards[idx];
   const cardImg = mobileCard.querySelector("img");
-  const cardName = mobileCard.querySelector("h1");
   const cardDesc = mobileCard.querySelector("p");
 
   cardImg.src = tarotMap[card].image;
-  cardName.textContent = tarotMap[card].name;
   cardDesc.textContent = tarotMap[card].description;
 }
 
@@ -86,10 +79,8 @@ export function updateMobileCard() {
  * @param {*} idx index of current card when in mobile mode
  */
 export function updateButtonVisibility(idx) {
-  const prevButton = document.getElementById("button-2");
-  const nextButton = document.getElementById("button-1");
-  const screenWidth = window.innerWidth;
-  const chosenCards = ["card1", "card2", "card3"];
+  const prevButton = document.getElementById("prev-button");
+  const nextButton = document.getElementById("next-button");
 
   if (screenWidth > 600) {
     prevButton.style.display = "none";
@@ -108,5 +99,16 @@ window.addEventListener("resize", handleWindowSizeChange);
  */
 function handleWindowSizeChange() {
   screenWidth = window.innerWidth;
+  if (screenWidth > 600) {
+    for (let i = 0; i < chosenCards.length; i++) {
+      const cardContainer = cardContainers[i];
+      cardContainer.style.display = "flex";
+    }
+  } else {
+    for (let i = 0; i < chosenCards.length; i++) {
+      const cardContainer = cardContainers[i];
+      cardContainer.style.display = "none";
+    }
+  }
   updateButtonVisibility(idx);
 }
