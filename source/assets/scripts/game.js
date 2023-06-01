@@ -1,29 +1,123 @@
 import tarotConfig from "../tarot.json" assert { type: "json" };
 
 window.addEventListener("DOMContentLoaded", init);
-let health = 100;
 
-/**
- * Initialize the game play and set player image from localStorage
- */
 function init() {
   const player = document.querySelector(".player");
   const playerImage = player.querySelector("img");
+  const cards = document.querySelectorAll(".card");
+
+  const opponentHealthBarFill = document.querySelector(
+    ".opponent .health-bar .fill"
+  );
+  const opponentHealthLabel = document.querySelector(".opponent #health-label");
+  const oscillatingBar = document.querySelector("#oscillating-bar");
+  const oscillatingBarFill = document.querySelector("#oscillating-bar > .fill");
+
+  /** Modal for showing alerts **/
+  const modal = document.querySelector(".modal");
+  const span = document.querySelector(".close");
+  const mText = document.querySelector(".modal-text");
+
   playerImage.src = window.localStorage.getItem("userImage");
 
-  const hpBar = document.querySelector(".opponent #health-label");
+  const startingHealth = 100;
+  let health;
+  setHealth(startingHealth);
+
+  //FOR RESULT PAGE: array of all the selected cards during game play
+  const chosenCards = [];
+
+  //listen whenever a card is click
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].addEventListener("click", onCardClicked);
+  }
+
+  /**
+   * Display modal with custom message
+   * @param: message: alert message
+   */
+  function displayModal(message) {
+    mText.textContent = message;
+    modal.style.display = "block";
+  }
+
+  /**
+   * Hide modal when user clicks outside modal
+   */
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  /**
+   * Play the game when a card is click:
+   * Generate random card name -> change image accoridngly
+   * Generate random damage points -> change hp bar accordingly
+   * @param {MouseEvent} event - the value return by the event
+   *
+   */
+  function onCardClicked(event) {
+    const card = event.target;
+    console.log(card);
+    console.log(card.dataset);
+
+    if (card.dataset.status === "clicked" || health === 0) {
+      return;
+    }
+
+    setHealth(Math.max(0, health - getBarWidth()));
+
+    if (health === 0) {
+      oscillatingBar.style.visibility = "hidden";
+    }
+
+    // Random generate a card. If card is already chosen then generate another card
+    let randNameIdx = Math.floor(Math.random() * 21);
+    let cardName = getTarotCardName(tarotConfig)[randNameIdx];
+    while (chosenCards.includes(cardName)) {
+      randNameIdx = Math.floor(Math.random() * 21);
+      cardName = getTarotCardName(tarotConfig)[randNameIdx];
+    }
+    chosenCards.push(cardName);
+    console.log(chosenCards);
+
+    // Change the image according to the card got chosen
+    tarotConfig.tarot.forEach((element) => {
+      if (element.name === cardName) {
+        card.src = element.image;
+        card.dataset.status = "clicked";
+      }
+    });
+
+    // Random generate a damage point and attack the oponent with that point.
+    // Change the hp bar of opponent accordingly.
+    const randDmg = Math.floor(Math.random() * 10) + 34;
+    setTimeout(() => {
+      displayModal("You dealt " + randDmg + " damage to the opponent");
+      setTimeout(() => {
+        if (health <= 0) {
+          displayModal("You defeated the oponent");
+          setTimeout(() => {
+            localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
+            window.location.href = "./results.html";
+          }, 500);
+        }
+      }, 300);
+    }, 500);
+  }
 
   function setHealth(val) {
     health = val;
-    powerLabel.innerText = `${health} power left`;
-    powerBarFill.style.width = `${health}%`;
+    opponentHealthLabel.innerText = `${health} hp`;
+    opponentHealthBarFill.style.width = `${health}%`;
   }
 
   function getBarWidth() {
-    const oscillatingBar = document.querySelector("#oscillating-bar");
-    const oscillatingBarFill = document.querySelector(
-      "#oscillating-bar > .fill"
-    );
     const barWidth = oscillatingBarFill.getBoundingClientRect().width;
     const parentWidth = oscillatingBar.getBoundingClientRect().width;
     return Math.floor((100 * barWidth) / parentWidth);
@@ -41,90 +135,4 @@ export function getTarotCardName(tarotConfig) {
     tarotCardNames.push(element["name"]);
   });
   return tarotCardNames;
-}
-
-//FOR RESULT PAGE: array of all the selected cards during game play
-const chosenCards = [];
-
-//listen whenever a card is click
-const cards = document.getElementsByClassName("card");
-for (let i = 0; i < cards.length; i++) {
-  cards[i].addEventListener("click", play);
-}
-
-/** Modal for showing alerts **/
-var modal = document.getElementById("myModal");
-var span = document.getElementsByClassName("close")[0];
-
-/**
- * Display modal with custom message
- * @param: message: alert message
- */
-function displayModal(message) {
-  var mText = document.querySelector(".modal-text");
-  mText.textContent = message;
-  modal.style.display = "block";
-}
-
-/**
- * Hide modal when user clicks outside modal
- */
-span.onclick = function () {
-  modal.style.display = "none";
-};
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-
-/**
- * Play the game when a card is click:
- * Generate random card name -> change image accoridngly
- * Generate random damage points -> change hp bar accordingly
- * @param {*} event - the value return by the event
- *
- */
-function play(event) {
-  console.log(event.target.dataset);
-  if (
-    event.target.dataset.status === "clicked" /*|| chosenCards.length === 3*/
-  ) {
-    return;
-  }
-
-  // Random generate a card. If card is already chosen then generate another card
-  var randNameIdx = Math.floor(Math.random() * 21);
-  var cardName = getTarotCardName(tarotConfig)[randNameIdx];
-  while (chosenCards.includes(cardName)) {
-    randNameIdx = Math.floor(Math.random() * 21);
-    cardName = getTarotCardName(tarotConfig)[randNameIdx];
-  }
-  chosenCards.push(cardName);
-  console.log(chosenCards);
-
-  // Change the image according to the card got chosen
-  tarotConfig.tarot.forEach((element) => {
-    if (element.name === cardName) {
-      event.target.src = element.image;
-      event.target.dataset.status = "clicked";
-    }
-  });
-
-  // Random generate a damage point and attack the oponent with that point.
-  // Change the hp bar of opponent accordingly.
-  var randDmg = Math.floor(Math.random() * 10) + 34;
-  setTimeout(() => {
-    displayModal("You dealt " + randDmg + " damage to the opponent");
-    hpBar.value = hpBar.value - randDmg;
-    setTimeout(() => {
-      if (hpBar.value <= 0) {
-        displayModal("You defeated the oponent");
-        setTimeout(() => {
-          localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
-          window.location.href = "./results.html";
-        }, 500);
-      }
-    }, 300);
-  }, 500);
 }
