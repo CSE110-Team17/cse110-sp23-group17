@@ -20,7 +20,6 @@ Please let Mick or James know if you have questions or suggestions
  -->
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -377,12 +376,19 @@ Please let Mick or James know if you have questions or suggestions
       <div class="player">
         <p>HP: 100</p>
         <progress id="player_hp" value="100" max="100"></progress>
-        <img src="./assets/images/green.jpeg" alt="Opponent Image" />
+          <div class="profile-pic">
+            <label class="-label" for="file">
+              <span class="glyphicon glyphicon-camera"></span>
+              <span>Change Image</span>
+            </label>
+            <input id="file" type="file" accept=".png, .jpg, .jpeg" onchange="loadFile(event)" />
+            <img src="./assets/images/green.jpeg" id="output" width="200" alt="Opponent Image" />
+          </div>
+        </div>
         <h2>Player</h2>
       </div>
       <!-- <div>4</div>
      <div>5</div> -->
     </div>
   </body>
-  
 </html>
