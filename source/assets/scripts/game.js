@@ -1,6 +1,6 @@
 import tarotConfig from "../tarot.json" assert { type: "json" };
 
-// window.addEventListener("DOMContentLoaded", init);
+window.addEventListener("DOMContentLoaded", init);
 
 /**
  * Initialize the game play and set player image from localStorage
