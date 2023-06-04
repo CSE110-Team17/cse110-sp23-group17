@@ -9,7 +9,12 @@ function init() {
   const player = document.querySelector(".player");
   const playerImage = player.querySelector("img");
   // const dataImage = window.localStorage.getItem('userImage');
-  playerImage.src = window.localStorage.getItem("userImage");
+  // playerImage.src = window.localStorage.getItem("userImage");
+  if (window.localStorage.getItem("userImage") == null) {
+    playerImage.src = "./assets/images/characters/dragon.png";
+  } else {
+    playerImage.src = window.localStorage.getItem("userImage");
+  }
 }
 
 /**

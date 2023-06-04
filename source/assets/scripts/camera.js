@@ -71,21 +71,43 @@ function takePicture(event) {
 }
 
 /**
- * Deletes and adds appropriate border around the Character divs
+ * Handles CSS elements for different selections
+ * - Dynamically creates and deletes borders
+ * - Dynamically make the take photo btn active and inactive
  */
 function borderHandler() {
+  let takePhotoBtn = document.getElementById("take-photo-btn");
+  let char1 = document.getElementById("char-1");
+  let char2 = document.getElementById("char-2");
+  let char3 = document.getElementById("char-3");
+  let borderStyle = "2px solid white"
+  let style = document.createElement('style');
+  let hover = "#take-photo-btn:hover{background-color: #fff1; color: #fff; border-color: $fff; scale: 1.05;}";
+  let active = "#take-photo-btn:active{scale: 0.98;}"
+  style.appendChild(document.createTextNode(hover));
+  style.appendChild(document.createTextNode(active));
+
   if(clicked[0] === "dragon") {
-    document.getElementById("char-2").style.outline = "";
-    document.getElementById("char-3").style.outline = "";
-    document.getElementById("char-1").style.outline = "2px solid white";
+    char1.style.border = borderStyle;
+    char2.style.border = "";
+    char3.style.border = "";
+    if (takePhotoBtn.children.length != 0) {
+      takePhotoBtn.removeChild(takePhotoBtn.children[0])
+    }
   } else if(clicked[0] === "panda") {
-    document.getElementById("char-1").style.outline = "";
-    document.getElementById("char-3").style.outline = "";
-    document.getElementById("char-2").style.outline = "2px solid white";
+    char1.style.border = "";
+    char2.style.border = borderStyle;
+    char3.style.border = "";
+    if (takePhotoBtn.children.length != 0) {
+      takePhotoBtn.removeChild(takePhotoBtn.children[0])
+    }
   } else {
-    document.getElementById("char-1").style.outline = "";
-    document.getElementById("char-2").style.outline = "";
-    document.getElementById("char-3").style.outline = "2px solid white";
+    char1.style.border = "";
+    char2.style.border = "";
+    char3.style.border = borderStyle;
+    if (takePhotoBtn.children.length == 0) {
+      takePhotoBtn.appendChild(style);
+    }
   }
 }
 
