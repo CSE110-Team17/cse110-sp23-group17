@@ -1,4 +1,19 @@
 /* OUTLINE */
+
+/* Short-Term and Long-Term Titles */
+h2 {
+  text-align: center;
+  margin: 20px;
+}
+
+/* Short-Term description is centered */
+#card-0 {
+  font-size: 1.2rem;
+  display: inline;
+  text-align: center;
+  padding: 20px;
+}
+
 /* Individual Card Positions */
 .card {
   display: flex;
@@ -18,14 +33,6 @@ img {
   flex-direction: column;
   margin: 50px;
   font-size: 1.2rem;
-}
-
-/* cards 3 and 4 are hidden by default */
-#card-3 {
-  display: none;
-}
-#card-4 {
-  display: none;
 }
 
 /* buttons and mobile card shouldn't be displayed in web version */
