@@ -31,11 +31,24 @@ Please let Mick or James know if you have questions or suggestions
   </head>
 
   <body>
+    <!-- modal -->
+    <div class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p class="modal-text">Some text in the Modal..</p>
+      </div>
+    </div>
+
     <div class="grid">
       <div class="opponent">
-        <p id="opponent_health_text">HP: 100</p>
-        <!-- Alter progress #opponent_hp value to display different hp in the progress bar -->
-        <progress id="opponent_hp" value="100" max="100"></progress>
+        <p id="health-label"></p>
+        <div class="health-bar">
+          <div class="fill"></div>
+        </div>
+        <div id="oscillating-bar">
+          <div class="fill"></div>
+          <div class="label">Flip a card to determine your lucky point!</div>
+        </div>
         <img src="./assets/images/green.jpeg" alt="Opponent Image" />
         <h2>Opponent</h2>
       </div>
@@ -373,6 +386,7 @@ Please let Mick or James know if you have questions or suggestions
         </div>
       </div>
       <!-- end of board div -->
+
       <div class="player">
         <p>HP: 100</p>
         <progress id="player_hp" value="100" max="100"></progress>
