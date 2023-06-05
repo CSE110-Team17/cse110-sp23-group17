@@ -1,5 +1,5 @@
 // import tarotConfig from '/source/assets/tarot.json' assert { type: 'json' };
-import tarotConfig from "../tarot.json" assert { type: "json" };
+import tarotConfig from "../tarot.js";
 
 /**
  * Create a hashmap for all tarot cards that can be indexed by card name
@@ -9,8 +9,9 @@ const tarotMap = tarotConfig.tarot.reduce((map, card) => {
   map[card.name] = {
     suite: card.suite,
     image: card.image,
-    description: card.description,
-    interpretation: card.interpretation,
+    light: card.meanings.light,
+    shadow: card.meanings.shadow,
+    fortune: card.fortune_telling,
   };
   return map;
 }, {});
@@ -36,7 +37,13 @@ for (let i = 0; i < chosenCards.length; i++) {
 
   cardImg.src = tarotMap[card].image;
   cardName.textContent = tarotMap[card].name;
-  cardDesc.textContent = tarotMap[card].description;
+  // cardDesc.textContent = tarotMap[card].fortune;
+  Array.prototype.sample = function () {
+    return this[Math.floor(Math.random() * this.length)];
+  };
+  cardDesc.textContent = tarotMap[card].fortune.sample();
+  // const randomIndex = Math.floor(Math.random() * tarotMap.fortune.length);
+  // cardDesc.textContent = tarotMap[card].fortune[randomIndex];
 }
 
 // Update card for mobile
@@ -78,7 +85,12 @@ export function updateMobileCard() {
 
   cardImg.src = tarotMap[card].image;
   cardName.textContent = tarotMap[card].name;
-  cardDesc.textContent = tarotMap[card].description;
+  // const randomIndex = Math.floor(Math.random() * tarotMap.fortune.length);
+  // cardDesc.textContent = tarotMap[card].fortune[randomIndex];
+  Array.prototype.sample = function () {
+    return this[Math.floor(Math.random() * this.length)];
+  };
+  cardDesc.textContent = tarotMap[card].fortune.sample();
 }
 
 /**
