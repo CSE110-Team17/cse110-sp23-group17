@@ -150,7 +150,7 @@ function init() {
 /**
  * Create an array of 22 and parse all the card name from json file
  * @param {Array<*>} tarotConfig - an array of the tarot cards from json
- * @return {Array[string]} array contains 22 tarot cards' name
+ * @return {Array<string>} array contains 22 tarot cards' name
  */
 export function getTarotCardName(tarotConfig) {
   const tarotCardNames = [];
