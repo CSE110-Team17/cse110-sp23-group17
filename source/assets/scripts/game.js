@@ -1,6 +1,6 @@
-import tarotConfig from "../tarot.json" assert { type: "json" };
+import tarotConfig from "../tarot.js";
 
-// window.addEventListener("DOMContentLoaded", init);
+window.addEventListener("DOMContentLoaded", init);
 
 /**
  * Initialize the game play and set player image from localStorage
@@ -28,7 +28,7 @@ export function getTarotCardName(tarotConfig) {
 //FOR RESULT PAGE: array of all the selected cards during game play
 const chosenCards = [];
 
-//listen whenever a card is click 
+//listen whenever a card is click
 var card = document.getElementsByClassName("card");
 for (let i = 0; i < card.length; i++) {
   card[i].addEventListener("click", play);
@@ -52,11 +52,10 @@ for (let i = 0; i < card.length; i++) {
  * Play the game when a card is click:
  * Generate random card name -> change image accoridngly
  * Generate random damage points -> change hp bar accordingly
- * @param {*} event - the value return by the event 
- * 
+ * @param {*} event - the value return by the event
+ *
  */
 function play(event) {
-
   // Random generate a card. If card is already chosen then generate another card
   var randNameIdx = Math.floor(Math.random() * 21);
   var cardName = getTarotCardName(tarotConfig)[randNameIdx];
@@ -67,7 +66,7 @@ function play(event) {
   chosenCards.push(cardName);
   console.log(chosenCards);
 
-  // Change the image according to the card got chosen 
+  // Change the image according to the card got chosen
   tarotConfig["tarot"].forEach((element) => {
     if (element["name"] === cardName) {
       event.target.src = element["image"];
