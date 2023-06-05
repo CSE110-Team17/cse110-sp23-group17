@@ -1,11 +1,11 @@
-import tarotConfig from "../tarot.json" assert { type: "json" };
+import tarotConfig from "../tarot.js";
 
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   const player = document.querySelector(".player");
   const playerImage = player.querySelector("img");
-  const cards = document.querySelectorAll(".card");
+  const cards = document.querySelectorAll(".card-img");
 
   const opponentHealthBarFill = document.querySelector(
     ".opponent .health-bar .fill"
@@ -21,7 +21,7 @@ function init() {
 
   playerImage.src = window.localStorage.getItem("userImage");
 
-  const startingHealth = 100;
+  const startingHealth = 50;
   let health;
   setHealth(startingHealth);
 
@@ -66,13 +66,20 @@ function init() {
     console.log(card);
     console.log(card.dataset);
 
-    if (card.dataset.status === "clicked" || health === 0) {
+    if (card.dataset.status === "clicked" || health === 0 || health > 100) {
       return;
     }
 
-    setHealth(Math.max(0, health - getBarWidth()));
+    //is this number is <= 5 then the card is down
+    let isDown= Math.floor(Math.random() * 10) + 1;
+    if (isDown <= 5){
+      setHealth(Math.max(0, health - getBarWidth()));
+    } else {
+      setHealth(Math.max(0, health + getBarWidth()));
+    }
+    
 
-    if (health === 0) {
+    if (health === 0 || health === 100) {
       oscillatingBar.style.visibility = "hidden";
     }
 
@@ -86,21 +93,34 @@ function init() {
     chosenCards.push(cardName);
     console.log(chosenCards);
 
+
+
     // Change the image according to the card got chosen
     tarotConfig.tarot.forEach((element) => {
       if (element.name === cardName) {
         card.src = element.image;
+        console.log(isDown);
+        if (isDown <= 5){
+          card.style.transform = 'rotate(180deg)';
+        } 
         card.dataset.status = "clicked";
       }
     });
 
     // Random generate a damage point and attack the oponent with that point.
     // Change the hp bar of opponent accordingly.
-    const randDmg = Math.floor(Math.random() * 10) + 34;
+    //const randDmg = Math.floor(Math.random() * 10) + 34;
+    // if (isDown <= 5){
+    //   randDmg = randDmg*(-1);
+    // }
+    if (isDown <= 5){
+      displayModal("You got a reverse " + cardName + " card. You receive " + getBarWidth()*(-1) + " luck points");
+    } else {
+      displayModal("You got a " + cardName + " card. You receive " + getBarWidth() + " luck points");
+    }
     setTimeout(() => {
-      displayModal("You dealt " + randDmg + " damage to the opponent");
       setTimeout(() => {
-        if (health <= 0) {
+        if (health <= 0 || health >= 100 || chosenCards.length === 4) {
           displayModal("You defeated the oponent");
           setTimeout(() => {
             localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
@@ -112,22 +132,25 @@ function init() {
   }
 
   function setHealth(val) {
+    if (val > 100){
+      val = 100;
+    }
     health = val;
-    opponentHealthLabel.innerText = `${health} hp`;
+    opponentHealthLabel.innerText = `${health} luck points`;
     opponentHealthBarFill.style.width = `${health}%`;
   }
 
   function getBarWidth() {
     const barWidth = oscillatingBarFill.getBoundingClientRect().width;
     const parentWidth = oscillatingBar.getBoundingClientRect().width;
-    return Math.floor((100 * barWidth) / parentWidth);
+    return Math.floor((25 * barWidth) / parentWidth);
   }
 }
 
 /**
  * Create an array of 22 and parse all the card name from json file
  * @param {Array<*>} tarotConfig - an array of the tarot cards from json
- * @return {Array<string>} array contains 22 tarot cards' name
+ * @return {Array[string]} array contains 22 tarot cards' name
  */
 export function getTarotCardName(tarotConfig) {
   const tarotCardNames = [];

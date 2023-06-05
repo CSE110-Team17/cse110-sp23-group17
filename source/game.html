@@ -47,7 +47,7 @@ Please let Mick or James know if you have questions or suggestions
         </div>
         <div id="oscillating-bar">
           <div class="fill"></div>
-          <div class="label">Flip a card to damage the opponent!</div>
+          <div class="label">Flip a card to determine your lucky point!</div>
         </div>
         <img src="./assets/images/green.jpeg" alt="Opponent Image" />
         <h2>Opponent</h2>
@@ -388,11 +388,17 @@ Please let Mick or James know if you have questions or suggestions
       <!-- end of board div -->
 
       <div class="player">
-        <p class="health-label"></p>
-        <div class="health-bar">
-          <div class="fill"></div>
+        <p>HP: 100</p>
+        <progress id="player_hp" value="100" max="100"></progress>
+          <div class="profile-pic">
+            <label class="-label" for="file">
+              <span class="glyphicon glyphicon-camera"></span>
+              <span>Change Image</span>
+            </label>
+            <input id="file" type="file" accept=".png, .jpg, .jpeg" onchange="loadFile(event)" />
+            <img src="./assets/images/green.jpeg" id="output" width="200" alt="Opponent Image" />
+          </div>
         </div>
-        <img src="./assets/images/green.jpeg" alt="Player image" />
         <h2>Player</h2>
       </div>
       <!-- <div>4</div>

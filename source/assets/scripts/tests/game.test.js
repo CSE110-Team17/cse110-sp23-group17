@@ -6,10 +6,10 @@ require("../game");
 /**
  * Initialize fake data for game test
  */
-jest.mock("../../tarot.json", () => ({
+jest.mock("../../tarot.js", () => ({
   tarot: [{ name: "bob", suite: "major" }],
 }));
-const tarotConfig = require("../../tarot.json");
+const tarotConfig = require("../../tarot.js");
 
 /**
  * Test to see if getTarotCardName return the correct values

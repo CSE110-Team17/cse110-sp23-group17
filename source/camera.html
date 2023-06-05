@@ -1,32 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Camera</title>
     <link rel="stylesheet" href="./assets/styles/camera.css" />
+    <!-- <link rel="stylesheet" href="./assets/styles/index.css" /> -->
     <script src="./assets/scripts/camera.js" type="module"></script>
   </head>
 
   <body>
-    <div class="cameraContainer">
-      <div class="videoContainer">
-        <video id="videoDisplay" width="320" height="240" autoplay></video>
-        <div id="startCamera">Start Camera</div>
+    <div id="message">
+      <h1>Welcome Adventurer</h1>
+      <h2>Choose a charcter from below or take your own picture</h2>
+    </div>
+    <div id="character-container">
+      <div class="character" id="char-1">
+        <div class="img-case">
+          <image
+            class="character-img"
+            src="./assets/images/characters/dragon.png"
+          ></image>
+        </div>
+        <p class="character-description">Dragon</p>
       </div>
-      <div class="photoContainer">
+      <div class="character" id="char-2">
+        <div class="img-case">
+          <image
+            class="character-img"
+            src="./assets/images/characters/panda.png"
+          ></image>
+        </div>
+        <p class="character-description">Panda</p>
+      </div>
+      <div class="character" id="char-3">
+        <div class="img-case">
+          <image
+            class="character-img"
+            id="camera-img"
+            src="./assets/images/characters/camera.png"
+          ></image>
+          <canvas id="photoDisplay" width="140"></canvas>
+        </div>
+        <p class="character-description">Take your own picture</p>
+      </div>
+    </div>
+    <div class="cameraContainer">
+      <div class="video-container">
+        <video id="video-display" width="100%" height="150" autoplay></video>
+        <div class="buttons">
+          <button id="take-photo-btn">Take Photo</button>
+          <button id="submit-btn">Next</button>
+        </div>
+      </div>
+      <!-- <div class="photoContainer">
         <canvas id="photoDisplay" width="320" height="240"></canvas>
-        <!-- takePhotoBtn should be updated to Retake Photo after a picture has been taken -->
+        takePhotoBtn should be updated to Retake Photo after a picture has been taken
         <div class="btnContainer">
           <input type="file" id="submitFile" />
           <button id="takePhotoBtn">Take Photo</button>
-          <!-- <button id="submitFromGalleryBtn"> From Gallery</button> -->
+          <button id="submitFromGalleryBtn"> From Gallery</button>
           <button id="submitBtn">Next</button>
         </div>
-      </div>
+      </div> -->
     </div>
   </body>
-
 </html>
