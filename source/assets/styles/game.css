@@ -222,6 +222,8 @@
 }
 .profile-pic img {
   position: relative;
+  max-height: 76px;
+  min-height: 76px;
   right: 50%;
   transform: translateX(50%);
   object-fit: fill;
