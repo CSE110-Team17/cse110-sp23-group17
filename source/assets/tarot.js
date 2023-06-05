@@ -64,7 +64,6 @@ export default {
       image: "./assets/images/deck/RWS_Tarot_02_High_Priestess.jpg",
       fortune_telling: [
         "A mysterious woman arrives",
-        "A sexual secret may surface",
         "Someone knows more than he or she will reveal",
       ],
       meanings: {
@@ -179,7 +178,6 @@ export default {
       image: "./assets/images/deck/RWS_Tarot_06_Lovers.jpg",
       fortune_telling: [
         "A new personal or professional relationship blossoms",
-        "Sexual opportunities abound",
         "Unexpectedly, a friend becomes a lover",
       ],
       meanings: {

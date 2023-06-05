@@ -25,6 +25,12 @@ function init() {
   let health;
   setHealth(startingHealth);
 
+  //Function to load profile image
+  window.loadFile = function (event) {
+    var image = document.getElementById("output");
+    image.src = URL.createObjectURL(event.target.files[0]);
+  };
+
   //FOR RESULT PAGE: array of all the selected cards during game play
   const chosenCards = [];
 
@@ -71,13 +77,12 @@ function init() {
     }
 
     //is this number is <= 5 then the card is down
-    let isDown= Math.floor(Math.random() * 10) + 1;
-    if (isDown <= 5){
+    let isDown = Math.floor(Math.random() * 10) + 1;
+    if (isDown <= 5) {
       setHealth(Math.max(0, health - getBarWidth()));
     } else {
       setHealth(Math.max(0, health + getBarWidth()));
     }
-    
 
     if (health === 0 || health === 100) {
       oscillatingBar.style.visibility = "hidden";
@@ -93,16 +98,14 @@ function init() {
     chosenCards.push(cardName);
     console.log(chosenCards);
 
-
-
     // Change the image according to the card got chosen
     tarotConfig.tarot.forEach((element) => {
       if (element.name === cardName) {
         card.src = element.image;
         console.log(isDown);
-        if (isDown <= 5){
-          card.style.transform = 'rotate(180deg)';
-        } 
+        if (isDown <= 5) {
+          card.style.transform = "rotate(180deg)";
+        }
         card.dataset.status = "clicked";
       }
     });
@@ -113,10 +116,22 @@ function init() {
     // if (isDown <= 5){
     //   randDmg = randDmg*(-1);
     // }
-    if (isDown <= 5){
-      displayModal("You got a reverse " + cardName + " card. You receive " + getBarWidth()*(-1) + " luck points");
+    if (isDown <= 5) {
+      displayModal(
+        "You got a reverse " +
+          cardName +
+          " card. You receive " +
+          getBarWidth() * -1 +
+          " luck points"
+      );
     } else {
-      displayModal("You got a " + cardName + " card. You receive " + getBarWidth() + " luck points");
+      displayModal(
+        "You got a " +
+          cardName +
+          " card. You receive " +
+          getBarWidth() +
+          " luck points"
+      );
     }
     setTimeout(() => {
       setTimeout(() => {
@@ -132,7 +147,7 @@ function init() {
   }
 
   function setHealth(val) {
-    if (val > 100){
+    if (val > 100) {
       val = 100;
     }
     health = val;
