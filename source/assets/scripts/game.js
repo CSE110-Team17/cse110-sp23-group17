@@ -120,7 +120,7 @@ function init() {
     }
     setTimeout(() => {
       setTimeout(() => {
-        if (health <= 0 || health >= 100) {
+        if (health <= 0 || health >= 100 || chosenCards.length === 4) {
           displayModal("You defeated the oponent");
           setTimeout(() => {
             localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
@@ -143,7 +143,7 @@ function init() {
   function getBarWidth() {
     const barWidth = oscillatingBarFill.getBoundingClientRect().width;
     const parentWidth = oscillatingBar.getBoundingClientRect().width;
-    return Math.floor((50 * barWidth) / parentWidth);
+    return Math.floor((25 * barWidth) / parentWidth);
   }
 }
 
