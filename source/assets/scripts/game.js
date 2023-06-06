@@ -3,56 +3,26 @@ import tarotConfig from "../tarot.js";
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
-  const player = document.querySelector(".player");
-  const playerImage = player.querySelector("img");
+  const playerImage = document.querySelector(".player img");
   const cards = document.querySelectorAll(".card-img");
-
-  const opponentHealthBarFill = document.querySelector(
-    ".opponent .health-bar .fill"
-  );
-  const opponentHealthLabel = document.querySelector(".opponent #health-label");
-  const oscillatingBar = document.querySelector("#oscillating-bar");
-  const oscillatingBarFill = document.querySelector("#oscillating-bar > .fill");
-
-  /** Modal for showing alerts **/
-  const modal = document.querySelector(".modal");
-  const span = document.querySelector(".close");
-  const mText = document.querySelector(".modal-text");
+  const luckLabel = document.querySelector(".luck-bar .label");
+  const luckBarFill = document.querySelector(".luck-bar .fill");
+  const oscillatingBar = document.querySelector(".oscillating-bar");
+  const oscillatingBarFill = document.querySelector(".oscillating-bar .fill");
 
   playerImage.src = window.localStorage.getItem("userImage");
 
-  const startingHealth = 50;
-  let health;
-  setHealth(startingHealth);
+  const startingLuck = 50;
+  let luck;
+  setLuck(startingLuck);
 
   //FOR RESULT PAGE: array of all the selected cards during game play
   const chosenCards = [];
 
-  //listen whenever a card is click
+  //listen whenever a card is clicked
   for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener("click", onCardClicked);
   }
-
-  /**
-   * Display modal with custom message
-   * @param: message: alert message
-   */
-  function displayModal(message) {
-    mText.textContent = message;
-    modal.style.display = "block";
-  }
-
-  /**
-   * Hide modal when user clicks outside modal
-   */
-  span.onclick = function () {
-    modal.style.display = "none";
-  };
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
 
   /**
    * Play the game when a card is click:
@@ -66,20 +36,20 @@ function init() {
     console.log(card);
     console.log(card.dataset);
 
-    if (card.dataset.status === "clicked" || health === 0 || health > 100) {
+    if (card.dataset.status === "clicked" || luck === 0 || luck > 100) {
       return;
     }
 
-    //is this number is <= 5 then the card is down
-    let isDown= Math.floor(Math.random() * 10) + 1;
-    if (isDown <= 5){
-      setHealth(Math.max(0, health - getBarWidth()));
-    } else {
-      setHealth(Math.max(0, health + getBarWidth()));
-    }
-    
+    // 50-50 chance that the card is upside-down
+    const isDown = Math.random() < 0.5;
 
-    if (health === 0 || health === 100) {
+    if (isDown) {
+      setLuck(Math.max(0, luck - getBarWidth()));
+    } else {
+      setLuck(Math.max(0, luck + getBarWidth()));
+    }
+
+    if (luck === 0 || luck === 100) {
       oscillatingBar.style.visibility = "hidden";
     }
 
@@ -93,16 +63,14 @@ function init() {
     chosenCards.push(cardName);
     console.log(chosenCards);
 
-
-
     // Change the image according to the card got chosen
     tarotConfig.tarot.forEach((element) => {
       if (element.name === cardName) {
         card.src = element.image;
         console.log(isDown);
-        if (isDown <= 5){
-          card.style.transform = 'rotate(180deg)';
-        } 
+        if (isDown) {
+          card.style.transform = "rotate(180deg)";
+        }
         card.dataset.status = "clicked";
       }
     });
@@ -110,18 +78,30 @@ function init() {
     // Random generate a damage point and attack the oponent with that point.
     // Change the hp bar of opponent accordingly.
     //const randDmg = Math.floor(Math.random() * 10) + 34;
-    // if (isDown <= 5){
+    // if (isDown) {
     //   randDmg = randDmg*(-1);
     // }
-    if (isDown <= 5){
-      displayModal("You got a reverse " + cardName + " card. You receive " + getBarWidth()*(-1) + " luck points");
+    if (isDown) {
+      say(
+        "You got a reverse " +
+          cardName +
+          " card. You receive " +
+          getBarWidth() * -1 +
+          " luck points"
+      );
     } else {
-      displayModal("You got a " + cardName + " card. You receive " + getBarWidth() + " luck points");
+      say(
+        "You got a " +
+          cardName +
+          " card. You receive " +
+          getBarWidth() +
+          " luck points"
+      );
     }
     setTimeout(() => {
       setTimeout(() => {
-        if (health <= 0 || health >= 100 || chosenCards.length === 4) {
-          displayModal("You defeated the oponent");
+        if (luck <= 0 || luck >= 100 || chosenCards.length === 4) {
+          say("You defeated the oponent");
           setTimeout(() => {
             localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
             window.location.href = "./results.html";
@@ -131,13 +111,16 @@ function init() {
     }, 500);
   }
 
-  function setHealth(val) {
-    if (val > 100){
-      val = 100;
-    }
-    health = val;
-    opponentHealthLabel.innerText = `${health} luck points`;
-    opponentHealthBarFill.style.width = `${health}%`;
+  function say(msg) {
+    console.log(msg);
+  }
+
+  function setLuck(val) {
+    if (val > 100) val = 100;
+    if (val < 0) val = 0;
+    luck = val;
+    luckLabel.innerText = `${luck} luck points`;
+    luckBarFill.style.width = `${luck}%`;
   }
 
   function getBarWidth() {
