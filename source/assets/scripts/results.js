@@ -1,9 +1,27 @@
+// import tarotConfig from '/source/assets/tarot.json' assert { type: 'json' };
 import tarotConfig from "../tarot.js";
 
+/**
+ * Create a hashmap for all tarot cards that can be indexed by card name
+ * @return {Map} a hashmap of all the cards and their information paresed from json
+ */
+const tarotMap = tarotConfig.tarot.reduce((map, card) => {
+  map[card.name] = {
+    suite: card.suite,
+    image: card.image,
+    light: card.meanings.light,
+    shadow: card.meanings.shadow,
+    fortune: card.fortune_telling,
+  };
+  return map;
+}, {});
+
 // Pull selected cards from gameplay
-const chosenCards = JSON.parse(localStorage.getItem("chosenCardIndices"))
-  .map((idx) => parseInt(idx))
-  .map((i) => tarotConfig.tarot[i]);
+let chosenCards = [];
+const storedCards = localStorage.getItem("chosenCards");
+if (storedCards !== null) {
+  chosenCards = Object.values(JSON.parse(storedCards)).map(String);
+}
 
 // Keep track of current screen width
 let screenWidth = window.innerWidth;
@@ -17,15 +35,15 @@ for (let i = 0; i < chosenCards.length; i++) {
   const cardName = cardContainer.querySelector("h1");
   const cardDesc = cardContainer.querySelector("p");
 
-  cardImg.src = card.image;
-  cardName.textContent = card.name;
-  // cardDesc.textContent = card.fortunes;
+  cardImg.src = tarotMap[card].image;
+  cardName.textContent = tarotMap[card].name;
+  // cardDesc.textContent = tarotMap[card].fortune;
   Array.prototype.sample = function () {
     return this[Math.floor(Math.random() * this.length)];
   };
-  cardDesc.textContent = card.fortunes.sample();
-  // const randomIndex = Math.floor(Math.random() * tarotMap.fortunes.length);
-  // cardDesc.textContent = card.fortunes[randomIndex];
+  cardDesc.textContent = tarotMap[card].fortune.sample();
+  // const randomIndex = Math.floor(Math.random() * tarotMap.fortune.length);
+  // cardDesc.textContent = tarotMap[card].fortune[randomIndex];
 }
 
 // Update card for mobile
@@ -65,14 +83,14 @@ export function updateMobileCard() {
   const cardName = mobileCard.querySelector("h1");
   const cardDesc = mobileCard.querySelector("p");
 
-  cardImg.src = card.image;
-  cardName.textContent = card.name;
-  // const randomIndex = Math.floor(Math.random() * tarotMap.fortunes.length);
-  // cardDesc.textContent = card.fortunes[randomIndex];
+  cardImg.src = tarotMap[card].image;
+  cardName.textContent = tarotMap[card].name;
+  // const randomIndex = Math.floor(Math.random() * tarotMap.fortune.length);
+  // cardDesc.textContent = tarotMap[card].fortune[randomIndex];
   Array.prototype.sample = function () {
     return this[Math.floor(Math.random() * this.length)];
   };
-  cardDesc.textContent = card.fortunes.sample();
+  cardDesc.textContent = tarotMap[card].fortune.sample();
 }
 
 /**

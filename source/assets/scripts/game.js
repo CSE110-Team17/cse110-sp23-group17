@@ -17,12 +17,8 @@ function init() {
   let luck;
   setLuck(startingLuck);
 
-  const numCards = 22;
-  const numCardsToChoose = 4;
-  let numCardsChosen = 0;
-
-  const chosenCardIndices = getShuffledIndices(22).slice(0, numCardsToChoose);
-  localStorage.setItem("chosenCardIndices", JSON.stringify(chosenCardIndices));
+  //FOR RESULT PAGE: array of all the selected cards during game play
+  const chosenCards = [];
 
   //listen whenever a card is clicked
   for (let i = 0; i < cards.length; i++) {
@@ -38,23 +34,18 @@ function init() {
    */
   function onCardClicked(event) {
     const card = event.target;
+    console.log(card);
+    console.log(card.dataset);
 
-    if (
-      card.dataset.status === "clicked" ||
-      numCardsChosen === numCardsToChoose
-    ) {
+    if (card.dataset.status === "clicked" || luck === 0 || luck > 100) {
       return;
     }
-
-    const chosenIdx = chosenCardIndices[numCardsChosen++];
-    const chosenCard = tarotConfig.tarot[chosenIdx];
 
     // 50-50 chance that the card is upside-down
     const isDown = Math.random() < 0.5;
 
     if (isDown) {
       setLuck(Math.max(0, luck - getBarWidth()));
-      card.style.transform = "rotate(180deg)";
     } else {
       setLuck(Math.max(0, luck + getBarWidth()));
     }
@@ -63,24 +54,57 @@ function init() {
       oscillatingBar.style.visibility = "hidden";
     }
 
-    card.src = chosenCard.image;
+    // Random generate a card. If card is already chosen then generate another card
+    let randNameIdx = Math.floor(Math.random() * 21);
+    let cardName = getTarotCardName(tarotConfig)[randNameIdx];
+    while (chosenCards.includes(cardName)) {
+      randNameIdx = Math.floor(Math.random() * 21);
+      cardName = getTarotCardName(tarotConfig)[randNameIdx];
+    }
+    chosenCards.push(cardName);
+    console.log(chosenCards);
 
-    const cardName = chosenCard.name;
+    // Change the image according to the card got chosen
+    tarotConfig.tarot.forEach((element) => {
+      if (element.name === cardName) {
+        card.src = element.image;
+        console.log(isDown);
+        if (isDown) {
+          card.style.transform = "rotate(180deg)";
+        }
+        card.dataset.status = "clicked";
+      }
+    });
 
+    // Random generate a damage point and attack the oponent with that point.
+    // Change the hp bar of opponent accordingly.
+    //const randDmg = Math.floor(Math.random() * 10) + 34;
+    // if (isDown) {
+    //   randDmg = randDmg*(-1);
+    // }
     if (isDown) {
       say(
-        `You got a reverse ${cardName} card. You receive ${-getBarWidth()} luck points!`
+        "You got a reverse " +
+          cardName +
+          " card. You receive " +
+          getBarWidth() * -1 +
+          " luck points!"
       );
     } else {
       say(
-        `You got a ${cardName} card. You receive ${getBarWidth()} luck points!`
+        "You got a " +
+          cardName +
+          " card. You receive " +
+          getBarWidth() +
+          " luck points!"
       );
     }
 
     setTimeout(() => {
-      if (numCardsChosen === numCardsToChoose) {
+      if (chosenCards.length === 4) {
         say("Get ready to see your fortune!");
         setTimeout(() => {
+          localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
           window.location.href = "./results.html";
         }, 2000);
       }
@@ -99,7 +123,7 @@ function init() {
       oracleMsg.innerText = `Draw ${numCardsLeft} more card${
         numCardsLeft === 1 ? "" : "s"
       }!`;
-    }, 3000);
+    }, 2000);
   }
 
   function setLuck(val) {
@@ -115,21 +139,6 @@ function init() {
     const parentWidth = oscillatingBar.getBoundingClientRect().width;
     return Math.floor((25 * barWidth) / parentWidth);
   }
-}
-
-/**
- * Get a shuffled range of numbers from 0 to n-1
- * @param {number} n The number of indeces to shuffle (0 to n-1)
- */
-function getShuffledIndices(n) {
-  const indices = Array.from({ length: n }, (_, i) => i);
-
-  for (let i = n - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [indices[i], indices[j]] = [indices[j], indices[i]];
-  }
-
-  return indices;
 }
 
 /**
