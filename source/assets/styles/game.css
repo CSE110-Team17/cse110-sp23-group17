@@ -1,9 +1,6 @@
-:root {
-  --background-color: #280044;
-}
-
 body {
   overscroll-behavior: none;
+  background: radial-gradient(circle, #280044, #0b004a);
 }
 
 * {
@@ -47,13 +44,11 @@ body {
   display: grid;
   height: 100vh;
   grid-template-rows: 1fr 3fr 1fr;
-  background-color: var(--background-color);
 }
 
 /****** Board related CSS ******/
 /* board is a flex container */
 .grid > .board {
-  background-color: var(--lighter-background-color);
   display: flex;
   justify-content: center;
   flex-direction: row;
