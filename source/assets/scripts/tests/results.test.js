@@ -120,45 +120,115 @@ describe("handleWindowSizeChange", function () {
   });
 });
 
-// describe("updateMobileCard", function () {
-//   beforeEach(function () {
-//     // Create a container element to hold the buttons
-//     const container = document.createElement("div");
-//     container.innerHTML = `
-//     <img id="image-1" src="assets/images/blank-card.png" alt="Blank Card" height="269" width="220" />
-//     <p id="description-1">Card Description</p>
-//     `;
-//     document.body.appendChild(container);
+/**
+ * Test if updateMobileCard correctly updates the mobile card
+ */
+describe("updateMobileCard", function () {
+  let mobileCard;
+  let cardContainers;
+  let cardImg;
+  let cardDesc;
+  let chosenCards;
+  let fortuneTellings;
+  let tarotMap;
+  let idx;
 
-//     console.log(container);
-//     results.mobileCard = container;
+  beforeAll(function () {
+    document.body.innerHTML = `
+    <div id="card-1" class="card">
+    <img id="image-1" src="assets/images/blank-card.png" alt="Blank Card" height="269" width="220" />
+    <div id="text-1" class="text-portion">
+      <p id="description-1">Card Description</p>
+    </div>
+    `;
 
-//     results.idx = 0;
-//     results.chosenCards = ["card1", "card2", "card3"];
-//     results.tarotMap = {
-//       card1: {
-//         image: "card1.jpg",
-//       },
-//       card2: {
-//         image: "card2.jpg",
-//       },
-//       card3: {
-//         image: "card3.jpg",
-//       },
-//     };
+    cardContainers = document.getElementsByClassName("card");
+    mobileCard = cardContainers[0];
+    cardImg = mobileCard.querySelector("img");
+    cardDesc = mobileCard.querySelector("p");
+    chosenCards = ["card1", "card2", "card3", "card4"];
+    fortuneTellings = ["fortune1", "fortune2", "fortune3", "fortune4"];
+    tarotMap = {
+      card1: { image: "1.jpeg" },
+      card2: { image: "2.jpeg" },
+      card3: { image: "3.jpeg" },
+      card4: { image: "4.jpeg" },
+    };
+  });
 
-//     results.fortuneTellings = ["Fortune 1", "Fortune 2", "Fortune 3"];
-//   });
+  it("mobileCard should be updated with contents at idx 0 of chosenCards", function () {
+    idx = 0;
+    // console.log(cardContainers);
+    // console.log("mobileCard", mobileCard);
+    console.log(cardImg.src);
+    // console.log(cardDesc);
+    // console.log(tarotMap["card1"].img);
+    const [card, imgSrc, desc] = results.updateMobileCard(
+      chosenCards,
+      idx,
+      mobileCard,
+      tarotMap,
+      fortuneTellings
+    );
+    expect(card).toBe("card1");
+    expect(imgSrc).toContain("1.jpeg"); //to account for localpath
+    expect(desc).toBe("fortune1");
+  });
 
-//   afterEach(function () {
-//     document.body.innerHTML = "";
-//   });
+  it("mobileCard should be updated with contents at idx 1 of chosenCards", function () {
+    idx = 1;
+    // console.log(cardContainers);
+    // console.log("mobileCard", mobileCard);
+    console.log(cardImg.src);
+    // console.log(cardDesc);
+    // console.log(tarotMap["card1"].img);
+    const [card, imgSrc, desc] = results.updateMobileCard(
+      chosenCards,
+      idx,
+      mobileCard,
+      tarotMap,
+      fortuneTellings
+    );
+    expect(card).toBe("card2");
+    expect(imgSrc).toContain("2.jpeg"); //to account for localpath
+    expect(desc).toBe("fortune2");
+  });
 
-//   it("update mobile card correctly when idx = 1", function () {
-//     results.updateMobileCard();
-//     // Expect the buttons to be hidden because the screen size is above 600
-//     expect(results.card).toBe("card1");
-//     expect(results.cardImg.src).toBe("card1.jpg");
-//     expect(results.cardDesc.src).toBe("Fortune 1");
-//   });
-// });
+  it("mobileCard should be updated with contents at idx 2 of chosenCards", function () {
+    idx = 2;
+    // console.log(cardContainers);
+    // console.log("mobileCard", mobileCard);
+    console.log(cardImg.src);
+    // console.log(cardDesc);
+    // console.log(tarotMap["card1"].img);
+    const [card, imgSrc, desc] = results.updateMobileCard(
+      chosenCards,
+      idx,
+      mobileCard,
+      tarotMap,
+      fortuneTellings
+    );
+    expect(card).toBe("card3");
+    expect(imgSrc).toContain("3.jpeg"); //to account for localpath
+    expect(desc).toBe("fortune3");
+  });
+
+  it("mobileCard should be updated with contents at idx 3 of chosenCards", function () {
+    idx = 3;
+    // console.log(cardContainers);
+    // console.log("mobileCard", mobileCard);
+    console.log(cardImg.src);
+    // console.log(cardDesc);
+    // console.log(tarotMap["card1"].img);
+    const [card, imgSrc, desc] = results.updateMobileCard(
+      chosenCards,
+      idx,
+      mobileCard,
+      tarotMap,
+      fortuneTellings
+    );
+    expect(card).toBe("card4");
+    expect(imgSrc).toContain("4.jpeg"); //to account for localpath
+    expect(desc).toBe("fortune4");
+  });
+});

@@ -29,6 +29,10 @@ if (storedCards !== null) {
 export let screenWidth = window.innerWidth;
 
 // Update cards for desktop
+Array.prototype.sample = function () {
+  return this[Math.floor(Math.random() * this.length)];
+};
+
 const cardContainers = document.getElementsByClassName("card");
 for (let i = 0; i < chosenCards.length; i++) {
   const card = chosenCards[i];
@@ -38,9 +42,6 @@ for (let i = 0; i < chosenCards.length; i++) {
 
   cardImg.src = tarotMap[card].image;
 
-  Array.prototype.sample = function () {
-    return this[Math.floor(Math.random() * this.length)];
-  };
   const telling = tarotMap[card].fortune.sample();
   cardDesc.textContent = telling;
   fortuneTellings.push(telling);
@@ -57,19 +58,19 @@ if (prevButton !== null) {
 
 // Check that mobileCard is defined before updateMobileCard()
 if (mobileCard !== undefined) {
-  updateMobileCard();
+  updateMobileCard(chosenCards, idx, mobileCard, tarotMap, fortuneTellings);
 
   // Go back to the previous card
   prevButton.addEventListener("click", () => {
     idx--;
-    updateMobileCard();
+    updateMobileCard(chosenCards, idx, mobileCard, tarotMap, fortuneTellings);
     updateButtonVisibility(chosenCards, idx);
   });
 
   // Go to the next card
   nextButton.addEventListener("click", () => {
     idx++;
-    updateMobileCard();
+    updateMobileCard(chosenCards, idx, mobileCard, tarotMap, fortuneTellings);
     updateButtonVisibility(chosenCards, idx);
   });
 }
@@ -77,12 +78,20 @@ if (mobileCard !== undefined) {
 /**
  * Display the current card on the mobile side
  */
-export function updateMobileCard() {
+export function updateMobileCard(
+  chosenCards,
+  idx,
+  mobileCard,
+  tarotMap,
+  fortuneTellings
+) {
   const card = chosenCards[idx];
   const cardImg = mobileCard.querySelector("img");
   const cardDesc = mobileCard.querySelector("p");
   cardImg.src = tarotMap[card].image;
   cardDesc.textContent = fortuneTellings[idx];
+  //return array for testing
+  return [card, cardImg.src, cardDesc.textContent];
 }
 
 /**
