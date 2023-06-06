@@ -73,13 +73,13 @@ button {
   }
 
   /* Previous Button */
-  #button-2 {
+  #prev-button {
     position: fixed;
     bottom: 5px;
   }
 
   /* Next Button */
-  #button-1 {
+  #next-button {
     position: fixed;
     top: 5px;
   }
