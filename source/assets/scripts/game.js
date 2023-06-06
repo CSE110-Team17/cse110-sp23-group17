@@ -46,8 +46,6 @@ function init() {
       return;
     }
 
-    card.dataset.status = "clicked";
-
     const chosenIdx = chosenCardIndices[numCardsChosen++];
     const chosenCard = tarotConfig.tarot[chosenIdx];
 
