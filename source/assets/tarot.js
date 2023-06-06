@@ -4,7 +4,7 @@ export default {
       name: "The Fool",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_00_Fool.jpg",
-      fortune_telling: [
+      fortunes: [
         "Watch for new projects and new beginnings",
         "Prepare to take something on faith",
         "Something new comes your way; go for it",
@@ -35,7 +35,7 @@ export default {
       name: "The Magician",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_01_Magician.jpg",
-      fortune_telling: [
+      fortunes: [
         "A powerful man may play a role in your day",
         "Your current situation must be seen as one element of a much larger plan",
       ],
@@ -62,7 +62,7 @@ export default {
       name: "High Priestess",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_02_High_Priestess.jpg",
-      fortune_telling: [
+      fortunes: [
         "A mysterious woman arrives",
         "A sexual secret may surface",
         "Someone knows more than he or she will reveal",
@@ -91,7 +91,7 @@ export default {
       name: "Empress",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_03_Empress.jpg",
-      fortune_telling: [
+      fortunes: [
         "Pregnancy is in the cards",
         "An opportunity to be involved in luxurious sexuality is coming",
         "Beware a tendency toward addiction",
@@ -121,7 +121,7 @@ export default {
       name: "Emperor",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_04_Emperor.jpg",
-      fortune_telling: [
+      fortunes: [
         "A father figure arrives",
         "A new employer or authority figure will give you orders",
         "Expect discipline or correction in the near future",
@@ -148,7 +148,7 @@ export default {
       name: "Hierophant",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_05_Hierophant.jpg",
-      fortune_telling: [
+      fortunes: [
         "Expect to be caught in a misdeed and punished accordingly",
         "Pray for forgiveness and confess wrongdoings",
         "A more experienced man, spiritual leader, or father figure will come into your life",
@@ -177,7 +177,7 @@ export default {
       name: "The Lovers",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_06_Lovers.jpg",
-      fortune_telling: [
+      fortunes: [
         "A new personal or professional relationship blossoms",
         "Sexual opportunities abound",
         "Unexpectedly, a friend becomes a lover",
@@ -204,7 +204,7 @@ export default {
       name: "Chariot",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_07_Chariot.jpg",
-      fortune_telling: [
+      fortunes: [
         "Victory is a certainty",
         "Move ahead with all plans",
         "Beware the jealousy of others",
@@ -230,7 +230,7 @@ export default {
       name: "Strength",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_08_Strength.jpg",
-      fortune_telling: [
+      fortunes: [
         "Your self-control will be tested",
         "A woman will seek to change her partner or lover",
         "You are a strong, capable person",
@@ -254,7 +254,7 @@ export default {
       name: "Hermit",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_09_Hermit.jpg",
-      fortune_telling: [
+      fortunes: [
         "A period of loneliness begins",
         "One partner in a relationship departs",
         "A search for love or money proves fruitless",
@@ -280,7 +280,7 @@ export default {
       name: "Wheel of Fortune",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_10_Wheel_of_Fortune.jpg",
-      fortune_telling: [
+      fortunes: [
         "Some events are in the hands of heaven",
         "You've lived through this before",
         "What happened then?",
@@ -305,7 +305,7 @@ export default {
       name: "Justice",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_11_Justice.jpg",
-      fortune_telling: [
+      fortunes: [
         "A legal verdict will be rendered soon",
         "Someone is making a decision",
         "You need to get the facts",
@@ -332,7 +332,7 @@ export default {
       name: "Hanged Man",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_12_Hanged_Man.jpg",
-      fortune_telling: [
+      fortunes: [
         "A traitor is revealed",
         "One of your friends is working against you",
         "Change your ways or suffer the consequences",
@@ -358,7 +358,7 @@ export default {
       name: "Death",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_13_Death.jpg",
-      fortune_telling: [
+      fortunes: [
         "A relationship or illness ends suddenly",
         "Limit travel and risk-taking",
         "General gloom and doom",
@@ -384,7 +384,7 @@ export default {
       name: "Temperance",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_14_Temperance.jpg",
-      fortune_telling: [
+      fortunes: [
         "Someone's using drugs or alcohol to excess",
         "It's time to get back on that diet",
       ],
@@ -412,7 +412,7 @@ export default {
       name: "Devil",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_15_Devil.jpg",
-      fortune_telling: [
+      fortunes: [
         "A string of extremely bad luck is coming your way",
         "Beware evil influences and wolves in sheep's clothing",
       ],
@@ -439,7 +439,7 @@ export default {
       name: "Tower",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_16_Tower.jpg",
-      fortune_telling: [
+      fortunes: [
         "Impending disaster",
         "Cancel plans and reverse decisions",
         "Someone wants to take you down a notch or two",
@@ -467,7 +467,7 @@ export default {
       name: "Star",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_17_Star.jpg",
-      fortune_telling: [
+      fortunes: [
         "Get an astrology chart drawn up",
         "Someone is a little too starstruck",
         "What's happening now has long been fore-ordained",
@@ -494,7 +494,7 @@ export default {
       name: "Moon",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_18_Moon.jpg",
-      fortune_telling: [
+      fortunes: [
         "Watch for problems at the end of the month",
         "Someone you know needs to howl at the moon more often",
         "Someone is about to change his or her mind about an important decision",
@@ -520,7 +520,7 @@ export default {
       name: "Sun",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_19_Sun.jpg",
-      fortune_telling: [
+      fortunes: [
         "Everything's coming up roses (or sunflowers, whatever the case may be)",
         "Whatever's on your mind, go for it because you can't lose today",
       ],
@@ -545,7 +545,7 @@ export default {
       name: "Judgement",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_20_Judgement.jpg",
-      fortune_telling: [
+      fortunes: [
         "An old issue you thought was over will come up again today",
         "Get ready for huge changes: break-ups, sudden calls from old friends, and unexpected setbacks",
         "God's trying to get your attention",
@@ -572,7 +572,7 @@ export default {
       name: "World",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_21_World.jpg",
-      fortune_telling: [
+      fortunes: [
         "Winning the lottery",
         "Getting your heart's desire",
         "Having everything you ever imagined having",
