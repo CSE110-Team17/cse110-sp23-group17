@@ -9,6 +9,7 @@ export default {
         "Prepare to take something on faith",
         "Something new comes your way; go for it",
       ],
+      keywords: ["freedom", "faith", "inexperience", "innocence"],
       meanings: {
         light: [
           "Freeing yourself from limitation",
@@ -39,6 +40,7 @@ export default {
         "A powerful man may play a role in your day",
         "Your current situation must be seen as one element of a much larger plan",
       ],
+      keywords: ["capability", "empowerment", "activity"],
       meanings: {
         light: [
           "Taking appropriate action",
@@ -66,6 +68,7 @@ export default {
         "A mysterious woman arrives",
         "Someone knows more than he or she will reveal",
       ],
+      keywords: ["intuition", "reflection", "purity", "initiation"],
       meanings: {
         light: [
           "Listening to your feelings and intuitions",
@@ -95,6 +98,7 @@ export default {
         "An opportunity to be involved in luxurious sexuality is coming",
         "Beware a tendency toward addiction",
       ],
+      keywords: ["fertility", "productivity", "ripeness", "nurturing"],
       meanings: {
         light: [
           "Nurturing yourself and others",
@@ -125,6 +129,7 @@ export default {
         "A new employer or authority figure will give you orders",
         "Expect discipline or correction in the near future",
       ],
+      keywords: ["authority", "regulation", "direction", "structure"],
       meanings: {
         light: [
           "Exercising authority",
@@ -152,6 +157,7 @@ export default {
         "Pray for forgiveness and confess wrongdoings",
         "A more experienced man, spiritual leader, or father figure will come into your life",
       ],
+      keywords: ["guidance", "knowledge", "revelation", "belief"],
       meanings: {
         light: [
           "Teaching or guiding others",
@@ -180,6 +186,7 @@ export default {
         "A new personal or professional relationship blossoms",
         "Unexpectedly, a friend becomes a lover",
       ],
+      keywords: ["love", "passion", "unity", "choice"],
       meanings: {
         light: [
           "Being in love",
@@ -207,6 +214,7 @@ export default {
         "Move ahead with all plans",
         "Beware the jealousy of others",
       ],
+      keywords: ["advancement", "victory", "triumph", "success"],
       meanings: {
         light: [
           "Breaking through barriers",
@@ -233,6 +241,13 @@ export default {
         "A woman will seek to change her partner or lover",
         "You are a strong, capable person",
       ],
+      keywords: [
+        "discipline",
+        "boldness",
+        "self-discipline",
+        "power",
+        "vitality",
+      ],
       meanings: {
         light: [
           "Imposing restrictions on yourself for your own benefit",
@@ -257,6 +272,7 @@ export default {
         "One partner in a relationship departs",
         "A search for love or money proves fruitless",
       ],
+      keywords: ["solitude", "experience", "stillness", "withdrawal"],
       meanings: {
         light: [
           "Becoming or seeking out a guru",
@@ -283,6 +299,7 @@ export default {
         "You've lived through this before",
         "What happened then?",
       ],
+      keywords: ["luck", "randomness", "cycles", "karma", "fate", "revolution"],
       meanings: {
         light: [
           "Allowing events to unfold",
@@ -308,6 +325,7 @@ export default {
         "Someone is making a decision",
         "You need to get the facts",
       ],
+      keywords: ["balance", "law", "fairness", "objectivity"],
       meanings: {
         light: [
           "Making an objective decision",
@@ -335,6 +353,13 @@ export default {
         "One of your friends is working against you",
         "Change your ways or suffer the consequences",
       ],
+      keywords: [
+        "enlightenment",
+        "sacrifice",
+        "perspective",
+        "suspension",
+        "reversals",
+      ],
       meanings: {
         light: [
           "Seeing growth opportunities in unpleasant events",
@@ -361,6 +386,7 @@ export default {
         "Limit travel and risk-taking",
         "General gloom and doom",
       ],
+      keywords: ["ending", "conclusion", "transition", "passage", "departure"],
       meanings: {
         light: [
           "Bringing an unpleasant phase of life to an end",
@@ -385,6 +411,13 @@ export default {
       fortune_telling: [
         "Someone's using drugs or alcohol to excess",
         "It's time to get back on that diet",
+      ],
+      keywords: [
+        "blending",
+        "synthesis",
+        "mediation",
+        "combination",
+        "harmony",
       ],
       meanings: {
         light: [
@@ -414,6 +447,7 @@ export default {
         "A string of extremely bad luck is coming your way",
         "Beware evil influences and wolves in sheep's clothing",
       ],
+      keywords: ["shadow", "materialism", "bondage", "delusion"],
       meanings: {
         light: [
           "Appreciating the luxuries that life has to offer",
@@ -443,6 +477,13 @@ export default {
         "Someone wants to take you down a notch or two",
         "Don't hold back; say what you really mean",
       ],
+      keywords: [
+        "demolition",
+        "upheaval",
+        "deconstruction",
+        "disaster",
+        "destruction",
+      ],
       meanings: {
         light: [
           "Breaking out of old, confining habits and mindsets",
@@ -469,6 +510,15 @@ export default {
         "Get an astrology chart drawn up",
         "Someone is a little too starstruck",
         "What's happening now has long been fore-ordained",
+      ],
+      keywords: [
+        "hope",
+        "optimism",
+        "openness",
+        "certainty",
+        "faith",
+        "longing",
+        "truth",
       ],
       meanings: {
         light: [
@@ -497,6 +547,7 @@ export default {
         "Someone you know needs to howl at the moon more often",
         "Someone is about to change his or her mind about an important decision",
       ],
+      keywords: ["mystery", "fantasy", "imagination", "dreams", "uncertainty"],
       meanings: {
         light: [
           "Enjoying healthy fantasies and daydreams",
@@ -522,6 +573,7 @@ export default {
         "Everything's coming up roses (or sunflowers, whatever the case may be)",
         "Whatever's on your mind, go for it because you can't lose today",
       ],
+      keywords: ["joy", "brilliance", "validation", "attention", "energy"],
       meanings: {
         light: [
           "Seeing things clearly",
@@ -547,6 +599,13 @@ export default {
         "An old issue you thought was over will come up again today",
         "Get ready for huge changes: break-ups, sudden calls from old friends, and unexpected setbacks",
         "God's trying to get your attention",
+      ],
+      keywords: [
+        "revival",
+        "renewal",
+        "resurrection",
+        "evaluation",
+        "invitation",
       ],
       meanings: {
         light: [
@@ -574,6 +633,13 @@ export default {
         "Winning the lottery",
         "Getting your heart's desire",
         "Having everything you ever imagined having",
+      ],
+      keywords: [
+        "wholeness",
+        "integration",
+        "totality",
+        "completeness",
+        "fullness",
       ],
       meanings: {
         light: [
