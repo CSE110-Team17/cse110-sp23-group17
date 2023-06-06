@@ -11,21 +11,43 @@ body {
   padding: 0;
 }
 
+/******* oracle ********/
+.oracle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 16px;
+}
+
+.oracle .message {
+  border: 4px solid #fffb;
+  background-color: #fff4;
+  border-radius: 32px;
+  width: 320px;
+  padding: 0 32px;
+  min-height: 120px;
+
+  color: #fff;
+  text-align: center;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  /* center text */
+  display: grid;
+  place-items: center;
+}
+
+.oracle img {
+  width: 180px;
+  animation: 1.5s ease-in-out 0s infinite alternate float;
+}
+
 .grid {
   display: grid;
   height: 100vh;
   grid-template-rows: 1fr 3fr 1fr;
   background-color: var(--background-color);
-}
-
-@keyframes oscillate {
-  0% {
-    width: 0%;
-  }
-
-  100% {
-    width: 100%;
-  }
 }
 
 /****** Board related CSS ******/
@@ -123,5 +145,29 @@ body {
 
   .player img {
     width: 60px;
+  }
+
+  .oracle img {
+    width: 60px;
+  }
+}
+
+@keyframes oscillate {
+  0% {
+    width: 15%;
+  }
+
+  100% {
+    width: 85%;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(8px);
   }
 }

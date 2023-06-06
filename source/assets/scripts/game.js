@@ -9,6 +9,7 @@ function init() {
   const luckBarFill = document.querySelector(".luck-bar .fill");
   const oscillatingBar = document.querySelector(".oscillating-bar");
   const oscillatingBarFill = document.querySelector(".oscillating-bar .fill");
+  const oracleMsg = document.querySelector(".oracle .message");
 
   playerImage.src = window.localStorage.getItem("userImage");
 
@@ -87,7 +88,7 @@ function init() {
           cardName +
           " card. You receive " +
           getBarWidth() * -1 +
-          " luck points"
+          " luck points!"
       );
     } else {
       say(
@@ -95,24 +96,34 @@ function init() {
           cardName +
           " card. You receive " +
           getBarWidth() +
-          " luck points"
+          " luck points!"
       );
     }
+
     setTimeout(() => {
-      setTimeout(() => {
-        if (luck <= 0 || luck >= 100 || chosenCards.length === 4) {
-          say("You defeated the oponent");
-          setTimeout(() => {
-            localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
-            window.location.href = "./results.html";
-          }, 500);
-        }
-      }, 300);
-    }, 500);
+      if (chosenCards.length === 4) {
+        say("Get ready to see your fortune!");
+        setTimeout(() => {
+          localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
+          window.location.href = "./results.html";
+        }, 2000);
+      }
+    }, 2000);
   }
 
+  let msgResetTimeout = -1;
+
   function say(msg) {
-    console.log(msg);
+    oracleMsg.innerText = msg;
+
+    clearTimeout(msgResetTimeout);
+
+    msgResetTimeout = setTimeout(() => {
+      const numCardsLeft = 4 - chosenCards.length;
+      oracleMsg.innerText = `Draw ${numCardsLeft} more card${
+        numCardsLeft === 1 ? "" : "s"
+      }!`;
+    }, 2000);
   }
 
   function setLuck(val) {
