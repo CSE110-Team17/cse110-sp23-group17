@@ -14,11 +14,31 @@
       <h2>but game</h2>
       <div class="buttons">
         <a href="./camera.html">Play</a>
-        <!-- <button>How to play</button> -->
-        <!-- <button class="howto-popup" onclick="openInstructions()">How to play</button> -->
-        <a href="./instructions.html">How to play</a>
+        <a href="#popup-box">How to play</a>
       </div>
-      <div id="instructions-container"></div>
+      <div id="popup-box" class="modal">
+        <div class="content">
+          <b>
+            <span class="instruct">How to Play</span>
+            <ol>
+              <li> Select your avatar, take a picture if you would like. </li>
+              <li> Click on the cards to attack them. </li>
+              <li> Reduce the opponent fortune teller's HP bar to win. </li>
+              <li> Your luck is determined by the Lucky Point system. </li>
+              <li>
+                The Lucky Point bar oscillates between negative and positive
+                luck.
+              </li>
+              <li>
+                Click on the cards when the Lucky Point bar is in the positive
+                zone.
+              </li>
+              <li> Find out your fortune! </li>
+            </ol>
+          </b>
+          <a href="#" class="box-close"> × </a>
+        </div>
+      </div>
     </main>
     <footer>
       <select id="language-select">
