@@ -37,7 +37,12 @@ function init() {
     console.log(card);
     console.log(card.dataset);
 
-    if (card.dataset.status === "clicked" || luck === 0 || luck > 100) {
+    if (
+      card.dataset.status === "clicked" ||
+      luck === 0 ||
+      luck > 100 ||
+      chosenCards.length === 4
+    ) {
       return;
     }
 
