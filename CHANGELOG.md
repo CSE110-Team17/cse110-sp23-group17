@@ -7,13 +7,54 @@ and this project adheres to [Tarot but Game](https://github.com/CSE110-Team17/cs
 
 ## [Unreleased]
 
+### Added 
+- All Cards feature (displays all the possible cards you can get) (#69)
+- add how-to-play button in game page so that the user can see game instructions anytime (#66)
+
+### Changed
+- How to play instructions are changed to match the new gameplay (#66)
+- changed the back button to match the design theme (#66)
+
+## [0.4] - 2023-6-6
+
 ### Added
-- added CHANGELOG.md
-- Unit Tests Game Page
-- Unit Tests Results Page
+- added lucky points (Very Unclucky: 0-25, Unlucky: 25-50, Lucky: 50-75, Very Lucky: 75-100) (#68)
+- progress bar that go back and front (when click a card, the value of the progress bar will be the damage) (#54)
+- short-term fortune: lucky points ("How Your Luck Looks")
+- long-term fortune: card fortunes ("Your Overall Fortune")
 
 ### Fixed
-- Linting errors in JS files
+- fixed css hover effect on Camera Page (#61)
+- fixed no image found when clicking next without any selector on Camera Page (#61)
+
+### Changed
+- Camera Page UI Design (#61)
+- Camera Page now scalable to moble (#61)
+- Update Unit Tests Results Page (#68)
+- changed attack damage alert message to a modal box (#54)
+- results page always displays 4 cards (#62)
+- new card descriptions
+
+### Removed
+- removed "Card Position Represetation" (#62)
+
+## [0.3] - 2023-5-30
+
+### Added
+- added CHANGELOG.md
+- Unit Tests Game Page (#29)
+- Unit Tests Results Page (#30)
+- oscillating bar that corresponds to attack damage
+- can now select 2-4 cards depending on how much cards it takes to defeat the opponent
+
+### Fixed
+- Linting errors in JS files (#48)
+
+### Changed
+- increased the margins for results card descriptions (#51)
+
+### Removed
+- removed "Card Name" (#51)
 
 ## [0.2] - 2023-05-28
 
