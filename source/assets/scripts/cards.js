@@ -14,7 +14,7 @@ const tarotMap = tarotConfig.tarot.reduce((map, card) => {
     keywords: card.keywords,
   };
   return map;
-}, {});
+});
 
 // Get all tarot cards, display them in slider
 document.addEventListener("DOMContentLoaded", function () {
