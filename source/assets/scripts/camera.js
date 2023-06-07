@@ -28,13 +28,16 @@ var clicked = [];
  * - Update clicked stack
  * - Update borders
  * - Set LocalStorage
- * @param {} event 
+ * @param {} event
  */
 function dragonSelected(event) {
   clicked.pop();
   clicked.push("dragon");
   window.localStorage.removeItem("userImage");
-  window.localStorage.setItem("userImage", "./assets/images/characters/dragon.png");
+  window.localStorage.setItem(
+    "userImage",
+    "./assets/images/characters/dragon.png"
+  );
   borderHandler();
 }
 
@@ -44,13 +47,16 @@ function dragonSelected(event) {
  * - Update clicked stack
  * - Update borders
  * - Set LocalStorage
- * @param {} event 
+ * @param {} event
  */
 function pandaSelected(event) {
   clicked.pop();
   clicked.push("panda");
   window.localStorage.removeItem("userImage");
-  window.localStorage.setItem("userImage", "./assets/images/characters/panda.png");
+  window.localStorage.setItem(
+    "userImage",
+    "./assets/images/characters/panda.png"
+  );
   borderHandler();
 }
 
@@ -61,7 +67,7 @@ function pandaSelected(event) {
  * - Update borders
  * - Set LocalStorage
  * - Load Camera canvas
- * @param {} event 
+ * @param {} event
  */
 function takePicture(event) {
   clicked.pop();
@@ -80,26 +86,27 @@ function borderHandler() {
   let char1 = document.getElementById("char-1");
   let char2 = document.getElementById("char-2");
   let char3 = document.getElementById("char-3");
-  let borderStyle = "2px solid white"
-  let style = document.createElement('style');
-  let hover = "#take-photo-btn:hover{background-color: #fff1; color: #fff; border-color: $fff; scale: 1.05;}";
-  let active = "#take-photo-btn:active{scale: 0.98;}"
+  let borderStyle = "2px solid white";
+  let style = document.createElement("style");
+  let hover =
+    "#take-photo-btn:hover{background-color: #fff1; color: #fff; border-color: $fff; scale: 1.05;}";
+  let active = "#take-photo-btn:active{scale: 0.98;}";
   style.appendChild(document.createTextNode(hover));
   style.appendChild(document.createTextNode(active));
 
-  if(clicked[0] === "dragon") {
+  if (clicked[0] === "dragon") {
     char1.style.border = borderStyle;
     char2.style.border = "";
     char3.style.border = "";
     if (takePhotoBtn.children.length != 0) {
-      takePhotoBtn.removeChild(takePhotoBtn.children[0])
+      takePhotoBtn.removeChild(takePhotoBtn.children[0]);
     }
-  } else if(clicked[0] === "panda") {
+  } else if (clicked[0] === "panda") {
     char1.style.border = "";
     char2.style.border = borderStyle;
     char3.style.border = "";
     if (takePhotoBtn.children.length != 0) {
-      takePhotoBtn.removeChild(takePhotoBtn.children[0])
+      takePhotoBtn.removeChild(takePhotoBtn.children[0]);
     }
   } else {
     char1.style.border = "";
@@ -119,7 +126,7 @@ async function loadCamera() {
     video: true,
     audio: false,
   });
-  if (stream) video.srcObject = stream; 
+  if (stream) video.srcObject = stream;
 }
 
 /**
@@ -127,7 +134,7 @@ async function loadCamera() {
  */
 cameraBtn.onclick = function () {
   if (clicked.pop() === "camera") {
-    cameraImg.hidden = true; 
+    cameraImg.hidden = true;
     photoDisplay
       .getContext("2d")
       .drawImage(video, 0, 0, photoDisplay.width, photoDisplay.height);

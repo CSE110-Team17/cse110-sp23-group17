@@ -17,7 +17,7 @@ const tarotMap = tarotConfig.tarot.reduce((map, card) => {
 }, {});
 
 // Get all tarot cards, display them in slider
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   for (const tarotCardName in tarotMap) {
     console.log(tarotCardName);
 
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const cardName = document.createElement("h2");
     cardName.className = "name";
     cardName.textContent = tarotCardName;
-    
+
     const cardDescription = document.createElement("p");
     cardDescription.className = "description";
     cardDescription.textContent = card.keywords.join(", ");
@@ -67,9 +67,9 @@ var swiper = new Swiper(".slide-content", {
   slidesPerView: 3,
   spaceBetween: 25,
   loop: true,
-  centerSlide: 'true',
-  fade: 'true',
-  grabCursor: 'true',
+  centerSlide: "true",
+  fade: "true",
+  grabCursor: "true",
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
@@ -80,15 +80,15 @@ var swiper = new Swiper(".slide-content", {
     prevEl: ".swiper-button-prev",
   },
 
-  breakpoints:{
-      0: {
-          slidesPerView: 1,
-      },
-      520: {
-          slidesPerView: 2,
-      },
-      950: {
-          slidesPerView: 3,
-      },
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+    },
+    520: {
+      slidesPerView: 2,
+    },
+    950: {
+      slidesPerView: 3,
+    },
   },
 });
