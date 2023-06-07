@@ -1,408 +1,263 @@
-<!-- 
-Notes for the backend team:
-
-1. When reducing the HP of the opponent, you should change
-  - #opponent_health_text
-  - #opponnent_hp
-
-2. The structure of a card is:
-<div class="card" id="card-${CARD NUMBER}">
-  <img src="./assets/images/cardback.png" alt="" class="card-img" />
-    <div class="card-inner">
-      <div class="card-front">
-        <div class="fortune-title"></div>
-        <div class="fortune-main"></div>
-      </div>
-  </div>
-</div>
-
-Please let Mick or James know if you have questions or suggestions
- -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
 
-    <link rel="stylesheet" href="./assets/styles/game.css" />
-    <script src="./assets/scripts/game.js" type="module"></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 
-  <body>
-    <!-- modal -->
-    <div class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <p class="modal-text">Some text in the Modal..</p>
+  <link rel="stylesheet" href="./assets/styles/game.css" />
+  <script src="./assets/scripts/game.js" type="module"></script>
+</head>
+
+<body>
+  <div class="grid">
+    <div class="oracle">
+      <div class="message">
+        Draw 4 cards to discover your fortune... choose wisely!
+      </div>
+      <img src="/source/assets/images/oracle.png" alt="The Oracle" />
+    </div>
+    <!-- board div contains all the cards -->
+    <div class="board">
+      <!-- card 1 -->
+      <div class="card" id="card-1">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 2 -->
+      <div class="card" id="card-2">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 3 -->
+      <div class="card" id="card-3">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 4 -->
+      <div class="card" id="card-4">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 5 -->
+      <div class="card" id="card-5">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 6 -->
+      <div class="card" id="card-6">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 7 -->
+      <div class="card" id="card-7">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 8 -->
+      <div class="card" id="card-8">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 9 -->
+      <div class="card" id="card-9">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 10 -->
+      <div class="card" id="card-10">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 11 -->
+      <div class="card" id="card-11">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 12 -->
+      <div class="card" id="card-12">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 13 -->
+      <div class="card" id="card-13">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 14 -->
+      <div class="card" id="card-14">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 15 -->
+      <div class="card" id="card-15">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 16 -->
+      <div class="card" id="card-16">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 17 -->
+      <div class="card" id="card-17">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 18 -->
+      <div class="card" id="card-18">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 19 -->
+      <div class="card" id="card-19">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 20 -->
+      <div class="card" id="card-20">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 21 -->
+      <div class="card" id="card-21">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
+      </div>
+      <!-- card 22 -->
+      <div class="card" id="card-22">
+        <img src="./assets/images/cardback.png" alt="" class="card-img" data-status="unclicked" />
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="fortune-title"></div>
+            <div class="fortune-main"></div>
+          </div>
+        </div>
       </div>
     </div>
+    <!-- end of board div -->
 
-    <div class="grid">
-      <div class="opponent">
-        <p id="health-label"></p>
-        <div class="health-bar">
+    <div class="player">
+      <img src="/source/assets/images/green.jpeg" alt="player image" />
+      <div class="bars">
+        <div class="luck-bar">
           <div class="fill"></div>
+          <div class="label"></div>
         </div>
-        <div id="oscillating-bar">
+        <div class="oscillating-bar">
           <div class="fill"></div>
-          <div class="label">Flip a card to determine your lucky point!</div>
-        </div>
-        <img src="./assets/images/green.jpeg" alt="Opponent Image" />
-        <h2>Opponent</h2>
-      </div>
-      <!-- board div contains all the cards -->
-      <div class="board">
-        <!-- card 1 -->
-        <div class="card" id="card-1">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 2 -->
-        <div class="card" id="card-2">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 3 -->
-        <div class="card" id="card-3">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 4 -->
-        <div class="card" id="card-4">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 5 -->
-        <div class="card" id="card-5">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 6 -->
-        <div class="card" id="card-6">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 7 -->
-        <div class="card" id="card-7">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 8 -->
-        <div class="card" id="card-8">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 9 -->
-        <div class="card" id="card-9">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 10 -->
-        <div class="card" id="card-10">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 11 -->
-        <div class="card" id="card-11">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 12 -->
-        <div class="card" id="card-12">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 13 -->
-        <div class="card" id="card-13">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 14 -->
-        <div class="card" id="card-14">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 15 -->
-        <div class="card" id="card-15">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 16 -->
-        <div class="card" id="card-16">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 17 -->
-        <div class="card" id="card-17">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 18 -->
-        <div class="card" id="card-18">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 19 -->
-        <div class="card" id="card-19">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 20 -->
-        <div class="card" id="card-20">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 21 -->
-        <div class="card" id="card-21">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
-        </div>
-        <!-- card 22 -->
-        <div class="card" id="card-22">
-          <img
-            src="./assets/images/cardback.png"
-            alt=""
-            class="card-img"
-            data-status="unclicked"
-          />
-          <div class="card-inner">
-            <div class="card-front">
-              <div class="fortune-title"></div>
-              <div class="fortune-main"></div>
-            </div>
-          </div>
+          <div class="label">Flip a card to determine your luck points!</div>
         </div>
       </div>
-      <!-- end of board div -->
-
-      <div class="player">
-        <p>HP: 100</p>
-        <progress id="player_hp" value="100" max="100"></progress>
-          <div class="profile-pic">
-            <label class="-label" for="file">
-              <span class="glyphicon glyphicon-camera"></span>
-              <span>Change Image</span>
-            </label>
-            <input id="file" type="file" accept=".png, .jpg, .jpeg" onchange="loadFile(event)" />
-            <img src="./assets/images/green.jpeg" id="output" width="200" alt="Opponent Image" />
-          </div>
-        </div>
-        <h2>Player</h2>
-      </div>
-      <!-- <div>4</div>
-     <div>5</div> -->
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
