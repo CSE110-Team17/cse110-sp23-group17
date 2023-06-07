@@ -175,25 +175,31 @@ body {
   align-items: center;
   position: relative;
   transition: all 0.3s ease;
+
 }
 .profile-pic input {
   display: none;
 }
 .profile-pic img {
-  position: absolute;
+  position: relative;
+  max-height: 76px;
+  min-height: 76px;
+  right: 50%;
+  transform: translateX(50%);
   object-fit: fill;
-  height: 75px;
-  width: 75px;
   box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
   border-radius: 100px;
   z-index: 0;
 }
 .profile-pic .-label {
-  cursor: pointer;
+  position: absolute;
+  height: 100%;
   width: 100%;
+  cursor: pointer;
   text-align: center;
 }
 .profile-pic:hover .-label {
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -205,18 +211,8 @@ body {
   margin-bottom: 0;
 }
 .profile-pic span {
-  display: inline-flex;
+  position: relative;
+  display: flex;
   padding: 0.2em;
   height: 2em;
-}
-
-body {
-  height: 100vh;
-  background-color: #191815;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-body a:hover {
-  text-decoration: none;
 }

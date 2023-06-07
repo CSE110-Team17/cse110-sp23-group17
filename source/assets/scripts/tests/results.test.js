@@ -77,14 +77,6 @@ describe("handleWindowSizeChange", function () {
     // Store the original window object
     originalWindow = global.window;
 
-    // Create a mock window object
-    global.window = {
-      innerWidth: 1024,
-    };
-
-    // Attach the addEventListener method to the mock window object
-    global.window.addEventListener = jest.fn();
-
     // Create a container element to hold the buttons
     const container = document.createElement("div");
     container.innerHTML = `
@@ -98,25 +90,22 @@ describe("handleWindowSizeChange", function () {
     nextButton = document.getElementById("next-button");
   });
 
-  afterAll(function () {
-    global.window = originalWindow;
-  });
-
   it("should update the screenWidth variable when window size changes to 800", function () {
-    const newScreenWidth = 800;
-    global.window.innerWidth = newScreenWidth;
+    results.screenWidth = 1024;
+    global.innerWidth = 800;
     results.handleWindowSizeChange();
 
     // Assert that the screenWidth variable is updated correctly
-    expect(results.screenWidth).toBe(newScreenWidth);
+    expect(results.screenWidth).toBe(800);
   });
 
   it("should not update the screenWidth variable when window size doesn't change", function () {
-    const initialScreenWidth = results.screenWidth;
+    results.screenWidth = 1024;
+    global.innerWidth = 1024;
     results.handleWindowSizeChange();
 
     // Assert that the screenWidth variable remains the same
-    expect(results.screenWidth).toBe(initialScreenWidth);
+    expect(results.screenWidth).toBe(1024);
   });
 });
 
@@ -158,11 +147,7 @@ describe("updateMobileCard", function () {
 
   it("mobileCard should be updated with contents at idx 0 of chosenCards", function () {
     idx = 0;
-    // console.log(cardContainers);
-    // console.log("mobileCard", mobileCard);
-    console.log(cardImg.src);
-    // console.log(cardDesc);
-    // console.log(tarotMap["card1"].img);
+
     const [card, imgSrc, desc] = results.updateMobileCard(
       chosenCards,
       idx,
@@ -177,11 +162,7 @@ describe("updateMobileCard", function () {
 
   it("mobileCard should be updated with contents at idx 1 of chosenCards", function () {
     idx = 1;
-    // console.log(cardContainers);
-    // console.log("mobileCard", mobileCard);
-    console.log(cardImg.src);
-    // console.log(cardDesc);
-    // console.log(tarotMap["card1"].img);
+
     const [card, imgSrc, desc] = results.updateMobileCard(
       chosenCards,
       idx,
@@ -196,11 +177,7 @@ describe("updateMobileCard", function () {
 
   it("mobileCard should be updated with contents at idx 2 of chosenCards", function () {
     idx = 2;
-    // console.log(cardContainers);
-    // console.log("mobileCard", mobileCard);
-    console.log(cardImg.src);
-    // console.log(cardDesc);
-    // console.log(tarotMap["card1"].img);
+
     const [card, imgSrc, desc] = results.updateMobileCard(
       chosenCards,
       idx,
@@ -215,11 +192,7 @@ describe("updateMobileCard", function () {
 
   it("mobileCard should be updated with contents at idx 3 of chosenCards", function () {
     idx = 3;
-    // console.log(cardContainers);
-    // console.log("mobileCard", mobileCard);
-    console.log(cardImg.src);
-    // console.log(cardDesc);
-    // console.log(tarotMap["card1"].img);
+
     const [card, imgSrc, desc] = results.updateMobileCard(
       chosenCards,
       idx,

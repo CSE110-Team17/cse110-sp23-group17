@@ -26,52 +26,159 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>let startCamera = document.querySelector("#startCamera");
-let cameraBtn = document.querySelector("#takePhotoBtn");
-let video = document.querySelector("#videoDisplay");
+            <pre class="prettyprint source linenums"><code>// initialize document content
+let startCamera = document.querySelector("#char-3");
+let cameraImg = document.querySelector("#camera-img");
+let cameraBtn = document.querySelector("#take-photo-btn");
+let video = document.querySelector("#video-display");
 let canvas = document.querySelector(".cameraContainer");
+let submitBtn = document.querySelector("#submit-btn");
 
 //clear localStorage everytime come back or refresh
 window.localStorage.removeItem("userImage");
 
+var character = document.getElementsByClassName("character");
+for (let i = 0; i &lt; character.length; i++) {
+  if (i == 0) {
+    character[i].addEventListener("click", dragonSelected);
+  } else if (i == 1) {
+    character[i].addEventListener("click", pandaSelected);
+  } else {
+    character[i].addEventListener("click", takePicture);
+  }
+}
+
+var clicked = [];
+
 /**
- * Handler for user camera initialization
- * Will ask if user allow to turn on camera or not
+ * Handler function for when dragon character is selected.
+ * Functionalities:
+ * - Update clicked stack
+ * - Update borders
+ * - Set LocalStorage
+ * @param {} event 
  */
-cameraBtn.style.cursor = "pointer";
-startCamera.onclick = async () => {
+function dragonSelected(event) {
+  clicked.pop();
+  clicked.push("dragon");
+  window.localStorage.removeItem("userImage");
+  window.localStorage.setItem("userImage", "./assets/images/characters/dragon.png");
+  borderHandler();
+}
+
+/**
+ * Handler function for when pand character is selected.
+ * Functionalities:
+ * - Update clicked stack
+ * - Update borders
+ * - Set LocalStorage
+ * @param {} event 
+ */
+function pandaSelected(event) {
+  clicked.pop();
+  clicked.push("panda");
+  window.localStorage.removeItem("userImage");
+  window.localStorage.setItem("userImage", "./assets/images/characters/panda.png");
+  borderHandler();
+}
+
+/**
+ * Handler function for when "Take your own picture" is selected.
+ * Functionalities:
+ * - Update clicked stack
+ * - Update borders
+ * - Set LocalStorage
+ * - Load Camera canvas
+ * @param {} event 
+ */
+function takePicture(event) {
+  clicked.pop();
+  clicked.push("camera");
+  borderHandler();
+  loadCamera();
+}
+
+/**
+ * Handles CSS elements for different selections
+ * - Dynamically creates and deletes borders
+ * - Dynamically make the take photo btn active and inactive
+ */
+function borderHandler() {
+  let takePhotoBtn = document.getElementById("take-photo-btn");
+  let char1 = document.getElementById("char-1");
+  let char2 = document.getElementById("char-2");
+  let char3 = document.getElementById("char-3");
+  let borderStyle = "2px solid white"
+  let style = document.createElement('style');
+  let hover = "#take-photo-btn:hover{background-color: #fff1; color: #fff; border-color: $fff; scale: 1.05;}";
+  let active = "#take-photo-btn:active{scale: 0.98;}"
+  style.appendChild(document.createTextNode(hover));
+  style.appendChild(document.createTextNode(active));
+
+  if(clicked[0] === "dragon") {
+    char1.style.border = borderStyle;
+    char2.style.border = "";
+    char3.style.border = "";
+    if (takePhotoBtn.children.length != 0) {
+      takePhotoBtn.removeChild(takePhotoBtn.children[0])
+    }
+  } else if(clicked[0] === "panda") {
+    char1.style.border = "";
+    char2.style.border = borderStyle;
+    char3.style.border = "";
+    if (takePhotoBtn.children.length != 0) {
+      takePhotoBtn.removeChild(takePhotoBtn.children[0])
+    }
+  } else {
+    char1.style.border = "";
+    char2.style.border = "";
+    char3.style.border = borderStyle;
+    if (takePhotoBtn.children.length == 0) {
+      takePhotoBtn.appendChild(style);
+    }
+  }
+}
+
+/**
+ * Opens a live video canvas
+ */
+async function loadCamera() {
   let stream = await navigator.mediaDevices.getUserMedia({
     video: true,
     audio: false,
   });
-  if (stream) video.srcObject = stream;
-};
+  if (stream) video.srcObject = stream; 
+}
 
 /**
  * Handler for photo taking and display image
  */
 cameraBtn.onclick = function () {
-  photoDisplay
-    .getContext("2d")
-    .drawImage(video, 0, 0, photoDisplay.width, photoDisplay.height);
-  let image_data_url = photoDisplay.toDataURL("image/jpeg");
-  window.localStorage.setItem("userImage", image_data_url);
+  if (clicked.pop() === "camera") {
+    cameraImg.hidden = true; 
+    photoDisplay
+      .getContext("2d")
+      .drawImage(video, 0, 0, photoDisplay.width, photoDisplay.height);
+    let image_data_url = photoDisplay.toDataURL("image/jpeg");
+    window.localStorage.setItem("userImage", image_data_url);
+  }
 };
 
-const submitFile = document.querySelector("#submitFile");
+// Temporary suspension of img upload
+// const submitFile = document.querySelector("#submitFile");
 
-/**
- * Handler for user file submission
- */
-submitFile.addEventListener("change", () => {
-  const reader = new FileReader();
-  reader.readAsDataURL(submitFile.files[0]);
-  reader.addEventListener("load", () => {
-    const url = reader.result;
-    console.log(url);
-    window.localStorage.setItem("userImage", url);
-  });
-});
+// /**
+//  * Handler for user file submission
+//  */
+// submitFile.addEventListener("change", () => {
+//   const reader = new FileReader();
+//   reader.readAsDataURL(submitFile.files[0]);
+//   reader.addEventListener("load", () => {
+//     const url = reader.result;
+//     console.log(url);
+//     window.localStorage.setItem("userImage", url);
+//   });
+// });
 
 /**
  * Switch href to game page
@@ -89,13 +196,13 @@ submitBtn.onclick = function () {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#getTarotCardName">getTarotCardName</a></li><li><a href="global.html#handleWindowSizeChange">handleWindowSizeChange</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#play">play</a></li><li><a href="global.html#tarotMap">tarotMap</a></li><li><a href="global.html#updateButtonVisibility">updateButtonVisibility</a></li><li><a href="global.html#updateMobileCard">updateMobileCard</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#borderHandler">borderHandler</a></li><li><a href="global.html#dragonSelected">dragonSelected</a></li><li><a href="global.html#getTarotCardName">getTarotCardName</a></li><li><a href="global.html#handleWindowSizeChange">handleWindowSizeChange</a></li><li><a href="global.html#loadCamera">loadCamera</a></li><li><a href="global.html#pandaSelected">pandaSelected</a></li><li><a href="global.html#takePicture">takePicture</a></li><li><a href="global.html#tarotMap">tarotMap</a></li><li><a href="global.html#updateButtonVisibility">updateButtonVisibility</a></li><li><a href="global.html#updateMobileCard">updateMobileCard</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue May 30 2023 00:05:13 GMT-0700 (Pacific Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Jun 05 2023 14:35:25 GMT-0700 (Pacific Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
