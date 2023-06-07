@@ -57,11 +57,62 @@ body {
   row-gap: 4vh;
 }
 
+/*animations for hovering on cards*/
+@keyframes card-animation {
+  
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes flame-animation {
+  0% {
+    transform: scaleY(1.2);
+  }
+  50% {
+    transform: scaleY(1.5);
+  }
+  100% {
+    transform: scaleY(1.2);
+  }
+}
+
 /* each card has width 10% of the window width */
 .board > .card {
   width: 9%;
   height: auto;
   text-align: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.board > .card::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  background-image: radial-gradient(circle, #e5ff00 30%, transparent 70%);
+  transform-origin: center bottom;
+  opacity: 0;
+  animation: flame-animation 0.5s; 
+}
+
+.board > .card:hover {
+  animation: card-animation 0.5s infinite;
+  z-index: 1;
+}
+
+.board > .card:hover::before {
+  opacity: 1;
+  z-index: -1;
 }
 /* card width is 100% of the card width */
 .card-img {
