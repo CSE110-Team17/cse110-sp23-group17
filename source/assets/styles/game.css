@@ -59,7 +59,6 @@ body {
 
 /*animations for hovering on cards*/
 @keyframes card-animation {
-  
   0% {
     transform: scale(1.2);
   }
@@ -93,7 +92,7 @@ body {
 }
 
 .board > .card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -20px;
   left: -20px;
@@ -102,7 +101,8 @@ body {
   background-image: radial-gradient(circle, #e5ff00 30%, transparent 70%);
   transform-origin: center bottom;
   opacity: 0;
-  animation: flame-animation 0.5s; 
+  animation: flame-animation 0.5s;
+  pointer-events: none;
 }
 
 .board > .card:hover {
