@@ -16,6 +16,9 @@ const tarotMap = tarotConfig.tarot.reduce((map, card) => {
   return map;
 }, {});
 
+// Get luck from game page
+const luck = localStorage.getItem("luck");
+
 // Pull selected cards from gameplay
 let chosenCards = [];
 const storedCards = localStorage.getItem("chosenCards");

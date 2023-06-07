@@ -110,6 +110,7 @@ function init() {
         say("Get ready to see your fortune!");
         setTimeout(() => {
           localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
+          localStorage.setItem("luck", luck);
           window.location.href = "./results.html";
         }, 2000);
       }
