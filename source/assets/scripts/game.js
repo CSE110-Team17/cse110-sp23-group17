@@ -76,9 +76,12 @@ function init() {
     tarotConfig.tarot.forEach((element) => {
       if (element.name === cardName) {
         card.src = element.image;
-        if (isDown) {
-          card.style.transform = "rotate(180deg)";
-        }
+        setTimeout(() => {
+          if (isDown) {
+            card.style.transform = "rotate(180deg)";
+          }
+        }, 1);
+
         card.dataset.status = "clicked";
       }
     });
