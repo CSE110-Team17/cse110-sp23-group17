@@ -85,6 +85,46 @@ select {
   border: none;
 }
 
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cards {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+
+.cards-button {
+  font-size: 1.25rem;
+  color: #fff9;
+  background-color: #fff0;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 900;
+  text-decoration: none;
+  border: 3px solid #fff3;
+}
+
+.cards-button:hover {
+  background-color: #fff1;
+  color: #fff;
+  border-color: #fff;
+  scale: 1.05;
+}
+
+.cards-button:active {
+  scale: 0.98;
+}
+
 @media (min-width: 640px) {
   .buttons {
     flex-direction: row;
