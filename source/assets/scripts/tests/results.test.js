@@ -77,13 +77,6 @@ describe("handleWindowSizeChange", function () {
     // Store the original window object
     originalWindow = global.window;
 
-    // Create a mock window object
-    // global.window = Object.create(window);
-    // global.window.innerWidth = 1024;
-
-    // // Attach the addEventListener method to the mock window object
-    // global.window.addEventListener = jest.fn();
-
     // Create a container element to hold the buttons
     const container = document.createElement("div");
     container.innerHTML = `
@@ -96,10 +89,6 @@ describe("handleWindowSizeChange", function () {
     prevButton = document.getElementById("prev-button");
     nextButton = document.getElementById("next-button");
   });
-
-  // afterAll(function () {
-  //   // global.window = originalWindow;
-  // });
 
   it("should update the screenWidth variable when window size changes to 800", function () {
     results.screenWidth = 1024;
