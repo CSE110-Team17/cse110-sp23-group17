@@ -78,11 +78,11 @@ describe("handleWindowSizeChange", function () {
     originalWindow = global.window;
 
     // Create a mock window object
-    global.window = Object.create(window);
-    global.window.innerWidth = 1024;
+    // global.window = Object.create(window);
+    // global.window.innerWidth = 1024;
 
-    // Attach the addEventListener method to the mock window object
-    global.window.addEventListener = jest.fn();
+    // // Attach the addEventListener method to the mock window object
+    // global.window.addEventListener = jest.fn();
 
     // Create a container element to hold the buttons
     const container = document.createElement("div");
@@ -97,25 +97,26 @@ describe("handleWindowSizeChange", function () {
     nextButton = document.getElementById("next-button");
   });
 
-  afterAll(function () {
-    global.window = originalWindow;
-  });
+  // afterAll(function () {
+  //   // global.window = originalWindow;
+  // });
 
   it("should update the screenWidth variable when window size changes to 800", function () {
-    const newScreenWidth = 800;
-    global.window.innerWidth = newScreenWidth;
+    results.screenWidth = 1024;
+    global.innerWidth = 800;
     results.handleWindowSizeChange();
 
     // Assert that the screenWidth variable is updated correctly
-    expect(results.screenWidth).toBe(newScreenWidth);
+    expect(results.screenWidth).toBe(800);
   });
 
   it("should not update the screenWidth variable when window size doesn't change", function () {
-    const initialScreenWidth = results.screenWidth;
+    results.screenWidth = 1024;
+    global.innerWidth = 1024;
     results.handleWindowSizeChange();
 
     // Assert that the screenWidth variable remains the same
-    expect(results.screenWidth).toBe(initialScreenWidth);
+    expect(results.screenWidth).toBe(1024);
   });
 });
 
