@@ -34,8 +34,6 @@ function init() {
    */
   function onCardClicked(event) {
     const card = event.target;
-    console.log(card);
-    console.log(card.dataset);
 
     if (
       card.dataset.status === "clicked" ||
@@ -67,13 +65,11 @@ function init() {
       cardName = getTarotCardName(tarotConfig)[randNameIdx];
     }
     chosenCards.push(cardName);
-    console.log(chosenCards);
 
     // Change the image according to the card got chosen
     tarotConfig.tarot.forEach((element) => {
       if (element.name === cardName) {
         card.src = element.image;
-        console.log(isDown);
         if (isDown) {
           card.style.transform = "rotate(180deg)";
         }

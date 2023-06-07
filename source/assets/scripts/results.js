@@ -14,7 +14,7 @@ const tarotMap = tarotConfig.tarot.reduce((map, card) => {
   return map;
 }, {});
 
-// Get luck from game page
+// Pull luck points from gameplay
 const luck = localStorage.getItem("luck");
 
 // Pull selected cards from gameplay
@@ -49,6 +49,26 @@ for (let i = 0; i < chosenCards.length; i++) {
   cardDesc.textContent = telling;
   fortuneTellings.push(telling);
 }
+
+window.addEventListener("DOMContentLoaded", function (event) {
+  //update short term description
+  const shortTermDescriptions = [
+    "You are very unlucky today!! You should double it and pass it to the next person.",
+    "So unlucky!! I would watch your back today.",
+    "You are lucky today! Go buy yourself a lottery ticket.",
+    "Wow!! You're very lucky today! Great fortune is coming your way!",
+  ];
+  let shortDesc = document.getElementById("description-0");
+  if (luck < 25) {
+    shortDesc.textContent = shortTermDescriptions[0];
+  } else if (25 <= luck && luck < 50) {
+    shortDesc.textContent = shortTermDescriptions[1];
+  } else if (50 <= luck && luck < 75) {
+    shortDesc.textContent = shortTermDescriptions[2];
+  } else {
+    shortDesc.textContent = shortTermDescriptions[3];
+  }
+});
 
 // Update card for mobile
 let idx = 0;
