@@ -61,7 +61,7 @@ export default {
       },
     },
     {
-      name: "High Priestess",
+      name: "The High Priestess",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_02_High_Priestess.jpg",
       fortune_telling: [
@@ -90,7 +90,7 @@ export default {
       },
     },
     {
-      name: "Empress",
+      name: "The Empress",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_03_Empress.jpg",
       fortune_telling: [
@@ -121,7 +121,7 @@ export default {
       },
     },
     {
-      name: "Emperor",
+      name: "The Emperor",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_04_Emperor.jpg",
       fortune_telling: [
@@ -149,7 +149,7 @@ export default {
       },
     },
     {
-      name: "Hierophant",
+      name: "The Hierophant",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_05_Hierophant.jpg",
       fortune_telling: [
@@ -206,7 +206,7 @@ export default {
       },
     },
     {
-      name: "Chariot",
+      name: "The Chariot",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_07_Chariot.jpg",
       fortune_telling: [
@@ -264,7 +264,7 @@ export default {
       },
     },
     {
-      name: "Hermit",
+      name: "The Hermit",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_09_Hermit.jpg",
       fortune_telling: [
@@ -345,7 +345,7 @@ export default {
       },
     },
     {
-      name: "Hanged Man",
+      name: "The Hanged Man",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_12_Hanged_Man.jpg",
       fortune_telling: [
@@ -440,7 +440,7 @@ export default {
       },
     },
     {
-      name: "Devil",
+      name: "The Devil",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_15_Devil.jpg",
       fortune_telling: [
@@ -468,7 +468,7 @@ export default {
       },
     },
     {
-      name: "Tower",
+      name: "The Tower",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_16_Tower.jpg",
       fortune_telling: [
@@ -503,7 +503,7 @@ export default {
       },
     },
     {
-      name: "Star",
+      name: "The Star",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_17_Star.jpg",
       fortune_telling: [
@@ -539,7 +539,7 @@ export default {
       },
     },
     {
-      name: "Moon",
+      name: "The Moon",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_18_Moon.jpg",
       fortune_telling: [
@@ -566,7 +566,7 @@ export default {
       },
     },
     {
-      name: "Sun",
+      name: "The Sun",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_19_Sun.jpg",
       fortune_telling: [
@@ -626,7 +626,7 @@ export default {
       },
     },
     {
-      name: "World",
+      name: "The World",
       suite: "major",
       image: "./assets/images/deck/RWS_Tarot_21_World.jpg",
       fortune_telling: [
