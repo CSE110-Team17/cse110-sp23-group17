@@ -152,6 +152,12 @@ function init() {
   }
 }
 
+//Function to load profile image
+window.loadFile = function (event) {
+  var image = document.getElementById("output");
+  image.src = URL.createObjectURL(event.target.files[0]);
+};
+
 /**
  * Create an array of 22 and parse all the card name from json file
  * @param {Array<*>} tarotConfig - an array of the tarot cards from json
@@ -164,3 +170,4 @@ export function getTarotCardName(tarotConfig) {
   });
   return tarotCardNames;
 }
+

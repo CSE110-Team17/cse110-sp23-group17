@@ -231,6 +231,8 @@ body {
   display: none;
 }
 .profile-pic img {
+  width: 100%;
+  aspect-ratio: 1/1;
   position: relative;
   max-height: 76px;
   min-height: 76px;

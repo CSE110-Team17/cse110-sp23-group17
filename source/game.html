@@ -272,7 +272,14 @@
     <!-- end of board div -->
 
     <div class="player">
-      <img src="./assets/images/characters/dragon.png" alt="player image" />
+      <div class="profile-pic">
+        <label class="-label" for="file">
+          <!-- <span class="glyphicon glyphicon-camera"></span> -->
+          <span>Change Image</span>
+        </label>
+        <input id="file" type="file" accept=".png, .jpg, .jpeg" onchange="loadFile(event)" />
+        <img src="./assets/images/characters/dragon.png" id="output" width="200" alt="Player Image" />
+      </div>
       <div class="bars">
         <div class="luck-bar">
           <div class="fill"></div>

@@ -101,6 +101,9 @@ function borderHandler() {
     if (takePhotoBtn.children.length != 0) {
       takePhotoBtn.removeChild(takePhotoBtn.children[0]);
     }
+    video.style.visibility = "hidden";
+    takePhotoBtn.style.visibility = "hidden";
+    submitBtn.style.visibility = "visible";
   } else if (clicked[0] === "panda") {
     char1.style.border = "";
     char2.style.border = borderStyle;
@@ -108,6 +111,9 @@ function borderHandler() {
     if (takePhotoBtn.children.length != 0) {
       takePhotoBtn.removeChild(takePhotoBtn.children[0]);
     }
+    video.style.visibility = "hidden";
+    takePhotoBtn.style.visibility = "hidden";
+    submitBtn.style.visibility = "visible";
   } else {
     char1.style.border = "";
     char2.style.border = "";
@@ -115,6 +121,9 @@ function borderHandler() {
     if (takePhotoBtn.children.length == 0) {
       takePhotoBtn.appendChild(style);
     }
+    video.style.visibility = "visible";
+    takePhotoBtn.style.visibility = "visible";
+    submitBtn.style.visibility = "visible";
   }
 }
 
