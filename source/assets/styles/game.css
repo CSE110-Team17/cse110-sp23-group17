@@ -284,6 +284,7 @@ p {
   border-radius: 3px;
 }
 .howto-modal {
+  z-index: 1000;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -363,4 +364,9 @@ ol {
 }
 .buttons > *:active {
   scale: 0.98;
+}
+@media (max-width: 62em) {
+  .buttons {
+    display: none;
+  }
 }
