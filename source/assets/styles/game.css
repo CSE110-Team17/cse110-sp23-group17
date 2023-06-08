@@ -8,7 +8,6 @@ body {
   padding: 0;
 }
 
-/******* oracle ********/
 .oracle {
   display: flex;
   align-items: center;
@@ -141,7 +140,6 @@ body {
 }
 
 /********** Player **************/
-
 .player {
   position: fixed;
   inset: auto 8px 8px 8px;
@@ -288,7 +286,6 @@ body {
 }
 
 /* instructions */
-
 .box {
   background-color: black;
   height: 100vh;
@@ -307,6 +304,7 @@ p {
   border-radius: 3px;
 }
 .howto-modal {
+  z-index: 1000;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -386,4 +384,9 @@ ol {
 }
 .buttons > *:active {
   scale: 0.98;
+}
+@media (max-width: 62em) {
+  .buttons {
+    display: none;
+  }
 }

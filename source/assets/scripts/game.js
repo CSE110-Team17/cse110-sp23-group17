@@ -97,6 +97,9 @@ function init() {
       }
     });
 
+
+    // Random generate a damage point and attack the oponent with that point.
+    // Change the hp bar of opponent accordingly.
     if (isDown) {
       say(
         "You got a reverse " +

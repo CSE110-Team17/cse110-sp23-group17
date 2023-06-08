@@ -14,15 +14,13 @@ const tarotMap = tarotConfig.tarot.reduce((map, card) => {
     keywords: card.keywords,
   };
   return map;
-});
+}, {});
+
 
 // Get all tarot cards, display them in slider
 document.addEventListener("DOMContentLoaded", function () {
   for (const tarotCardName in tarotMap) {
-    console.log(tarotCardName);
-
     const card = tarotMap[tarotCardName];
-
     const wrapper = document.getElementById("wrapper");
     const slide = document.createElement("div");
     slide.className = "card swiper-slide";
@@ -36,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cardImage = document.createElement("div");
     cardImage.className = "card-image";
     const img = document.createElement("img");
+    
     img.src = card.image;
     img.alt = "";
     img.className = "card-img";
