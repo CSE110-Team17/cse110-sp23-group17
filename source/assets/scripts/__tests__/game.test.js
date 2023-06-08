@@ -60,6 +60,4 @@ describe("E2E button/link testing", () => {
     );
     expect(status).toBe("unclicked");
   }, 5000);
-
-  it("");
 });
