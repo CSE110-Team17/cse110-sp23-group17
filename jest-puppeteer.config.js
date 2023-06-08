@@ -1,7 +1,9 @@
 module.exports = {
   launch: {
-    headless: false,
-    slowMo: 25,
+    headless: process.env.CI === "true",
+    ignoreDefaultArgs: ["--disable-extensions"],
+    args: ["--no-sandbox"],
+    executablePath: "chrome.exe"
   },
   testEnvironment: "jsdom",
   preset: "ts-jest",
