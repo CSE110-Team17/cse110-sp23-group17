@@ -81,24 +81,24 @@ body {
 .card-container::before {
   content: "";
   position: absolute;
-  top: -20px;
-  left: -20px;
-  width: calc(100% + 40px);
-  height: calc(100% + 40px);
-  background-image: radial-gradient(circle, #e5ff00 30%, transparent 50%);
-  transform-origin: center bottom;
-  opacity: 0;
+  inset: -180px;
+  background-image: radial-gradient(circle, #ff0 30%, transparent 50%);
+  transform-origin: center;
   pointer-events: none;
-  transition: all 200ms;
-}
 
-.card-container:not(.flipped):hover {
-  animation: 0.7s ease-in-out 0s infinite alternate card-animation;
-  z-index: 10;
+  opacity: 0;
+  scale: 0.4;
+  transition: all 400ms ease-in-out;
 }
 
 .card-container:not(.flipped):hover::before {
-  opacity: 1;
+  opacity: 0.4;
+  scale: 1;
+}
+
+.card-container:not(.flipped):hover {
+  /* animation: 0.7s ease-in-out 0s infinite alternate card-animation; */
+  z-index: 10;
 }
 
 .card {
@@ -108,15 +108,19 @@ body {
 }
 
 .card-container:hover .card {
-  transform: rotateX(40deg) rotateY(-40deg) translateZ(20px) scale(1.1);
+  transform: rotateX(40deg) rotateY(-40deg) translateZ(40px) scale(1.1);
 }
 
 .flipped.card-container .card {
   transform: rotateX(179deg);
 }
 
-.flipped.reversed.card-container .card {
+.flipped:not(.reversed).card-container .card {
   transform: rotateY(-179deg);
+}
+
+.card {
+  pointer-events: none;
 }
 
 .card .face {
@@ -199,7 +203,7 @@ body {
 
 /* Mobile Display */
 @media only screen and (max-width: 600px) {
-  .board > .card {
+  .board > .card-container {
     width: 15%;
     height: auto;
   }
