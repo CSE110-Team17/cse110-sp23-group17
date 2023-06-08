@@ -5,9 +5,10 @@
 /**
  * E2E testing of user interactions
  */
-
+const puppeteer = require("puppeteer");
 describe("E2E button/link testing", () => {
   beforeEach(async () => {
+    // await puppeteer.launch({ headless: false, slowMo: 25,});
     await page.goto(
       "https://cse110-team17.github.io/cse110-sp23-group17/source/game.html#"
     );
