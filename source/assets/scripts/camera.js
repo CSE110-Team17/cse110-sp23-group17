@@ -143,22 +143,6 @@ cameraBtn.onclick = function () {
   }
 };
 
-// Temporary suspension of img upload
-// const submitFile = document.querySelector("#submitFile");
-
-// /**
-//  * Handler for user file submission
-//  */
-// submitFile.addEventListener("change", () => {
-//   const reader = new FileReader();
-//   reader.readAsDataURL(submitFile.files[0]);
-//   reader.addEventListener("load", () => {
-//     const url = reader.result;
-//     console.log(url);
-//     window.localStorage.setItem("userImage", url);
-//   });
-// });
-
 /**
  * Switch href to game page
  */

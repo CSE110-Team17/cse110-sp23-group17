@@ -20,8 +20,6 @@ const tarotMap = tarotConfig.tarot.reduce((map, card) => {
 // Get all tarot cards, display them in slider
 document.addEventListener("DOMContentLoaded", function () {
   for (const tarotCardName in tarotMap) {
-    console.log(tarotCardName);
-
     const card = tarotMap[tarotCardName];
     const wrapper = document.getElementById("wrapper");
     const slide = document.createElement("div");

@@ -8,7 +8,6 @@ body {
   padding: 0;
 }
 
-/******* oracle ********/
 .oracle {
   display: flex;
   align-items: center;
@@ -121,7 +120,6 @@ body {
 }
 
 /********** Player **************/
-
 .player {
   position: fixed;
   inset: auto 8px 8px 8px;
@@ -268,7 +266,6 @@ body {
 }
 
 /* instructions */
-
 .box {
   background-color: black;
   height: 100vh;

@@ -88,10 +88,6 @@ function init() {
 
     // Random generate a damage point and attack the oponent with that point.
     // Change the hp bar of opponent accordingly.
-    //const randDmg = Math.floor(Math.random() * 10) + 34;
-    // if (isDown) {
-    //   randDmg = randDmg*(-1);
-    // }
     if (isDown) {
       say(
         "You got a reverse " +

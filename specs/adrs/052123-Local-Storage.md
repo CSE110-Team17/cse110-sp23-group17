@@ -1,5 +1,3 @@
-
-
 # Decision: Local Storage
 ## status: accepted
 ## date: 05-21-23 when the decision was last updated
