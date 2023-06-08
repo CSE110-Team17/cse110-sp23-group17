@@ -20,13 +20,9 @@ const tarotMap = tarotConfig.tarot.reduce((map, card) => {
 // Get all tarot cards, display them in slider
 document.addEventListener("DOMContentLoaded", function () {
   for (const tarotCardName in tarotMap) {
-    console.log("tarotCardName: " + tarotCardName);
+    console.log(tarotCardName);
 
     const card = tarotMap[tarotCardName];
-    console.log(card.suite);
-    console.log(card);
-
-
     const wrapper = document.getElementById("wrapper");
     const slide = document.createElement("div");
     slide.className = "card swiper-slide";
@@ -54,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const cardDescription = document.createElement("p");
     cardDescription.className = "description";
-    console.log(card.keywords[0]);
     cardDescription.textContent = card.keywords.join(", ");
 
     cardImage.appendChild(img);
