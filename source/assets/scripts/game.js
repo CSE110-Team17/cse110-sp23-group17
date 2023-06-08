@@ -54,9 +54,13 @@ function init() {
     const isDown = Math.random() < 0.5;
 
     if (isDown) {
-      setLuck(Math.max(0, luck - getBarWidth()));
+      setLuck(
+        Math.max(0, luck - getBarWidth(oscillatingBarFill, oscillatingBar))
+      );
     } else {
-      setLuck(Math.max(0, luck + getBarWidth()));
+      setLuck(
+        Math.max(0, luck + getBarWidth(oscillatingBarFill, oscillatingBar))
+      );
     }
 
     if (luck === 0 || luck === 100) {
@@ -97,7 +101,7 @@ function init() {
         "You got a reverse " +
           cardName +
           " card. You receive " +
-          getBarWidth() * -1 +
+          getBarWidth(oscillatingBarFill, oscillatingBar) * -1 +
           " luck points!"
       );
     } else {
@@ -105,7 +109,7 @@ function init() {
         "You got a " +
           cardName +
           " card. You receive " +
-          getBarWidth() +
+          getBarWidth(oscillatingBarFill, oscillatingBar) +
           " luck points!"
       );
     }
@@ -144,14 +148,12 @@ function init() {
     luckLabel.innerText = `${luck} luck points`;
     luckBarFill.style.width = `${luck}%`;
   }
-
-  function getBarWidth() {
-    const barWidth = oscillatingBarFill.getBoundingClientRect().width;
-    const parentWidth = oscillatingBar.getBoundingClientRect().width;
-    return Math.floor((25 * barWidth) / parentWidth);
-  }
 }
-
+export function getBarWidth(oscillatingBarFill, oscillatingBar) {
+  const barWidth = oscillatingBarFill.getBoundingClientRect().width;
+  const parentWidth = oscillatingBar.getBoundingClientRect().width;
+  return Math.floor((25 * barWidth) / parentWidth);
+}
 /**
  * Create an array of 22 and parse all the card name from json file
  * @param {Array<*>} tarotConfig - an array of the tarot cards from json

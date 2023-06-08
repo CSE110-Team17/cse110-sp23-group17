@@ -1,10 +1,13 @@
+/**
+ * @jest-environment jsdom
+ */
 const game = require("../game");
 const fs = require("fs");
 window.document.body.innerHTML = fs.readFileSync("source/game.html");
 require("../game");
 
 /**
- * Initialize fake data for game test
+ * Initialize mock tarot object
  */
 jest.mock("../../tarot.js", () => ({
   tarot: [{ name: "bob", suite: "major" }],
