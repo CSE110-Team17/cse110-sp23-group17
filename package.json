@@ -32,8 +32,5 @@
             "^.+\\.(ts|tsx)?$": "ts-jest",
             "^.+\\.(js|jsx)$": "babel-jest"
         }
-    },
-    "dependencies": {
-        "jest-environment-jsdom": "^29.5.0"
     }
 }
