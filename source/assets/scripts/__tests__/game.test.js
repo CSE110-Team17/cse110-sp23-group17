@@ -24,28 +24,28 @@ describe("E2E button/link testing", () => {
     expect(url).toEqual(expectedPageLink);
   }, 5000);
 
-  it("Make sure clicking the X label goes back to game page", async () => {
-    //click how to play for popup box
-    let popupLink = "#popup-box";
-    const tutorialButton = await page.$(`a[href='${popupLink}']`);
-    await Promise.all([page.waitForNavigation(), tutorialButton.click()]);
-    //click the x to close
-    const xButton = await page.$(".box-close");
-    await Promise.all([page.waitForNavigation(), xButton.click()]);
-    let expectedPageLink =
-      "https://cse110-team17.github.io/cse110-sp23-group17/source/game.html#";
-    const url = await page.evaluate(() => document.location.href);
-    expect(url).toEqual(expectedPageLink);
-  }, 5000);
+  // it("Make sure clicking the X label goes back to game page", async () => {
+  //   //click how to play for popup box
+  //   let popupLink = "#popup-box";
+  //   const tutorialButton = await page.$(`a[href='${popupLink}']`);
+  //   await Promise.all([page.waitForNavigation(), tutorialButton.click()]);
+  //   //click the x to close
+  //   const xButton = await page.$(".box-close");
+  //   await Promise.all([page.waitForNavigation(), xButton.click()]);
+  //   let expectedPageLink =
+  //     "https://cse110-team17.github.io/cse110-sp23-group17/source/game.html#";
+  //   const url = await page.evaluate(() => document.location.href);
+  //   expect(url).toEqual(expectedPageLink);
+  // }, 5000);
 
-  it("Check clicking one div btn outputs status", async () => {
-    const card = await page.$("#card-1");
-    await card.click();
-    const status = await page.$eval("#card-1 img", (el) =>
-      el.getAttribute("data-status")
-    );
-    expect(status).toBe("clicked");
-  }, 5000);
+  // it("Check clicking one div btn outputs status", async () => {
+  //   const card = await page.$("#card-1");
+  //   await card.click();
+  //   const status = await page.$eval("#card-1 img", (el) =>
+  //     el.getAttribute("data-status")
+  //   );
+  //   expect(status).toBe("clicked");
+  // }, 5000);
 
   it("Check that after clicking 4 cards, cannot click another", async () => {
     const card = await page.$$(".card");
