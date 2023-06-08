@@ -309,6 +309,7 @@ p {
   transition: all 0.4s;
   visibility: hidden;
   opacity: 0;
+  z-index: 2;
 }
 .content {
   position: absolute;
