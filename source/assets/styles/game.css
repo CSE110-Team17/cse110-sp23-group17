@@ -195,6 +195,14 @@ body {
   .oracle img {
     width: 60px;
   }
+
+  #how-to-play-btn {
+    display: none;
+  }
+
+  #back-btn {
+    display: none; 
+  }
 }
 
 @keyframes oscillate {
