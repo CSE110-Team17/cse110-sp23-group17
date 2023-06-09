@@ -33,6 +33,13 @@ How can we improve Meaning?
 
 ### Sad Mad Glad
 ![Retrium Sad Mad Glad](/admin/meetings/imgs/sad_mad_glad.png)
+- What went well: 
+  - experiement with merge/PR techniques -> settled on feature branching
+  - We have an MVP on Github pages since version 1.0
+- What went bad:
+  - Need for linter 
+  - Need naming convention
+  - Documentation
 
 Top 3
 1. Working on Unit Testing
@@ -40,3 +47,14 @@ Top 3
 2. Need to work on more documentation
 3. Inconsistent coding style
    1. First order of business on Tuesday's meeting
+
+---
+## Questions
+
+---
+## Conclusion 
+- Overall, team is doing well and on track, but still need to improve on CICD and the game feature.
+
+### To do before next meeting
+
+### What to do in next meeting 

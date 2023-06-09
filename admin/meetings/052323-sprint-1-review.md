@@ -42,12 +42,12 @@
     - Game Page to fit mobile screen
 2. James 
     - UI Update on Game Page 
-    - ![Game page](/admin/meetings/imgs/game_page_05:23.png)
+    - ![Game page](/admin/meetings/imgs/game_page_05_23.png)
 3. Backend Team -- Steven/Jeannie/Henry/Jenny 
     - camera.html
     - camera.html now has an option to open a camera or a user can upload their own image file.
     - Either taken or uploaded image will be shown on the game page
-    - ![Camera page](/admin/meetings/imgs/camera_page_05:23.png)
+    - ![Camera page](/admin/meetings/imgs/camera_page_05_23.png)
 4. Jenny
     - ADRs 
     - Can be found in specs/adrs/
@@ -57,10 +57,10 @@
 6. Maryam/Kristin 
     - Mobile and web results pages update
     - Added CSS animation of moving stars in the background
-    - ![Results page](/admin/meetings/imgs/results_page_05:23.png)
+    - ![Results page](/admin/meetings/imgs/results_page_05_23.png)
 7. Ben
     - Welcome page(index.js) now fits mobile resolution
-    - ![Welcome page](/admin/meetings/imgs/index_page_05:23.png)
+    - ![Welcome page](/admin/meetings/imgs/index_page_05_23.png)
 
 
 ### Git branches
