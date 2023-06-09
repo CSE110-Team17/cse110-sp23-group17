@@ -12,8 +12,7 @@ Welcome to Tarot, but game repository. Our team created a Tarot card fortune tel
 - Brainstorming Documents `./specs/brainstrom`
 - CI/CD Pipeline: `./.github/workflows` and `./admin/cipipeline`
 - Videos: `./admin/vidoes`
-
-
+- Feature Flags: [Tarot, but game Canny IO](https://tarot-but-game.canny.io/)
 
 
 ## How to Locally Build and Test
