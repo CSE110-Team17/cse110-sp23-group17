@@ -94,4 +94,18 @@ describe("Testing local storage contents is as expected", () => {
     console.log(JSON.parse(localStorage));
     expect(typeof JSON.parse(localStorage) === "object").toBe(true);
   }, 10000);
+
+  it("Check window location after clicking 4 cards is as expected", async () => {
+    await page.reload();
+    const card = await page.$$(".card");
+    //click 4 cards
+    for (let i = 0; i < 4; i++) {
+      await card[i].click();
+    }
+    await page.waitForNavigation();
+    let expectedPageLink =
+      "https://cse110-team17.github.io/cse110-sp23-group17/source/results.html";
+    const url = await page.evaluate(() => document.location.href);
+    expect(url).toEqual(expectedPageLink);
+  }, 10000);
 });
