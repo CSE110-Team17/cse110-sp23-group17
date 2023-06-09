@@ -3,8 +3,8 @@ import tarotConfig from "../tarot.js";
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
+  const board = document.querySelector(".board");
   const playerImage = document.querySelector(".player img");
-  const cards = document.querySelectorAll(".card-img");
   const luckLabel = document.querySelector(".luck-bar .label");
   const luckBarFill = document.querySelector(".luck-bar .fill");
   const oscillatingBar = document.querySelector(".oscillating-bar");
@@ -12,6 +12,18 @@ function init() {
   const oracleMsg = document.querySelector(".oracle .message");
 
   playerImage.src = window.localStorage.getItem("userImage");
+
+  board.innerHTML = `
+  <div class="card-container">
+    <div class="card">
+      <div class="back face"></div>
+      <div class="front face"></div>
+    </div>
+  </div>
+  `.repeat(22);
+
+  const cards = board.children;
+  console.log(board.children);
 
   const startingLuck = 50;
   let luck;
@@ -39,19 +51,23 @@ function init() {
    *
    */
   function onCardClicked(event) {
-    const card = event.target;
+    const card = event.currentTarget; // actually is card-container
 
     if (
-      card.dataset.status === "clicked" ||
-      luck === 0 ||
-      luck > 100 ||
-      chosenCards.length === 4
+      card.classList.contains("flipped") ||
+      luck <= 0 ||
+      luck >= 100 ||
+      chosenCards.length >= 4
     ) {
       return;
     }
 
+    card.classList.add("flipped");
+
     // 50-50 chance that the card is upside-down
     const isDown = Math.random() < 0.5;
+
+    if (isDown) card.classList.add("reversed");
 
     if (isDown) {
       setLuck(Math.max(0, luck - getBarWidth()));
@@ -75,14 +91,9 @@ function init() {
     // Change the image according to the card got chosen
     tarotConfig.tarot.forEach((element) => {
       if (element.name === cardName) {
-        card.src = element.image;
-        setTimeout(() => {
-          if (isDown) {
-            card.style.transform = "rotate(180deg)";
-          }
-        }, 1);
-
-        card.dataset.status = "clicked";
+        card.querySelector(
+          ".front"
+        ).style.backgroundImage = `url("${element.image}")`;
       }
     });
 
@@ -113,9 +124,9 @@ function init() {
           localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
           localStorage.setItem("luck", luck);
           window.location.href = "./results.html";
-        }, 2000);
+        }, 3000);
       }
-    }, 2000);
+    }, 3000);
   }
 
   let msgResetTimeout = -1;
@@ -130,7 +141,7 @@ function init() {
       oracleMsg.innerText = `Draw ${numCardsLeft} more card${
         numCardsLeft === 1 ? "" : "s"
       }!`;
-    }, 2000);
+    }, 3000);
   }
 
   function setLuck(val) {

@@ -53,70 +53,90 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
-  row-gap: 4vh;
+  gap: 0.5vw;
+  row-gap: 0.5vw;
 }
 
 /*animations for hovering on cards*/
 @keyframes card-animation {
   0% {
-    transform: scale(1.2);
-  }
-  50% {
-    transform: scale(1.5);
+    transform: scale(1);
   }
   100% {
     transform: scale(1.2);
-  }
-}
-
-@keyframes flame-animation {
-  0% {
-    transform: scaleY(1.2);
-  }
-  50% {
-    transform: scaleY(1.5);
-  }
-  100% {
-    transform: scaleY(1.2);
   }
 }
 
 /* each card has width 10% of the window width */
-.board > .card {
-  width: 9%;
-  height: auto;
-  text-align: center;
+.card-container {
+  width: 8vw;
+  aspect-ratio: 0.6;
   position: relative;
+  perspective: 1000px;
+  cursor: pointer;
   transition: transform 0.3s ease;
 }
 
-.board > .card::before {
+.card-container::before {
   content: "";
   position: absolute;
-  top: -20px;
-  left: -20px;
-  width: calc(100% + 40px);
-  height: calc(100% + 40px);
-  background-image: radial-gradient(circle, #e5ff00 30%, transparent 70%);
-  transform-origin: center bottom;
+  inset: -180px;
+  background-image: radial-gradient(circle, #ff0 30%, transparent 50%);
+  transform-origin: center;
+  pointer-events: none;
+
   opacity: 0;
-  animation: flame-animation 0.5s;
+  scale: 0.4;
+  transition: all 400ms ease-in-out;
+}
+
+.card-container:not(.flipped):hover::before {
+  opacity: 0.4;
+  scale: 1;
+}
+
+.card-container:not(.flipped):hover {
+  /* animation: 0.7s ease-in-out 0s infinite alternate card-animation; */
+  z-index: 10;
+}
+
+.card {
+  height: 100%;
+  transition: transform 600ms 50ms;
+  transform-style: preserve-3d;
+}
+
+.card-container:hover .card {
+  transform: rotateX(40deg) rotateY(-40deg) translateZ(40px) scale(1.1);
+}
+
+.flipped.card-container .card {
+  transform: rotateX(179deg);
+}
+
+.flipped:not(.reversed).card-container .card {
+  transform: rotateY(-179deg);
+}
+
+.card {
   pointer-events: none;
 }
 
-.board > .card:hover {
-  animation: card-animation 0.5s infinite;
-  z-index: 1;
+.card .face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  background-size: cover;
+  background-position: center;
 }
 
-.board > .card:hover::before {
-  opacity: 1;
-  z-index: -1;
+.card .front {
+  background-image: linear-gradient(#888, #ccc);
+  transform: rotateY(180deg);
 }
-/* card width is 100% of the card width */
-.card-img {
-  width: 65%;
-  height: 95%;
+
+.card .back {
+  background-image: url("/source/assets/images/cardback.png");
 }
 
 /********** Player **************/
@@ -181,7 +201,7 @@ body {
 
 /* Mobile Display */
 @media only screen and (max-width: 600px) {
-  .board > .card {
+  .board > .card-container {
     width: 15%;
     height: auto;
   }
