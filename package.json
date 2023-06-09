@@ -12,9 +12,10 @@
         "puppeteer": "^20.5.0"
     },
     "scripts": {
-        "format": "prettier --no-config -w .",
-        "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-        "test": "jest"
+        "test": "jest",
+        "jsdoc": "./node_modules/.bin/jsdoc -r ./source/assets/scripts/",
+        "lint:js": "eslint source/**/*.js",
+        "lint": "npm run lint:js"
     },
     "jest": {
         "preset": "jest-puppeteer",
