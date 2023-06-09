@@ -134,10 +134,12 @@ h2 {
   }
 
   h2 {
+    margin-top: 2vh;
     font-size: 3vh;
   }
 
   #character-container {
+    margin-top: 2vh;
     flex-direction: column;
     gap: 2vh;
     margin-bottom: 0;
@@ -148,13 +150,13 @@ h2 {
   }
 
   #photoDisplay {
-    margin: 0;
+    margin: auto;
     width: 100%;
   }
 
   #video-display {
-    height: 200px; 
-    width: 200px;
+    height: 150px; 
+    width: 150px;
   }
 
   .video-container {
