@@ -157,11 +157,6 @@ body {
   flex: 1;
 }
 
-.player img {
-  width: 100px;
-  height: auto;
-}
-
 .luck-bar,
 .oscillating-bar {
   height: 24px;
@@ -204,10 +199,6 @@ body {
   .board > .card-container {
     width: 15%;
     height: auto;
-  }
-
-  .player img {
-    width: 60px;
   }
 
   .oracle img {
@@ -257,11 +248,8 @@ body {
   display: none;
 }
 .profile-pic img {
-  width: 100%;
-  aspect-ratio: 1/1;
   position: relative;
-  max-height: 76px;
-  min-height: 76px;
+  height: 76px;
   right: 50%;
   transform: translateX(50%);
   object-fit: fill;
