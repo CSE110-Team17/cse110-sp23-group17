@@ -159,7 +159,7 @@ function init() {
 export function getBarWidth(oscillatingBarFill, oscillatingBar) {
   const barWidth = oscillatingBarFill.getBoundingClientRect().width;
   const parentWidth = oscillatingBar.getBoundingClientRect().width;
-  return Math.floor((25 * barWidth) / parentWidth);
+  return Math.floor((15 * barWidth) / parentWidth);
 }
 /**
  * Create an array of 22 and parse all the card name from json file
