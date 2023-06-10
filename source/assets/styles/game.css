@@ -400,4 +400,7 @@ ol {
   .buttons {
     display: none;
   }
+  .content {
+    display: none;
+  }
 }

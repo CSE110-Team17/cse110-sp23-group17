@@ -222,3 +222,11 @@ ol {
   list-style-position: inside;
   color: #6c1960;
 }
+@media (max-width: 700px) {
+  .content {
+    width: 300px;
+  }
+  li {
+    font-size: 1.25rem;
+  }
+}
