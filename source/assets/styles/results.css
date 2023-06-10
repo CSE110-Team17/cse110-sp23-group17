@@ -1,6 +1,8 @@
 /* OUTLINE */
 /* Home Page Button  */
-.cards-button {
+.home-button {
+  display: inline-block;
+  margin: 1em;
   font-size: 1.25rem;
   color: #fff9;
   background-color: #fff0;
@@ -10,14 +12,15 @@
   font-weight: 900;
   text-decoration: none;
   border: 3px solid #fff3;
+  transition: all 200ms;
 }
-.cards-button:hover {
+.home-button:hover {
   background-color: #fff1;
   color: #fff;
   border-color: #fff;
   scale: 1.05;
 }
-.cards-button:active {
+.home-button:active {
   scale: 0.98;
 }
 
