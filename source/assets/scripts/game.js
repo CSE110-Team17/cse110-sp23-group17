@@ -1,100 +1,173 @@
-// import tarotConfig from "/source/assets/tarot.json" assert { type: "json" };
-import tarotConfig from "../tarot.json" assert { type: "json" };
+import tarotConfig from "../tarot.js";
 
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
-  const player = document.querySelector(".player");
-  const playerImage = player.querySelector("img");
-  // const dataImage = window.localStorage.getItem('userImage');
-  if (window.localStorage.getItem("userImage") !== null) {
-    playerImage.src = window.localStorage.getItem("userImage");
+  const board = document.querySelector(".board");
+  const playerImage = document.querySelector(".player img");
+  const luckLabel = document.querySelector(".luck-bar .label");
+  const luckBarFill = document.querySelector(".luck-bar .fill");
+  const oscillatingBar = document.querySelector(".oscillating-bar");
+  const oscillatingBarFill = document.querySelector(".oscillating-bar .fill");
+  const oracleMsg = document.querySelector(".oracle .message");
+
+  playerImage.src = window.localStorage.getItem("userImage");
+
+  board.innerHTML = `
+  <div class="card-container">
+    <div class="card">
+      <div class="back face"></div>
+      <div class="front face"></div>
+    </div>
+  </div>
+  `.repeat(22);
+
+  const cards = board.children;
+  console.log(board.children);
+
+  const startingLuck = 50;
+  let luck;
+  setLuck(startingLuck);
+
+  //Function to load profile image
+  window.loadFile = function (event) {
+    var image = document.getElementById("output");
+    image.src = URL.createObjectURL(event.target.files[0]);
+  };
+
+  //FOR RESULT PAGE: array of all the selected cards during game play
+  const chosenCards = [];
+
+  //listen whenever a card is clicked
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].addEventListener("click", onCardClicked);
   }
-}
-/*
-Create an array of 22 and parse all the card name from json file
-*/
-const tarotCardNames = [];
-tarotConfig["tarot"].forEach((element) => {
-  tarotCardNames.push(element["name"]);
-});
-console.log(tarotCardNames);
 
-//FOR RESULT PAGE: array of all the selected cards during game play
-const chosenCards = [];
+  /**
+   * Play the game when a card is click:
+   * Generate random card name -> change image accoridngly
+   * Generate random damage points -> change hp bar accordingly
+   * @param {MouseEvent} event - the value return by the event
+   *
+   */
+  function onCardClicked(event) {
+    const card = event.currentTarget; // actually is card-container
 
-/*
-listen whenever a card is click 
-*/
-var card = document.getElementsByClassName("card");
-for (let i = 0; i < card.length; i++) {
-  card[i].addEventListener("click", play);
-}
-
-/*
-Check if an element is in the array
-@param: arr: array, el: element
-@return: true if element is in array and false otherwise
-*/
-function isInArray(arr, el) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === el) {
-      return true;
+    if (
+      card.classList.contains("flipped") ||
+      luck <= 0 ||
+      luck >= 100 ||
+      chosenCards.length >= 4
+    ) {
+      return;
     }
-  }
-  return false;
-}
 
-/*
-Game play when a card is click:
-- Generate random card name -> change image accoridngly
-- Generate random damage points -> change hp bar accordingly
-*/
-function play(event) {
-  console.log(event.target.dataset);
-  if (event.target.dataset.status === "clicked" || chosenCards.length === 3) {
-    return;
-  }
+    card.classList.add("flipped");
 
-  /*
-    Random generate a card. If card is already chosen then generate another card
-    */
-  var randNameIdx = Math.floor(Math.random() * 21);
-  var cardName = tarotCardNames[randNameIdx];
-  while (isInArray(chosenCards, cardName)) {
-    randNameIdx = Math.floor(Math.random() * 21);
-    cardName = tarotCardNames[randNameIdx];
-  }
-  chosenCards.push(cardName);
-  console.log(chosenCards);
+    // 50-50 chance that the card is upside-down
+    const isDown = Math.random() < 0.5;
 
-  /*
-    Change the image according to the card got chosen 
-    */
-  tarotConfig["tarot"].forEach((element) => {
-    if (element["name"] === cardName) {
-      event.target.src = element["image"];
-      event.target.dataset.status = "clicked";
+    if (isDown) card.classList.add("reversed");
+
+    if (isDown) {
+      setLuck(Math.max(0, luck - getBarWidth()));
+    } else {
+      setLuck(Math.max(0, luck + getBarWidth()));
     }
-  });
 
-  /*
-    Random generate a damage point and attack the oponent with that point.
-    Change the hp bar of oponent accordingly.
-    */
-  var randDmg = Math.floor(Math.random() * 10) + 34;
-  setTimeout(() => {
-    alert("You dealt " + randDmg + " damage to the opponent");
-    var hpBar = document.getElementById("opponent_hp");
-    hpBar.value = hpBar.value - randDmg;
+    if (luck === 0 || luck === 100) {
+      oscillatingBar.style.visibility = "hidden";
+    }
+
+    // Random generate a card. If card is already chosen then generate another card
+    let randNameIdx = Math.floor(Math.random() * 21);
+    let cardName = getTarotCardName(tarotConfig)[randNameIdx];
+    while (chosenCards.includes(cardName)) {
+      randNameIdx = Math.floor(Math.random() * 21);
+      cardName = getTarotCardName(tarotConfig)[randNameIdx];
+    }
+    chosenCards.push(cardName);
+
+    // Change the image according to the card got chosen
+    tarotConfig.tarot.forEach((element) => {
+      if (element.name === cardName) {
+        card.querySelector(
+          ".front"
+        ).style.backgroundImage = `url("${element.image}")`;
+      }
+    });
+
+    // Random generate a damage point and attack the oponent with that point.
+    // Change the hp bar of opponent accordingly.
+    if (isDown) {
+      say(
+        "You got a reverse " +
+          cardName +
+          " card. You receive " +
+          getBarWidth() * -1 +
+          " luck points!"
+      );
+    } else {
+      say(
+        "You got a " +
+          cardName +
+          " card. You receive " +
+          getBarWidth() +
+          " luck points!"
+      );
+    }
+
     setTimeout(() => {
-      if (hpBar.value <= 0) {
-        alert("You defeated the oponent");
+      if (chosenCards.length === 4) {
+        say("Get ready to see your fortune!");
         setTimeout(() => {
           localStorage.setItem("chosenCards", JSON.stringify(chosenCards));
+          localStorage.setItem("luck", luck);
           window.location.href = "./results.html";
-        }, 500);
+        }, 3000);
       }
-    }, 300);
-  }, 500);
+    }, 3000);
+  }
+
+  let msgResetTimeout = -1;
+
+  function say(msg) {
+    oracleMsg.innerText = msg;
+
+    clearTimeout(msgResetTimeout);
+
+    msgResetTimeout = setTimeout(() => {
+      const numCardsLeft = 4 - chosenCards.length;
+      oracleMsg.innerText = `Draw ${numCardsLeft} more card${
+        numCardsLeft === 1 ? "" : "s"
+      }!`;
+    }, 3000);
+  }
+
+  function setLuck(val) {
+    if (val > 100) val = 100;
+    if (val < 0) val = 0;
+    luck = val;
+    luckLabel.innerText = `${luck} luck points`;
+    luckBarFill.style.width = `${luck}%`;
+  }
+
+  function getBarWidth() {
+    const barWidth = oscillatingBarFill.getBoundingClientRect().width;
+    const parentWidth = oscillatingBar.getBoundingClientRect().width;
+    return Math.floor((25 * barWidth) / parentWidth);
+  }
+}
+
+/**
+ * Create an array of 22 and parse all the card name from json file
+ * @param {Array<*>} tarotConfig - an array of the tarot cards from json
+ * @return {Array<string>} array contains 22 tarot cards' name
+ */
+export function getTarotCardName(tarotConfig) {
+  const tarotCardNames = [];
+  tarotConfig["tarot"].forEach((element) => {
+    tarotCardNames.push(element["name"]);
+  });
+  return tarotCardNames;
 }

@@ -1,134 +1,392 @@
-:root {
-  --background-color: #280044;
-  --lighter-background-color:#22003a62;
-  --stage-color: #484848;
+body {
+  overscroll-behavior: none;
+  background: radial-gradient(circle, #280044, #0b004a);
 }
+
 * {
   margin: 0;
   padding: 0;
 }
-/* outermost div in body, id=grid */
+
+.oracle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 16px;
+}
+
+.oracle .message {
+  border: 4px solid #fffb;
+  background-color: #fff4;
+  border-radius: 32px;
+  width: 320px;
+  padding: 0 32px;
+  min-height: 120px;
+
+  color: #fff;
+  text-align: center;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  /* center text */
+  display: grid;
+  place-items: center;
+}
+
+.oracle img {
+  width: 180px;
+  animation: 1.5s ease-in-out 0s infinite alternate float;
+}
+
 .grid {
   display: grid;
   height: 100vh;
   grid-template-rows: 1fr 3fr 1fr;
-  background-color: var(--background-color);
-}
-
-/****** Opponent related CSS ******/
-.grid > .opponent {
-  background-color: var(--stage-color);
-  padding: 3vh;
-  position: center;
-  width: 50vw;
-  height: 12vh;
-  border-radius: 0 0 15vh 15vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.opponent {
-  margin: auto;
-}
-
-.opponent h2 {
-  font-size: 16px;
-  text-align: center;
-  color: white;
-}
-
-.opponent img {
-  width: 10vh;
-  height: auto;
-  border-radius: 50%;
-}
-
-.opponent p {
-  text-align: center;
-  font-size: 14px;
-  color: white;
-}
-
-/* progress bar settings */
-progress {
-  width: 300px;
-  height: 25px;
-  border: 2px solid gray;
-}
-progress::-webkit-progress-bar {
-  background-color: white;
-}
-progress::-webkit-progress-value {
-  background-color: red;
 }
 
 /****** Board related CSS ******/
 /* board is a flex container */
 .grid > .board {
-  background-color: var(--lighter-background-color);
   display: flex;
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
-  row-gap: 4vh;
+  gap: 0.5vw;
+  row-gap: 0.5vw;
+}
+
+/*animations for hovering on cards*/
+@keyframes card-animation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
 }
 
 /* each card has width 10% of the window width */
-.board > .card {
-  width: 9%;
-  height: auto;
-  text-align: center;
-}
-/* card width is 100% of the card width */
-.card-img {
-  width: 65%;
-  height: 95%;
+.card-container {
+  width: 8vw;
+  aspect-ratio: 0.6;
+  position: relative;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-/* player related */
-.grid > .player {
-  background-color: var(--stage-color);
-  padding: 3vh;
-  position: center;
-  width: 50vw;
-  height: 12vh;
-  border-radius: 15vh 15vh 0 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.card-container::before {
+  content: "";
+  position: absolute;
+  inset: -180px;
+  background-image: radial-gradient(circle, #ff0 30%, transparent 50%);
+  transform-origin: center;
+  pointer-events: none;
+
+  opacity: 0;
+  scale: 0.4;
+  transition: all 400ms ease-in-out;
 }
 
+.card-container:not(.flipped):hover::before {
+  opacity: 0.4;
+  scale: 1;
+}
+
+.card-container:not(.flipped):hover {
+  /* animation: 0.7s ease-in-out 0s infinite alternate card-animation; */
+  z-index: 10;
+}
+
+.card {
+  height: 100%;
+  transition: transform 600ms 50ms;
+  transform-style: preserve-3d;
+}
+
+.card-container:hover .card {
+  transform: rotateX(40deg) rotateY(-40deg) translateZ(40px) scale(1.1);
+}
+
+.flipped.card-container .card {
+  transform: rotateX(179deg);
+}
+
+.flipped:not(.reversed).card-container .card {
+  transform: rotateY(-179deg);
+}
+
+.card {
+  pointer-events: none;
+}
+
+.card .face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.card .front {
+  background-image: linear-gradient(#888, #ccc);
+  transform: rotateY(180deg);
+}
+
+.card .back {
+  background-image: url("/source/assets/images/cardback.png");
+}
+
+/********** Player **************/
 .player {
-  margin: auto;
+  position: fixed;
+  inset: auto 8px 8px 8px;
+  max-width: 600px;
+  height: 100px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-.player h2 {
-  font-size: 16px;
-  text-align: center;
-  color: white;
+.player .bars {
+  flex: 1;
 }
 
 .player img {
-  width: 10vh;
+  width: 100px;
   height: auto;
-  border-radius: 50%;
-  margin: auto;
 }
 
-.player p {
-  text-align: center;
-  font-size: 14px;
+.luck-bar,
+.oscillating-bar {
+  height: 24px;
+  position: relative;
+}
+
+.luck-bar {
+  background-color: #0905;
+}
+
+.luck-bar .fill {
+  background-color: #090;
+  height: 100%;
+  transition: width 0.3s;
+}
+
+/**** Oscillating bar ****/
+.oscillating-bar {
+  background-color: #d555;
+  margin-top: 8px;
+}
+
+.oscillating-bar .fill {
+  background-color: #d55;
+  height: 100%;
+  animation: 0.7s linear 0s infinite alternate oscillate;
+}
+
+.label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
 }
 
 /* Mobile Display */
 @media only screen and (max-width: 600px) {
-  .board > .card {
+  .board > .card-container {
     width: 15%;
     height: auto;
+  }
+
+  .player img {
+    width: 60px;
+  }
+
+  .oracle img {
+    width: 60px;
+  }
+}
+
+@keyframes oscillate {
+  0% {
+    width: 15%;
+  }
+
+  100% {
+    width: 85%;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(8px);
+  }
+}
+
+/*Change profile picture styling*/
+.profile-pic {
+  color: transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.profile-pic input {
+  display: none;
+}
+.profile-pic img {
+  position: relative;
+  max-height: 76px;
+  min-height: 76px;
+  right: 50%;
+  transform: translateX(50%);
+  object-fit: fill;
+  box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
+  border-radius: 100px;
+  z-index: 0;
+}
+.profile-pic .-label {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+}
+.profile-pic:hover .-label {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10000;
+  color: #fafafa;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 100px;
+  margin-bottom: 0;
+}
+.profile-pic span {
+  position: relative;
+  display: flex;
+  padding: 0.2em;
+  height: 2em;
+}
+
+/* instructions */
+.box {
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+p {
+  font-size: 17px;
+  align-items: center;
+}
+.box a {
+  display: inline-block;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 3px;
+}
+.howto-modal {
+  z-index: 1000;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff3;
+  transition: all 0.4s;
+  visibility: hidden;
+  opacity: 0;
+}
+.content {
+  position: absolute;
+  background: white;
+  width: 660px;
+  padding: 1em 2em;
+  border-radius: 4px;
+}
+.howto-modal:target {
+  visibility: visible;
+  opacity: 1;
+}
+.box-close {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  color: #fe0606;
+  text-decoration: none;
+  font-size: 30px;
+}
+.instruct {
+  color: black;
+  font-size: 2.5rem;
+  align-items: center;
+}
+ol {
+  font-size: 1.5rem;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  list-style-position: inside;
+  color: #6c1960;
+}
+.buttons {
+  position: fixed;
+  bottom: 0%;
+  right: 0%;
+  max-width: 40rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+.buttons > * {
+  flex: 1;
+  text-align: center;
+  font-size: 1rem;
+  color: #fff9;
+  background-color: #fff0;
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 900;
+  border: 3px solid #fff3;
+  transition: all 200ms;
+}
+.buttons > *:hover {
+  background-color: #fff1;
+  color: #fff;
+  border-color: #fff;
+  scale: 1.05;
+}
+.buttons > *:active {
+  scale: 0.98;
+}
+@media (max-width: 62em) {
+  .buttons {
+    display: none;
   }
 }
