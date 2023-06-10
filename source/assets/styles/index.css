@@ -7,7 +7,6 @@
 body {
   height: 100vh;
   padding-top: 8rem;
-  background: radial-gradient(circle, #280044, #0b004a);
   display: flex;
   flex-direction: column;
 }
