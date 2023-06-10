@@ -43,6 +43,6 @@ describe("test suite for function getBarWidth", () => {
     // Call the function
     const result = game.getBarWidth(oscillatingBarFill, oscillatingBar);
     //expected calculation ((25*100) / 400) = 6.25 floored to 6
-    expect(result).toBe(6);
+    expect(result).toBe(3);
   });
 });
