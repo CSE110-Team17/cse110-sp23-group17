@@ -5,32 +5,56 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Tarot but Game](https://github.com/CSE110-Team17/cse110-sp23-group17).
 
-## [Unreleased]
+## [1.0] - 2023-6-10
 
 ### Added 
-- All Cards feature (displays all the possible cards you can get) (#69)
-- add how-to-play button in game page so that the user can see game instructions anytime (#66)
+- added All Cards feature (displays all the possible cards you can get) (#69)
+- added how-to-play button in game page so that the user can see game instructions anytime (#66)
+- added card hovering animation in game play screen
+- added card flip animation in game play screen
+- added speaking fortune teller character
+- added LICENSE
+- added Feature Request Form
+- added stars to home page
+- added stars to camera page
+
+### Fixed
+- fixed cards overlapping with popup
+- fixed buttons overlapping with luck meter
 
 ### Changed
 - How to play instructions are changed to match the new gameplay (#66)
 - changed the back button to match the design theme (#66)
+- update README.md
+- changed results page layout so all cards are in a row (#77)
+- update ADRs
+- changed stars in results page
+
+### Removed
+- removed How to Play button and Back button on mobile version of game play screen
+- removed old game instructions
+- removed language picker
+- removed opponent and attack damage
 
 ## [0.4] - 2023-6-6
 
 ### Added
 - added lucky points (Very Unclucky: 0-25, Unlucky: 25-50, Lucky: 50-75, Very Lucky: 75-100) (#68)
-- progress bar that go back and front (when click a card, the value of the progress bar will be the damage) (#54)
-- short-term fortune: lucky points ("How Your Luck Looks")
-- long-term fortune: card fortunes ("Your Overall Fortune")
+- added progress bar that go back and front (when click a card, the value of the progress bar will be the damage) (#54)
+- added short-term fortune: lucky points ("How Your Luck Looks")
+- added long-term fortune: card fortunes ("Your Overall Fortune")
+- added back button to home page from game play screen
 
 ### Fixed
 - fixed css hover effect on Camera Page (#61)
 - fixed no image found when clicking next without any selector on Camera Page (#61)
+- JSDoc error fix
+- prevent clicking more cards than 4
 
 ### Changed
 - Camera Page UI Design (#61)
 - Camera Page now scalable to moble (#61)
-- Update Unit Tests Results Page (#68)
+- Update Unit Tests
 - changed attack damage alert message to a modal box (#54)
 - results page always displays 4 cards (#62)
 - new card descriptions
@@ -42,9 +66,10 @@ and this project adheres to [Tarot but Game](https://github.com/CSE110-Team17/cs
 
 ### Added
 - added CHANGELOG.md
-- Unit Tests Game Page (#29)
-- Unit Tests Results Page (#30)
-- oscillating bar that corresponds to attack damage
+- added Unit Tests Game Page (#29)
+- added Unit Tests Results Page (#30)
+- added JSDocs
+- added oscillating bar that corresponds to attack damage
 - can now select 2-4 cards depending on how much cards it takes to defeat the opponent
 
 ### Fixed
