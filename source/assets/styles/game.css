@@ -135,6 +135,7 @@ body {
   backface-visibility: hidden;
   background-size: cover;
   background-position: center;
+  transform: translateZ(1px);
 }
 
 .card .front {
