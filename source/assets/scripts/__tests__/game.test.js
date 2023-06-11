@@ -16,9 +16,10 @@ describe("E2E button/link testing", () => {
   });
   it("Make sure clicking how to play button goes to href", async () => {
     //click how to play popup box
-    const tutorialButton = await page.$('#how-to-play-btn');
-    await tutorialButton.evaluate(b => b.click());
-    let expectedPageLink = "https://cse110-team17.github.io/cse110-sp23-group17/source/game.html#popup-box";   
+    const tutorialButton = await page.$("#how-to-play-btn");
+    await tutorialButton.evaluate((b) => b.click());
+    let expectedPageLink =
+      "https://cse110-team17.github.io/cse110-sp23-group17/source/game.html#popup-box";
     const url = await page.evaluate(() => document.location.href);
     expect(url).toEqual(expectedPageLink);
   }, 5000);

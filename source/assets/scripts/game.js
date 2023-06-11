@@ -15,8 +15,7 @@ function init() {
 
   let cardHTMLs = "";
   for (let i = 0; i < 22; i++) {
-    cardHTMLs += 
-    `<div class="card-container" id="card-container-${i + 1}">
+    cardHTMLs += `<div class="card-container" id="card-container-${i + 1}">
       <div class="card" id="card-${i + 1}">
         <div class="back face"></div>
         <div class="front face"></div>
