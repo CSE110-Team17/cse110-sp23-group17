@@ -23,14 +23,6 @@ function init() {
       </div>
     </div>`;
   }
-  // board.innerHTML = `
-  // <div class="card-container">
-  //   <div class="card">
-  //     <div class="back face"></div>
-  //     <div class="front face"></div>
-  //   </div>
-  // </div>
-  // `.repeat(22);
   board.innerHTML = cardHTMLs;
 
   const cards = board.children;

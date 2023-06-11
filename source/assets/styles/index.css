@@ -20,7 +20,7 @@ h1 {
   font-size: 8rem;
   font-family: cursive;
   color: white;
-
+  margin-top: 15vh;
   animation: fadeInLetters 2s ease-out;
 }
 
@@ -227,6 +227,11 @@ ol {
   .content {
     width: 300px;
   }
+
+  h1 {
+    margin-top: 20vh;
+  }
+
   li {
     font-size: 1.25rem;
   }
