@@ -144,7 +144,7 @@ body {
 }
 
 .card .back {
-  background-image: url("/source/assets/images/cardback.png");
+  background-image: url("../images/cardback.png");
 }
 
 /********** Player **************/
