@@ -23,7 +23,7 @@ By implement this method, we were able to develop continously and we haven't fac
 
 ## BROWSER TESTING
 ### Concern:
-We worried that certain feature will not work on certain brower (mostly safari) but will work perfectly on another brower (mostly chrome/firefox). So we want to make sure that our project can work on different browser.
+We were worried that certain feature will not work on certain brower (mostly safari) but will work perfectly on another brower (mostly chrome/firefox). So we want to make sure that our project can work on different browser.
 
 ### Solution:
 We use the website caniuse.com to check on what will work on which brower and use that as reference to implement our project. 
