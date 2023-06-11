@@ -13,14 +13,25 @@ function init() {
 
   playerImage.src = window.localStorage.getItem("userImage");
 
-  board.innerHTML = `
-  <div class="card-container">
-    <div class="card">
-      <div class="back face"></div>
-      <div class="front face"></div>
-    </div>
-  </div>
-  `.repeat(22);
+  let cardHTMLs = "";
+  for (let i = 0; i < 22; i++) {
+    cardHTMLs += 
+    `<div class="card-container" id="card-container-${i + 1}">
+      <div class="card" id="card-${i + 1}">
+        <div class="back face"></div>
+        <div class="front face"></div>
+      </div>
+    </div>`;
+  }
+  // board.innerHTML = `
+  // <div class="card-container">
+  //   <div class="card">
+  //     <div class="back face"></div>
+  //     <div class="front face"></div>
+  //   </div>
+  // </div>
+  // `.repeat(22);
+  board.innerHTML = cardHTMLs;
 
   const cards = board.children;
   console.log(board.children);

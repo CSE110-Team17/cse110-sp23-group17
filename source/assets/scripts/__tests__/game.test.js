@@ -1,4 +1,5 @@
 /**
+import contains from '../../../../node_modules/underscore/modules/contains';
  * @jest-environment puppeteer
  */
 
@@ -15,11 +16,9 @@ describe("E2E button/link testing", () => {
   });
   it("Make sure clicking how to play button goes to href", async () => {
     //click how to play popup box
-    let popupLink = "#popup-box";
-    const tutorialButton = await page.$(`a[href='${popupLink}']`);
-    await Promise.all([page.waitForNavigation(), tutorialButton.click()]);
-    let expectedPageLink =
-      "https://cse110-team17.github.io/cse110-sp23-group17/source/game.html#popup-box";
+    const tutorialButton = await page.$('#how-to-play-btn');
+    await tutorialButton.evaluate(b => b.click());
+    let expectedPageLink = "https://cse110-team17.github.io/cse110-sp23-group17/source/game.html#popup-box";   
     const url = await page.evaluate(() => document.location.href);
     expect(url).toEqual(expectedPageLink);
   }, 5000);
@@ -28,10 +27,10 @@ describe("E2E button/link testing", () => {
     await page.reload();
     const card = await page.$("#card-1");
     await card.click();
-    const status = await page.$eval("#card-1 img", (el) =>
-      el.getAttribute("data-status")
+    const status = await page.$eval("#card-container-1", (el) =>
+      el.classList.contains("flipped")
     );
-    expect(status).toBe("clicked");
+    expect(status).toBe(true);
   }, 5000);
 
   it("Check that after clicking 4 cards, cannot click another", async () => {
@@ -44,10 +43,10 @@ describe("E2E button/link testing", () => {
     //click the 5th card, should remain unclicked
     const fifthCard = await page.$("#card-5");
     await fifthCard.click();
-    const status = await page.$eval("#card-5 img", (el) =>
-      el.getAttribute("data-status")
+    const status = await page.$eval("#card-container-5", (el) =>
+      el.classList.contains("flipped")
     );
-    expect(status).toBe("unclicked");
+    expect(status).toBe(false);
   }, 5000);
 
   it("After clicking a card, check text content of message displayed to user", async () => {
