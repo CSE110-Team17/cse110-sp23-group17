@@ -64,4 +64,4 @@
 ### To do before next meeting
 - Need to decide on new implement of game play and assigned people to work on it immediately!
 
-### What to do in next meeting 
+### What to do in next meeting
