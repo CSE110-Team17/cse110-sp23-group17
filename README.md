@@ -11,6 +11,10 @@
 
 [Our Team Page](/admin/team.md) | [Our Team Video](https://www.youtube.com/watch?v=jR47GaIusic&ab_channel=KristinE)
 
+[Private video](https://youtu.be/FqfbOe_-QS0)
+
+[Public video](https://youtu.be/BD69aKURB_E)
+
 ## Project Overview
 ![last commit in main](https://img.shields.io/github/last-commit/CSE110-Team17/cse110-sp23-group17/main)
 ![open issues](https://img.shields.io/github/issues-raw/CSE110-Team17/cse110-sp23-group17)
